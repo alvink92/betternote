@@ -12,7 +12,6 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.props.processForm);
     this.props.processForm(this.state).then(() => this.props.history.push("/"));
   }
 
@@ -87,14 +86,14 @@ class SessionForm extends React.Component {
               </div>
             </div>
           </div>
-          <ul>
+          <ul className="session-errors">
             {this.props.errors.map((error, i) => <li key={i}>{error}</li>)}
           </ul>
           <div className="session-form-wrap">
             <form className="session-form" onSubmit={this.handleSubmit}>
               <button className="demo">Demo</button>
               {this.vGap("40px")}
-              <div class="horizontal-text">or</div>
+              <div className="horizontal-text">or</div>
               {this.vGap("15px")}
               <input
                 className="creds"
