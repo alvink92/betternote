@@ -1,0 +1,52 @@
+.homepage-content {
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+}
+
+.homepage-content > div {
+  width: 47.5%;
+  padding-top: 5px;
+}
+
+.content-divider {
+  height: 500px;
+  display: flex;
+  align-items: center;
+  width: 4%;
+}
+
+.v-line {
+  width: 1px;
+  height: 375px;
+  background-color: #eee;
+}
+
+.desc-section {
+  float: left;
+  display: flex;
+  align-items: center;
+  padding-right: 25px;
+  font-family: "Gotham_SSm_5r", Helvetica, Arial, sans-serif;
+}
+
+.desc-section h1 {
+  font-weight: 700;
+  font-size: 65px;
+  padding-bottom: 20px;
+}
+
+.desc-section p {
+  font-size: 18px;
+}
+
+.registration-form-container {
+  float: right;
+  padding: 0 115px;
+}
+
+.registration-form-container h1 {
+  font-family: "Gotham_SSm_5r", Helvetica, Arial, sans-serif;
+  font-size: 23px;
+  font-weight: 700;
+}
