@@ -1,24 +1,3 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Betternote, an Evernote clone, is feature-rich note-taking application that allows users to create notes and organize them by grouping them in "notebooks". Betternote also allows users to optionally add "tags" to notes to more easily find and browse notes by taggings.
