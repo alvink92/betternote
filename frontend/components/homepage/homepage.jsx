@@ -8,8 +8,11 @@ class Homepage extends React.Component {
 
   render() {
     return (
-      <div className="homepage-container container">
+      <div className="homepage-container">
         <Navbar />
+        <div className="content-container inner-margin">
+          <div>filler</div>
+        </div>
       </div>
     );
   }

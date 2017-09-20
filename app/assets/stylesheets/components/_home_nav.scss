@@ -1,3 +1,54 @@
-div {
-  background-color: red;
+.home-header {
+  // position: fixed;
+  // top: 0;
+  width: 100%;
+  height: 93px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  z-index: 9999;
+}
+
+.header-nav {
+  width: 100%;
+  position: relative;
+  height: 93px;
+  padding-top: 30px;
+  padding-bottom: 15px;
+}
+
+.header-nav img {
+  height: 35px;
+  width: 35px;
+}
+
+.header-nav ul * {
+  display: inline;
+}
+
+.left-section {
+  float: left;
+}
+
+.right-section {
+  float: right;
+  position: relative;
+  top: 4px;
+}
+
+.header-nav ul li {
+  display: inline-block;
+}
+
+.right-section li {
+  padding: 0 10px;
+}
+
+.left-section li {
+  padding-right: 60px;
+}
+
+.home-header .header-nav a:hover {
+  text-decoration: none;
+  color: black;
+  border-bottom: 2px solid #2dbe60;
 }

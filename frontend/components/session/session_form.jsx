@@ -24,27 +24,31 @@ class SessionForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="session-form-container">
         <ul>{this.props.errors.map((error, i) => <li key={i}>{error}</li>)}</ul>
-        <Link to={this.props.formType === "/login" ? "/signup" : "/login"}>
-          {this.props.formType === "/login" ? "Sign Up" : "Sign In"}
-        </Link>
         <h1>{this.props.formType}</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            onChange={this.updateInput("username")}
-            value={this.state.username}
-            placeholder="username"
-          />
-          <input
-            type="password"
-            onChange={this.updateInput("password")}
-            value={this.state.password}
-            placeholder="password"
-          />
-          <input type="submit" />
-        </form>
+        <div className="session-form-wrap">
+          <form className="session-form" onSubmit={this.handleSubmit}>
+            <input
+              className="creds"
+              type="text"
+              onChange={this.updateInput("username")}
+              value={this.state.username}
+              placeholder="username"
+            />
+            <input
+              className="creds"
+              type="password"
+              onChange={this.updateInput("password")}
+              value={this.state.password}
+              placeholder="password"
+            />
+            <input type="submit" />
+          </form>
+        </div>
+        <Link to={this.props.formType === "/signin" ? "/signup" : "/signin"}>
+          {this.props.formType === "/signin" ? "Sign Up" : "Sign In"}
+        </Link>
       </div>
     );
   }

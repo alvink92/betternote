@@ -1,16 +1,27 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <header className="home-header">
-      <div className="row">
+    <header className="home-header inner-margin">
+      <div className="header-nav">
         <ul className="left-section">
-          <li>logo</li>
-          <li>Getting Started</li>
+          <li>
+            <img
+              src="https://www.evernote.com/redesign/global/img/elephant.png"
+              alt="Betternote logo"
+            />
+            <p>BETTERNOTE</p>
+          </li>
+          <li>Get Started</li>
         </ul>
         <ul className="right-section">
-          <li>Signup</li>
-          <li>Login</li>
+          <li>
+            <Link to={"/login"}>Log in</Link>
+          </li>
+          <li>
+            <Link to={"/signup"}>Sign up</Link>
+          </li>
         </ul>
       </div>
     </header>
