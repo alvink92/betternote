@@ -16,9 +16,30 @@ class SessionForm extends React.Component {
   }
 
   handleDemoButtonClick(e) {
-    this.props
-      .login({ username: "demo", password: "password" })
-      .then(() => this.props.history.push("/"));
+    const demoUsername = Array.from("demo");
+    const demoPassword = Array.from("password");
+
+    let loginDemoInterval = setInterval(() => {
+      let username = this.state.username;
+      let password = this.state.password;
+
+      if (demoUsername.length > 0) {
+        username += demoUsername.shift();
+        this.setState({ username: username });
+      } else if (demoPassword.length > 0) {
+        password += demoPassword.shift();
+        this.setState({ password: password });
+      } else {
+        this.props
+          .login({ username: "demo", password: "password" })
+          .then(() => this.props.history.push("/"));
+        clearInterval(loginDemoInterval);
+      }
+    }, 100);
+    loginDemoInterval();
+    // this.props
+    //   .login({ username: "demo", password: "password" })
+    //   .then(() => this.props.history.push("/"));
   }
 
   updateInput(type) {

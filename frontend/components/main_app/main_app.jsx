@@ -6,7 +6,11 @@ class MainApp extends React.Component {
   }
 
   render() {
-    return <div>MainApp</div>;
+    return (
+      <div id="main-app">
+        <button onClick={this.props.logout}>Get out</button>
+      </div>
+    );
   }
 }
 
