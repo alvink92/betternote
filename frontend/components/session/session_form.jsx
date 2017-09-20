@@ -8,11 +8,18 @@ class SessionForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateInput = this.updateInput.bind(this);
+    this.handleDemoButtonClick = this.handleDemoButtonClick.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
     this.props.processForm(this.state).then(() => this.props.history.push("/"));
+  }
+
+  handleDemoButtonClick(e) {
+    this.props
+      .login({ username: "demo", password: "password" })
+      .then(() => this.props.history.push("/"));
   }
 
   updateInput(type) {
@@ -91,7 +98,9 @@ class SessionForm extends React.Component {
           </ul>
           <div className="session-form-wrap">
             <form className="session-form" onSubmit={this.handleSubmit}>
-              <button className="demo">Demo</button>
+              <button className="demo" onClick={this.handleDemoButtonClick}>
+                Demo
+              </button>
               {this.vGap("40px")}
               <div className="horizontal-text">or</div>
               {this.vGap("15px")}

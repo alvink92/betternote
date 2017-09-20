@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./navbar";
+import Content from "./content";
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class Homepage extends React.Component {
       <div className="homepage-container">
         <Navbar />
         <div className="content-container inner-margin">
-          <div>filler</div>
+          <Content />
         </div>
       </div>
     );

@@ -4,7 +4,6 @@ import { login, signup } from "../../actions/session_actions";
 import { withRouter } from "react-router";
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps);
   return {
     loggedIn: Boolean(state.session.currentUser),
     errors: state.errors.session,
@@ -13,11 +12,11 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  console.log(login);
   const processForm = ownProps.match.path === "/signup" ? signup : login;
 
   return {
-    processForm: user => dispatch(processForm(user))
+    processForm: user => dispatch(processForm(user)),
+    login: user => dispatch(login(user))
   };
 };
 
