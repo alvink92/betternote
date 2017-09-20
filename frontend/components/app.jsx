@@ -1,4 +1,4 @@
-import SessionFormContainer from "./session/session_form_container";
+import SessionFormPageContainer from "./session/session_form_page_container";
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
@@ -10,8 +10,8 @@ const App = () => (
     <header>
       <Switch>
         <ProtectedRoute path="/app" component={MainAppContainer} />
-        <AuthRoute path="/login" component={SessionFormContainer} />
-        <AuthRoute path="/signup" component={SessionFormContainer} />
+        <AuthRoute path="/login" component={SessionFormPageContainer} />
+        <AuthRoute path="/signup" component={SessionFormPageContainer} />
         <AuthRoute path="/" component={HomepageContainer} />
       </Switch>
     </header>

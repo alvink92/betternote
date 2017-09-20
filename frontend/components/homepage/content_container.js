@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import Content from "./content";
-import { signup } from "../../actions/session_actions";
+import { signup, login } from "../../actions/session_actions";
+import { withRouter } from "react-router";
 
 const mapStateToProps = state => {
   return {};
@@ -8,8 +9,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    signup: user => dispatch(signup(user))
+    processForm: user => dispatch(signup(user)),
+    login: user => dispatch(login(user))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Content);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Content)
+);

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import SessionForm from "./session_form";
+import SessionFormPage from "./session_form_page";
 import { login, signup } from "../../actions/session_actions";
 import { withRouter } from "react-router";
 
@@ -21,5 +21,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(SessionForm)
+  connect(mapStateToProps, mapDispatchToProps)(SessionFormPage)
 );

@@ -11,9 +11,11 @@ const Navbar = () => {
               src="https://www.evernote.com/redesign/global/img/elephant.png"
               alt="Betternote logo"
             />
-            <p>BETTERNOTE</p>
+            <p className="brand-text">BETTERNOTE</p>
           </li>
-          <li>Get Started</li>
+          <li>
+            <a href="https://github.com/alvink92">Github</a>
+          </li>
         </ul>
         <ul className="right-section">
           <li>

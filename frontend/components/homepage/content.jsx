@@ -1,4 +1,5 @@
 import React from "react";
+import SessionForm from "../session/session_form";
 
 class Content extends React.Component {
   constructor(props) {
@@ -22,6 +23,12 @@ class Content extends React.Component {
         </section>
         <div className="registration-form-container">
           <h1>Sign Up for Free</h1>
+          <SessionForm
+            formTypePath="/signup"
+            processForm={this.props.processForm}
+            login={this.props.login}
+            history={this.props.history}
+          />
         </div>
       </div>
     );

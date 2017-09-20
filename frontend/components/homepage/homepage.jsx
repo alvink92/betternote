@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./navbar";
-import Content from "./content";
+import ContentContainer from "./content_container";
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class Homepage extends React.Component {
         <Navbar />
         <div className="content-container inner-margin">
           {this.vGap("85px")}
-          <Content />
+          <ContentContainer />
         </div>
       </div>
     );
