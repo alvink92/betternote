@@ -44,6 +44,8 @@ GEM
       activerecord (>= 3.2, < 6.0)
       rake (>= 10.4, < 13.0)
     arel (8.0.0)
+    autoprefixer-rails (7.1.4)
+      execjs
     bcrypt (3.1.11)
     better_errors (2.3.0)
       coderay (>= 1.0.0)
@@ -55,6 +57,10 @@ GEM
     binding_of_callers (0.1.6)
       binding_of_caller (~> 0.7)
       pry (~> 0.10.0)
+    bootstrap (4.0.0.beta)
+      autoprefixer-rails (>= 6.0.3)
+      popper_js (~> 1.11.1)
+      sass (>= 3.4.19)
     builder (3.2.3)
     byebug (9.1.0)
     capybara (2.15.1)
@@ -111,6 +117,7 @@ GEM
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     pg (0.21.0)
+    popper_js (1.11.1)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -204,6 +211,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_callers
+  bootstrap (~> 4.0.0.beta)
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
