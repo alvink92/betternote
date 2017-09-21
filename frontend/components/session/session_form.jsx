@@ -33,9 +33,9 @@ class SessionForm extends React.Component {
           password += demoPassword.shift();
           this.setState({ password: password });
         } else {
+          clearInterval(intervalId);
           this.props
             .login({ username: "demo", password: "password" })
-            .then(() => clearInterval(intervalId))
             .then(() => this.props.history.push("/"));
         }
       }, 100);
