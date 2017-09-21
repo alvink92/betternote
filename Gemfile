@@ -30,6 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'faker'
+gem "font-awesome-rails"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

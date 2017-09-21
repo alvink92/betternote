@@ -11,11 +11,13 @@
 
 class Tagging < ApplicationRecord
   belongs_to :note,
-  primary_key: :note_id,
+  primary_key: :id,
+  foreign_key: :tag_id,
   class_name: :Note
 
   belongs_to :tag,
-  primary_key: :tag_id,
+  primary_key: :id,
+  foreign_key: :tag_id,
   class_name: :Tag
 
   validates :note_id, :tag_id, presence: true

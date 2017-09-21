@@ -23,6 +23,12 @@ class User < ApplicationRecord
   class_name: :Notebook,
   dependent: :destroy
 
+  has_many :tags,
+  primary_key: :id,
+  foreign_key: :owner_id,
+  class_name: :Tag,
+  dependent: :destroy
+
   validates :username, :password_digest, :session_token, presence: true
   validates :username, uniqueness: { case_sensitive: false }
   validates :password, length: {minimum: 6, allow_nil: true}

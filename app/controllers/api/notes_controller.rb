@@ -11,6 +11,14 @@ class Api::NotesController < ApplicationController
       else
         @notes = []
       end
+    elsif params[:tag_id]
+      tag = current_user.tags
+                        .where(id: params[:tag_id]).first
+      if tag
+        @notes = tag.notes
+      else
+        @notes = []
+      end                  
     else
       @notes = current_user.notes
     end
@@ -36,15 +44,15 @@ class Api::NotesController < ApplicationController
   end
 
   def update
-    @note = Note.find_by_id(params[:id])
-    if @note.author_id == current_user.id
+    @note = current_user.notes.where(id: params[:id]).first
+    if @note
       if @note.update(note_params)
         render :show
       else
-        render json: ["Failed to update note"], status: 400
+        render json: @note.errors.full_messages, status: 400
       end
     else
-      render json: ["User doesn't have access to this note"], status: 403
+      render json: ["Note note found"], status: 404
     end
   end
 

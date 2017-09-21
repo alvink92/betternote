@@ -24,9 +24,10 @@ class ApplicationController < ActionController::Base
 
   def ensure_login
     if logged_in?
-      return
+      return true
     else
       render json: ["User not logged in to access this content"], status: 401
+      return false
     end
   end
 end
