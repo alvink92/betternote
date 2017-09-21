@@ -1,4 +1,3 @@
 json.array! @notes do |note|
-  json.extract! note, :id, :title, :body
-  json.notebook note.notebook, :id, :title
+  json.partial! 'api/notes/note', note: note
 end

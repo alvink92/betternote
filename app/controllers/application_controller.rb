@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  # protect_from_forgery with: :exception
 
   helper_method :current_user, :logged_in?
 
@@ -23,5 +23,10 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_login
+    if logged_in?
+      return
+    else
+      render json: ["User not logged in to access this content"], status: 401
+    end
   end
 end
