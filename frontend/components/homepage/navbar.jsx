@@ -8,6 +8,7 @@ const Navbar = () => {
         <ul className="left-section">
           <li>
             <img
+              className="logo"
               src="https://www.evernote.com/redesign/global/img/elephant.png"
               alt="Betternote logo"
             />
