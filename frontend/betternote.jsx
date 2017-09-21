@@ -23,7 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 import * as APIUtil from "./util/session_api_util";
 import * as SessAction from "./actions/session_actions";
+import * as NotesAPIUtil from "./util/notes_api_util";
 
 window.login = SessAction.login;
 window.signup = APIUtil.signup;
 window.logout = SessAction.logout;
+window.nutil = NotesAPIUtil;
