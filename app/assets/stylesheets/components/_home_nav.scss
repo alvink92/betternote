@@ -23,6 +23,10 @@
   width: 35px;
 }
 
+.header-nav a {
+  color: black !important; // unecessary?
+}
+
 .header-nav ul * {
   display: inline;
 }

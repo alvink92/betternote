@@ -23,6 +23,7 @@ class Content extends React.Component {
         </section>
         <div className="registration-form-container">
           <h1>Sign Up for Free</h1>
+          <br />
           <SessionForm
             errors={this.props.errors}
             formTypePath="/signup"
