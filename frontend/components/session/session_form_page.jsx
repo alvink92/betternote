@@ -5,7 +5,6 @@ import SessionForm from "./session_form";
 class SessionFormPage extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.processForm);
   }
 
   formHeaderName() {
@@ -63,12 +62,10 @@ class SessionFormPage extends React.Component {
               </div>
             </div>
           </div>
-          <ul className="session-errors">
-            {this.props.errors.map((error, i) => <li key={i}>{error}</li>)}
-          </ul>
 
           <div className="session-form-wrap">
             <SessionForm
+              errors={this.props.errors}
               history={this.props.history}
               login={this.props.login}
               formTypePath={this.props.formType}

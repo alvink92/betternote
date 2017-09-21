@@ -4,7 +4,9 @@ import { signup, login } from "../../actions/session_actions";
 import { withRouter } from "react-router";
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    errors: state.errors.session
+  };
 };
 
 const mapDispatchToProps = dispatch => {

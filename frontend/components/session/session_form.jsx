@@ -16,6 +16,7 @@ class SessionForm extends React.Component {
   }
 
   handleDemoButtonClick(e) {
+    e.preventDefault();
     const demoUsername = Array.from("demo");
     const demoPassword = Array.from("password");
 
@@ -32,14 +33,11 @@ class SessionForm extends React.Component {
       } else {
         this.props
           .login({ username: "demo", password: "password" })
-          .then(() => this.props.history.push("/"));
-        clearInterval(loginDemoInterval);
+          .then(() => this.props.history.push("/"))
+          .then(() => clearInterval(loginDemoInterval));
       }
     }, 100);
     loginDemoInterval();
-    // this.props
-    //   .login({ username: "demo", password: "password" })
-    //   .then(() => this.props.history.push("/"));
   }
 
   updateInput(type) {
@@ -73,8 +71,11 @@ class SessionForm extends React.Component {
           Demo
         </button>
         {this.vGap("40px")}
-        <div className="horizontal-text">Or</div>
+        <div className="horizontal-text">or</div>
         {this.vGap("15px")}
+        <ul className="session-errors">
+          {this.props.errors.map((error, i) => <li key={i}>{error}</li>)}
+        </ul>
         <input
           className="creds"
           type="text"

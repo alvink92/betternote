@@ -24,6 +24,7 @@ class Content extends React.Component {
         <div className="registration-form-container">
           <h1>Sign Up for Free</h1>
           <SessionForm
+            errors={this.props.errors}
             formTypePath="/signup"
             processForm={this.props.processForm}
             login={this.props.login}
