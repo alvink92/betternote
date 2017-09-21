@@ -20,23 +20,25 @@ class SessionForm extends React.Component {
     const demoUsername = Array.from("demo");
     const demoPassword = Array.from("password");
 
-    const loginDemoInterval = setInterval(() => {
-      let username = this.state.username;
-      let password = this.state.password;
+    let loginDemoInterval = () => {
+      const intervalId = setInterval(() => {
+        let username = this.state.username;
+        let password = this.state.password;
 
-      if (demoUsername.length > 0) {
-        username += demoUsername.shift();
-        this.setState({ username: username });
-      } else if (demoPassword.length > 0) {
-        password += demoPassword.shift();
-        this.setState({ password: password });
-      } else {
-        this.props
-          .login({ username: "demo", password: "password" })
-          .then(() => this.props.history.push("/"))
-          .then(() => clearInterval(loginDemoInterval));
-      }
-    }, 100);
+        if (demoUsername.length > 0) {
+          username += demoUsername.shift();
+          this.setState({ username: username });
+        } else if (demoPassword.length > 0) {
+          password += demoPassword.shift();
+          this.setState({ password: password });
+        } else {
+          this.props
+            .login({ username: "demo", password: "password" })
+            .then(() => this.props.history.push("/"))
+            .then(() => clearInterval(intervalId));
+        }
+      }, 100);
+    };
     loginDemoInterval();
   }
 
