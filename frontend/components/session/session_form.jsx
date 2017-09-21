@@ -20,7 +20,7 @@ class SessionForm extends React.Component {
     const demoUsername = Array.from("demo");
     const demoPassword = Array.from("password");
 
-    let loginDemoInterval = setInterval(() => {
+    const loginDemoInterval = setInterval(() => {
       let username = this.state.username;
       let password = this.state.password;
 
