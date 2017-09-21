@@ -136,3 +136,15 @@
 .session-form input {
   letter-spacing: 0.5px;
 }
+
+.horizontal-text {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #dedede;
+  line-height: 0.2em;
+  margin: 10px 0 20px;
+}
+.horizontal-text span {
+  background: white;
+  padding: 0 10px;
+}

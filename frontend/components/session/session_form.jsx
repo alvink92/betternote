@@ -35,8 +35,8 @@ class SessionForm extends React.Component {
         } else {
           this.props
             .login({ username: "demo", password: "password" })
-            .then(() => this.props.history.push("/"))
-            .then(() => clearInterval(intervalId));
+            .then(() => clearInterval(intervalId))
+            .then(() => this.props.history.push("/"));
         }
       }, 100);
     };
@@ -74,7 +74,9 @@ class SessionForm extends React.Component {
           Demo
         </button>
         {this.vGap("40px")}
-        <div className="horizontal-text">or</div>
+        <div className="horizontal-text">
+          <span>or</span>
+        </div>
         {this.vGap("15px")}
         <ul className="session-errors">
           {this.props.errors.map((error, i) => <li key={i}>{error}</li>)}
