@@ -134,7 +134,44 @@
 }
 
 .session-form input {
-  letter-spacing: 0.5px;
+  padding-left: 12.5px;
+  font-weight: 100;
+  letter-spacing: 1px;
+}
+
+.register-terms {
+  text-align: center;
+  margin: 5px 0;
+  color: #919191;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+.register-terms u:hover {
+  cursor: pointer;
+}
+
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #9b9b9b;
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #9b9b9b;
+  opacity: 1;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #9b9b9b;
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #9b9b9b;
+}
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #9b9b9b;
 }
 
 .horizontal-text {

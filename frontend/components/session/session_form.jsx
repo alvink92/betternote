@@ -103,7 +103,10 @@ class SessionForm extends React.Component {
             </label>
           </div>
         ) : (
-          <br />
+          <div className="register-terms">
+            By clicking Create Account, I agree to the <u>Terms of Service</u>{" "}
+            and <u>Privacy Policy</u>.
+          </div>
         )}
         <input className="submit" type="submit" value={this.submitName()} />
       </form>
