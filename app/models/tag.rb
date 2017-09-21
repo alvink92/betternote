@@ -13,7 +13,8 @@ class Tag < ApplicationRecord
   has_many :taggings,
   primary_key: :id,
   class_name: :tag_id,
-  class_name: :Tagging
+  class_name: :Tagging,
+  dependent: :destroy
 
   has_many :notes,
   through: :taggings,
@@ -23,4 +24,7 @@ class Tag < ApplicationRecord
   primary_key: :id,
   foreign_key: :owner_id,
   class_name: :User
+
+  validates :name, :owner, presence: true
+  validates_uniqueness_of :name, scope: [:owner]
 end

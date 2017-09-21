@@ -25,9 +25,13 @@ class Note < ApplicationRecord
   has_many :taggings,
   primary_key: :id,
   foreign_key: :note_id,
-  class_name: :Tagging
+  class_name: :Tagging,
+  dependent: :destroy
 
   has_many :tags,
   through: :taggings,
   source: :tag
+
+  validates :author, :notebook, :title, presence: true
+  validates_uniqueness_of :title, scope: [:author_id, :notebook_id]
 end

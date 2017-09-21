@@ -17,4 +17,7 @@ class Tagging < ApplicationRecord
   belongs_to :tag,
   primary_key: :tag_id,
   class_name: :Tag
+
+  validates :note_id, :tag_id, presence: true
+  validates_uniqueness_of :note_id, scope: [:tag_id]
 end

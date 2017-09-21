@@ -14,12 +14,14 @@ class User < ApplicationRecord
   has_many :notes,
   primary_key: :id,
   foreign_key: :author_id,
-  class_name: :Note
+  class_name: :Note,
+  dependent: :destroy
 
   has_many :notebooks,
   primary_key: :id,
   foreign_key: :owner_id,
-  class_name: :Notebook
+  class_name: :Notebook,
+  dependent: :destroy
 
   validates :username, :password_digest, :session_token, presence: true
   validates :username, uniqueness: { case_sensitive: false }
