@@ -1,0 +1,20 @@
+.note-opts-container {
+  background: yellow;
+}
+.style-bar-container {
+  background: red;
+}
+.note-title {
+  background: green;
+}
+.note-body {
+  background: grey;
+}
+.style-bar-container,
+.note-container {
+  padding: 0px 45px;
+}
+
+.note-container {
+  overflow-y: scroll;
+}

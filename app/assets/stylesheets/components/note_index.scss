@@ -29,15 +29,18 @@
 }
 
 .note-index-header-container {
-  border-bottom: 3px solid #ececec;
   background-color: white;
+  border-bottom: 3px solid #ececec;
+}
+
+.note-index-item-container {
+  padding: 10px 20px 0 24px;
 }
 
 .note-index-item {
   height: 120px;
-  border-bottom: 0.5px solid #ececec;
-  padding: 10px 20px 0 24px;
   overflow-y: hidden;
+  border-bottom: 0.5px solid #ececec;
 }
 
 .note-index-item-container:hover {
@@ -45,7 +48,9 @@
   background: #2dbe60;
   color: white;
 }
-
+.note-index-item-container:hover .note-index-item {
+  border: none;
+}
 .note-item-title-section {
   overflow-x: hidden;
 }

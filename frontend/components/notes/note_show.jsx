@@ -20,7 +20,22 @@ class NoteShow extends React.Component {
   render() {
     return (
       <div className="note-show-container">
-        {this.currNote ? this.currNote.title : "Title"}
+        <div className="note-opts-container">
+          <div className="note-opts">note options filler</div>
+        </div>
+        <div className="style-bar-container">
+          <div className="style-bar">text style edit bar filler</div>
+        </div>
+        <div className="note-container">
+          <div className="note">
+            <div className="note-title">
+              {this.props.currNote ? this.props.currNote.title : ""}
+            </div>
+            <div className="note-body">
+              {this.props.currNote ? this.props.currNote.body : ""}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

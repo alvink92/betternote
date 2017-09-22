@@ -13,13 +13,6 @@ const receiveNote = note => {
   };
 };
 
-// const receiveCurrNote = currNote => {
-//   return {
-//     type: RECEIVE_CURR_NOTE,
-//     currNote
-//   };
-// };
-
 const removeNote = note => {
   return {
     type: REMOVE_NOTE,
