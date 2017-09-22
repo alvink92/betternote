@@ -34,7 +34,13 @@ class NoteIndex extends React.Component {
 
   noteIndexItems() {
     return Object.keys(this.props.notes).map(id => (
-      <NoteIndexItem key={id} note={this.props.notes[id]} />
+      <NoteIndexItem
+        key={id}
+        noteId={id}
+        history={this.props.history}
+        note={this.props.notes[id]}
+        match={this.props.match}
+      />
     ));
   }
 

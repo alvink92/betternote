@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
   width: 350px;
+  border-right: 0.5px solid #ececec;
 }
 
-.note-index-header-container,
-.note-index-items-container {
+.note-index-header-container {
   padding: 24px 20px 0 24px;
 }
 
@@ -17,7 +17,7 @@
 }
 
 .note-index-items-container {
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .notes-count {
@@ -30,4 +30,31 @@
 
 .note-index-header-container {
   border-bottom: 3px solid #ececec;
+  background-color: white;
+}
+
+.note-index-item {
+  height: 120px;
+  border-bottom: 0.5px solid #ececec;
+  padding: 10px 20px 0 24px;
+  overflow-y: hidden;
+}
+
+.note-index-item-container:hover {
+  cursor: pointer;
+  background: #2dbe60;
+  color: white;
+}
+
+.note-item-title-section {
+  overflow-x: hidden;
+}
+
+.note-item-lastupdated-section {
+  font-size: 12px;
+}
+
+.note-item-body-section {
+  font-size: 11px;
+  margin-top: 3px;
 }
