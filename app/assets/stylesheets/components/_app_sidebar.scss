@@ -16,6 +16,34 @@
     color: #2dbe60;
   }
 
+  .btnGrp1 {
+    > .grp1-btn-cont {
+      height: 48px;
+      > .grp1-btn {
+        display: flex;
+        align-items: center;
+        min-width: 38px;
+        min-height: 38px;
+        border-radius: 50%;
+        background: white;
+        border: 1px solid #e6e6e6;
+        &:hover {
+          background: #2dbe60;
+          * {
+            color: white;
+          }
+        }
+        > * {
+          vertical-align: center;
+          margin: 0 auto;
+        }
+      }
+    }
+    .my-plus {
+      font-size: 32px;
+    }
+  }
+
   .logo-container .logo {
     width: 36px;
   }
@@ -61,11 +89,6 @@
   min-height: 250px;
 }
 
-.btnGrp1 > *,
-.btnGrp2 > * {
-  padding: 5px 0;
-}
-
 .app-logout {
   background: #f8f8f8;
   padding-top: 20px;
@@ -74,11 +97,6 @@
   border-top: 1px solid #e1e1e1;
   margin-top: auto;
   justify-content: flex-end;
-}
-
-.app-logout,
-.btnGrp i {
-  cursor: pointer;
 }
 
 .fa-sign-out {

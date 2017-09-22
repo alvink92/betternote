@@ -17,18 +17,26 @@ class Sidebar extends React.Component {
           />
         </div>
         <div className="btnGrp btnGrp1">
-          <div>
-            <i className="fa fa-plus" aria-hidden="true" />
+          <div className="grp1-btn-cont">
+            <div className="grp1-btn">
+              <div>
+                <div className="fa my-plus">+</div>
+              </div>
+            </div>
           </div>
-          <div>
-            <i className="fa fa-search" aria-hidden="true" />
+          <div className="grp1-btn-cont">
+            <div className="grp1-btn">
+              <div>
+                <i className="fa fa-search" aria-hidden="true" />
+              </div>
+            </div>
           </div>
         </div>
         <div className="btnGrp btnGrp2">
           <div className="filter-link-cont">
             <NavLink to="/notes" className="filter-link">
               <div className="filter-btn-cont">
-                <i className="fa fa-sticky-note" aria-hidden="true" />
+                <i className="fa fa-file-text" aria-hidden="true" />
               </div>
             </NavLink>
           </div>
