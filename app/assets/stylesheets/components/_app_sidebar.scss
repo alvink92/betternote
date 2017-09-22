@@ -1,0 +1,51 @@
+.sidebar {
+  width: 73px;
+  background: #f8f8f8;
+  border-right: 1px solid #ececec;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 12px 12px 24px 17px;
+}
+
+.sidebar * {
+  text-align: center;
+}
+
+.sidebar .btnGrp > div {
+}
+
+.sidebar .fa {
+  font-size: 22px;
+}
+
+.logo-container {
+  height: 68px;
+}
+
+.sidebar .logo-container .logo {
+  width: 36px;
+}
+
+.btnGrp1 {
+  height: 250px;
+}
+
+.btnGrp1 > *,
+.btnGrp2 > * {
+  padding: 5px 0;
+}
+
+.app-logout {
+  background: #f8f8f8;
+  padding-top: 25px;
+  border: solid 0px white;
+  border-top: 1px solid #e1e1e1;
+  margin-top: auto;
+  justify-content: flex-end;
+}
+
+.app-logout:hover {
+  cursor: pointer;
+}

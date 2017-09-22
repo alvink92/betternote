@@ -12,11 +12,9 @@
  *
  *= require_self
  */
-/*
- *= require font-awesome
- */
 @import "base/reset.scss";
 @import "bootstrap";
+@import "font-awesome";
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import "components/*";
