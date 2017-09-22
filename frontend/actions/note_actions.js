@@ -47,6 +47,13 @@ export const fetchNotebookNotes = notebookId => dispatch => {
   );
 };
 
+export const fetchTagNotes = tagId => dispatch => {
+  return NoteApiUtil.getTagNotes(tagId).then(
+    notes => dispatch(receiveNotes(notes)),
+    errors => dispatch(receiveNoteErrors(errors))
+  );
+};
+
 export const fetchNote = noteId => dispatch => {
   return NoteApiUtil.getNote(noteId).then(
     note => dispatch(receiveNotes(note)),

@@ -1,0 +1,21 @@
+.note-index-container {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+}
+
+.notes-index-header-container,
+.notes-index-item-container > * {
+  padding: 24px 20px 0 24px;
+}
+
+.notes-index-header-container h1 {
+  font-size: 23px;
+  color: #878787;
+  font-weight: 100;
+  letter-spacing: 2px;
+}
+
+.note-index-items-container {
+  overflow: scroll;
+}

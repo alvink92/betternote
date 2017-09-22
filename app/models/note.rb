@@ -12,6 +12,11 @@
 #
 
 class Note < ApplicationRecord
+  validates :author, :notebook, :title, presence: true
+  validates_uniqueness_of :title, scope: [:author_id, :notebook_id]
+
+  include ActionView::Helpers::DateHelper
+
   belongs_to :author,
   primary_key: :id,
   foreign_key: :author_id,
@@ -32,6 +37,8 @@ class Note < ApplicationRecord
   through: :taggings,
   source: :tag
 
-  validates :author, :notebook, :title, presence: true
-  validates_uniqueness_of :title, scope: [:author_id, :notebook_id]
+  def last_updated_in_words
+    time_ago_in_words(self.updated_at) + " ago"
+  end
+
 end

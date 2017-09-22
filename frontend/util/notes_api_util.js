@@ -19,6 +19,13 @@ export const getNotebookNotes = notebookId => {
   });
 };
 
+export const getTagNotes = tagId => {
+  return $.ajax({
+    method: "GET",
+    url: `api/tags/${tagId}/notes`
+  });
+};
+
 export const createNote = note => {
   return $.ajax({
     method: "POST",
