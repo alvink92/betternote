@@ -5,16 +5,8 @@ class NoteShow extends React.Component {
     super(props);
   }
 
-  componentDidMount() {}
-
-  vGap(height) {
-    const divStyle = {
-      display: "block",
-      width: "100%",
-      clear: "both",
-      height: height
-    };
-    return <div style={divStyle} />;
+  componentDidMount() {
+    console.log(this.props);
   }
 
   render() {

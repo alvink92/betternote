@@ -12,7 +12,10 @@ const notesReducer = (state = { all: {}, curr: null }, action) => {
     case RECEIVE_NOTES:
       let currNote;
       currNote = Object.values(action.notes)[0];
-      return merge({}, state, { all: action.notes, curr: currNote });
+      newState = merge({}, state);
+      newState.all = action.notes;
+      newState.curr = currNote;
+      return newState;
     case RECEIVE_NOTE:
       newState = merge({}, state);
       newState.all[action.note.id] = action.note;

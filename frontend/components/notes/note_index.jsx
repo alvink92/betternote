@@ -18,10 +18,32 @@ class NoteIndex extends React.Component {
     } else {
       fetchNotesAction = () => this.props.fetchNotes();
     }
-    fetchNotesAction().then(notes => console.log(notes));
+    fetchNotesAction();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.url !== nextProps.match.url) {
+      let fetchNotesAction;
+      if (this.props.match.params.notebookId) {
+        fetchNotesAction = () =>
+          this.props.fetchNotebookNotes(this.props.match.params.notebookId);
+      } else if (this.props.match.params.tagId) {
+        fetchNotesAction = () =>
+          this.props.fetchTagNotes(this.props.match.params.tagId);
+      } else {
+        fetchNotesAction = () => this.props.fetchNotes();
+      }
+      fetchNotesAction();
+    }
   }
 
   header() {
+    let headerType;
+    if (this.props.match.params.notebookId) {
+    } else if (this.props.match.params.tagId) {
+    } else {
+    }
+
     return (
       <div className="note-index-header-container">
         <h1>{"NOTES"}</h1>
