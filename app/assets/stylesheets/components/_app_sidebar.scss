@@ -22,7 +22,7 @@
 }
 
 .logo-container {
-  height: 68px;
+  min-height: 68px;
 }
 
 .sidebar .logo-container .logo {
@@ -30,7 +30,7 @@
 }
 
 .btnGrp1 {
-  height: 250px;
+  min-height: 250px;
 }
 
 .btnGrp1 > *,

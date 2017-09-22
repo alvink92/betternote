@@ -4,6 +4,7 @@ export const RECEIVE_NOTE = "RECEIVE_NOTE";
 export const REMOVE_NOTE = "REMOVE_NOTE";
 export const RECEIVE_NOTES = "RECEIVE_NOTES";
 export const RECEIVE_NOTE_ERRORS = "RECEIVE_NOTE_ERRORS";
+// export const RECEIVE_CURR_NOTE = "RECEIVE_CURR_NOTE";
 
 const receiveNote = note => {
   return {
@@ -11,6 +12,13 @@ const receiveNote = note => {
     note
   };
 };
+
+// const receiveCurrNote = currNote => {
+//   return {
+//     type: RECEIVE_CURR_NOTE,
+//     currNote
+//   };
+// };
 
 const removeNote = note => {
   return {
@@ -56,7 +64,7 @@ export const fetchTagNotes = tagId => dispatch => {
 
 export const fetchNote = noteId => dispatch => {
   return NoteApiUtil.getNote(noteId).then(
-    note => dispatch(receiveNotes(note)),
+    note => dispatch(receiveNote(note)),
     errors => dispatch(receiveNoteErrors(errors))
   );
 };

@@ -11,7 +11,9 @@ class NoteIndexItem extends React.Component {
     if (this.props.match.notebookId) {
     } else if (this.props.match.tagId) {
     } else {
-      this.props.history.push(`/notes/${this.props.noteId}`);
+      this.props
+        .fetchNote(this.props.noteId)
+        .then(this.props.history.push(`/notes/${this.props.noteId}`));
     }
   }
 

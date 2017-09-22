@@ -38,6 +38,7 @@ class NoteIndex extends React.Component {
         key={id}
         noteId={id}
         history={this.props.history}
+        fetchNote={this.props.fetchNote}
         note={this.props.notes[id]}
         match={this.props.match}
       />
