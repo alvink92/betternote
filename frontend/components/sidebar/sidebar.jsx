@@ -25,15 +25,21 @@ class Sidebar extends React.Component {
           </div>
         </div>
         <div className="btnGrp btnGrp2">
-          <div>
-            <i className="fa fa-sticky-note" aria-hidden="true" />
-          </div>
-          <div>
-            <i className="fa fa-book" aria-hidden="true" />
-          </div>
-          <div>
-            <i className="fa fa-tag" aria-hidden="true" />
-          </div>
+          <NavLink to="/notes" className="filter-link">
+            <div>
+              <i className="fa fa-sticky-note" aria-hidden="true" />
+            </div>
+          </NavLink>
+          <NavLink to="/notebooks" className="filter-link">
+            <div>
+              <i className="fa fa-book" aria-hidden="true" />
+            </div>
+          </NavLink>
+          <NavLink to="/tags" className="filter-link">
+            <div>
+              <i className="fa fa-tag" aria-hidden="true" />
+            </div>
+          </NavLink>
         </div>
         <button className="app-logout" onClick={this.props.logout}>
           <i className="fa fa-sign-out" aria-hidden="true" />

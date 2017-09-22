@@ -8,26 +8,30 @@
   align-items: center;
   padding: 12px 12px 24px 17px;
   z-index: 10;
+  * {
+    text-align: center;
+  }
+  .fa {
+    font-size: 22px;
+    color: #2dbe60;
+  }
+
+  .logo-container .logo {
+    width: 36px;
+  }
 }
 
-.sidebar * {
-  text-align: center;
-}
-
-.sidebar .btnGrp > div {
-}
-
-.sidebar .fa {
-  font-size: 22px;
-  color: #2dbe60;
+.filter-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  :hover {
+    text-decoration: none;
+  }
 }
 
 .logo-container {
   min-height: 68px;
-}
-
-.sidebar .logo-container .logo {
-  width: 36px;
 }
 
 .btnGrp1 {

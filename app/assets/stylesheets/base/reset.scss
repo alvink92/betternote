@@ -43,6 +43,11 @@ small {
 a,
 a:visited {
   color: black;
+  outline: none;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 ul {
