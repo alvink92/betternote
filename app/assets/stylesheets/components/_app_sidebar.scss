@@ -21,11 +21,34 @@
   }
 }
 
+.filter-link-cont {
+  height: 50px;
+}
+
 .filter-link {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  :hover {
+  > .filter-btn-cont {
+    min-width: 38px;
+    min-height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+
+    * {
+      margin: 0 auto;
+    }
+
+    &:hover {
+      background: #2dbe60;
+      * {
+        color: white;
+      }
+    }
+  }
+  &.active .filter-btn-cont {
+    border: 1px solid #2dbe60;
+  }
+
+  &:hover {
     text-decoration: none;
   }
 }

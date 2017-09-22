@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import Sidebar from "./sidebar";
 import { logout } from "../../actions/session_actions";
-// import { withRouter } from "react-router";
+import { withRouter } from "react-router";
 
 const mapStateToProps = (state, ownProps) => {
   return {};
@@ -13,4 +13,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Sidebar)
+);
