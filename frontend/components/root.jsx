@@ -13,6 +13,8 @@ const Root = ({ store }) => {
         <Switch>
           <ProtectedRoute path="/notes" component={App} />
           <ProtectedRoute path="/notes/:noteId" component={App} />
+          <ProtectedRoute path="/notebooks/:notebookId" component={App} />
+          <ProtectedRoute path="/notebooks/:notebookId/notes" component={App} />
           <AuthRoute path="/login" component={SessionFormPageContainer} />
           <AuthRoute path="/signup" component={SessionFormPageContainer} />
           <AuthRoute path="/" component={HomepageContainer} />

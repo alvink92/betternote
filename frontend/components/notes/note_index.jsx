@@ -8,29 +8,41 @@ class NoteIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchNotes().then(notes => console.log(notes));
-  }
-
-  vGap(height) {
-    const divStyle = {
-      display: "block",
-      width: "100%",
-      clear: "both",
-      height: height
-    };
-    return <div style={divStyle} />;
+    let fetchNotesAction;
+    if (this.props.match.params.notebookId) {
+      fetchNotesAction = () =>
+        this.props.fetchNotebookNotes(this.props.match.params.notebookId);
+    } else if (this.props.match.params.tagId) {
+      fetchNotesAction = () =>
+        this.props.fetchTagNotes(this.props.match.params.tagId);
+    } else {
+      fetchNotesAction = () => this.props.fetchNotes();
+    }
+    fetchNotesAction().then(notes => console.log(notes));
   }
 
   header() {
     return (
       <div className="note-index-header-container">
         <h1>{"NOTES"}</h1>
-        {this.vGap("15px")}
+        <br />
         <div className="notes-count">
           {Object.keys(this.props.notes).length + " notes"}
         </div>
       </div>
     );
+  }
+
+  getShowNoteLink(id) {
+    let url;
+    if (this.props.match.params.notebookId) {
+      url = `/notebooks/${this.props.match.params.notebookId}/notes/${id}`;
+    } else if (this.props.match.params.tagId) {
+      url = `/tags/${this.props.match.params.tagId}/notes/${id}`;
+    } else {
+      url = `/notes/${id}`;
+    }
+    return url;
   }
 
   noteIndexItems() {
@@ -39,7 +51,7 @@ class NoteIndex extends React.Component {
         className="show-link"
         key={id}
         onClick={() => this.props.fetchNote(id)}
-        to={`${this.props.match.path}/${id}`}
+        to={this.getShowNoteLink(id)}
       >
         <NoteIndexItem
           history={this.props.history}
