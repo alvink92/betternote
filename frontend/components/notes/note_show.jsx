@@ -6,7 +6,17 @@ class NoteShow extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
+    if (this.props.match.params.noteId)
+      this.props.fetchNote(this.props.match.params.noteId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.match.params.noteId) {
+      if (this.props.match.params.noteId !== nextProps.match.params.noteId) {
+        console.log(nextProps.match.params.noteId);
+        nextProps.fetchNote(nextProps.match.params.noteId);
+      }
+    }
   }
 
   render() {

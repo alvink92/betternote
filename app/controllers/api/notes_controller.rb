@@ -18,7 +18,7 @@ class Api::NotesController < ApplicationController
         @notes = tag.notes
       else
         @notes = []
-      end                  
+      end
     else
       @notes = current_user.notes
     end

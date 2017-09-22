@@ -22,16 +22,27 @@ class NoteIndex extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.match.url !== nextProps.match.url) {
+    let willFetch = false;
+
+    const oldParams = this.props.match.params;
+    const newParams = nextProps.match.params;
+
+    if (oldParams.notebookId !== newParams.notebookId) {
+      willFetch = true;
+    } else if (oldParams.tagId !== newParams.tagId) {
+      willFetch = true;
+    }
+
+    if (willFetch) {
       let fetchNotesAction;
-      if (this.props.match.params.notebookId) {
+      if (nextProps.match.params.notebookId) {
         fetchNotesAction = () =>
-          this.props.fetchNotebookNotes(this.props.match.params.notebookId);
-      } else if (this.props.match.params.tagId) {
+          nextProps.fetchNotebookNotes(nextProps.match.params.notebookId);
+      } else if (nextProps.match.params.tagId) {
         fetchNotesAction = () =>
-          this.props.fetchTagNotes(this.props.match.params.tagId);
+          nextProps.fetchTagNotes(nextProps.match.params.tagId);
       } else {
-        fetchNotesAction = () => this.props.fetchNotes();
+        fetchNotesAction = () => nextProps.fetchNotes();
       }
       fetchNotesAction();
     }
@@ -69,12 +80,7 @@ class NoteIndex extends React.Component {
 
   noteIndexItems() {
     return Object.keys(this.props.notes).map(id => (
-      <NavLink
-        className="show-link"
-        key={id}
-        onClick={() => this.props.fetchNote(id)}
-        to={this.getShowNoteLink(id)}
-      >
+      <NavLink className="show-link" key={id} to={this.getShowNoteLink(id)}>
         <NoteIndexItem
           history={this.props.history}
           fetchNote={this.props.fetchNote}

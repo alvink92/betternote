@@ -10,11 +10,11 @@ const notesReducer = (state = { all: {}, curr: null }, action) => {
   let newState;
   switch (action.type) {
     case RECEIVE_NOTES:
-      let currNote;
-      currNote = Object.values(action.notes)[0];
       newState = merge({}, state);
       newState.all = action.notes;
-      newState.curr = currNote;
+      if (!state.curr) {
+        newState.curr = state.curObject.values(action.notes)[0];
+      }
       return newState;
     case RECEIVE_NOTE:
       newState = merge({}, state);

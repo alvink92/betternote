@@ -12,7 +12,7 @@
 class Tag < ApplicationRecord
   has_many :taggings,
   primary_key: :id,
-  class_name: :tag_id,
+  foreign_key: :tag_id,
   class_name: :Tagging,
   dependent: :destroy
 
@@ -27,4 +27,10 @@ class Tag < ApplicationRecord
 
   validates :name, :owner, presence: true
   validates_uniqueness_of :name, scope: [:owner]
+
+  def hashNotes
+    hash = {}
+    self.notes.each{|note| hash[note["id"]] = note}
+    return hash
+  end
 end

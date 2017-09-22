@@ -19,6 +19,7 @@ const Root = ({ store }) => {
           />
           <ProtectedRoute path="/notebooks/:notebookId/notes" component={App} />
           <ProtectedRoute path="/notebooks/:notebookId" component={App} />
+          <ProtectedRoute path="/notebooks" component={App} />
           <ProtectedRoute path="/tags/:tagId/notes/:noteId" component={App} />
           <ProtectedRoute path="/tags/:tagId/notes" component={App} />
           <ProtectedRoute path="/tags/:tagId" component={App} />

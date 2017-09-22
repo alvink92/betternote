@@ -72,10 +72,10 @@ Note.create(id: 16, author_id: 1, notebook_id: 4,
   body: Faker::HitchhikersGuideToTheGalaxy.quote)
 
 
-Tag.create(id: 1, name: "chuck")
-Tag.create(id: 2, name: "mother")
-Tag.create(id: 3, name: "harry")
-Tag.create(id: 4, name: "galaxy")
+Tag.create(id: 1, name: "chuck", owner_id: 1)
+Tag.create(id: 2, name: "mother", owner_id: 1)
+Tag.create(id: 3, name: "harry", owner_id: 1)
+Tag.create(id: 4, name: "galaxy", owner_id: 1)
 
 Tagging.create(id: 1, tag_id: 1, note_id: 1)
 Tagging.create(id: 2, tag_id: 1, note_id: 2)
