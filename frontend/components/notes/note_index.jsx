@@ -10,10 +10,24 @@ class NoteIndex extends React.Component {
     this.props.fetchNotes();
   }
 
+  vGap(height) {
+    const divStyle = {
+      display: "block",
+      width: "100%",
+      clear: "both",
+      height: height
+    };
+    return <div style={divStyle} />;
+  }
+
   header() {
     return (
-      <div className="notes-index-header-container">
+      <div className="note-index-header-container">
         <h1>{"NOTES"}</h1>
+        {this.vGap("15px")}
+        <div className="notes-count">
+          {Object.keys(this.props.notes).length + " notes"}
+        </div>
       </div>
     );
   }

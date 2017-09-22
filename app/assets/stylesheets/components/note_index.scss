@@ -4,13 +4,13 @@
   width: 350px;
 }
 
-.notes-index-header-container,
-.notes-index-item-container > * {
+.note-index-header-container,
+.note-index-items-container {
   padding: 24px 20px 0 24px;
 }
 
-.notes-index-header-container h1 {
-  font-size: 23px;
+.note-index-header-container h1 {
+  font-size: 21px;
   color: #878787;
   font-weight: 100;
   letter-spacing: 2px;
@@ -18,4 +18,16 @@
 
 .note-index-items-container {
   overflow: scroll;
+}
+
+.notes-count {
+  padding-bottom: 10px;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  color: #ababab;
+  font-weight: 100;
+}
+
+.note-index-header-container {
+  border-bottom: 3px solid #ececec;
 }

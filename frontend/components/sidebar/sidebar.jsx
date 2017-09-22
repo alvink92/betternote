@@ -38,7 +38,7 @@ class Sidebar extends React.Component {
           </div>
         </div>
         <button className="app-logout" onClick={this.props.logout}>
-          Logout
+          <i className="fa fa-sign-out" aria-hidden="true" />
         </button>
       </div>
     );
