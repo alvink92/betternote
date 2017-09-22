@@ -21,7 +21,7 @@ class Homepage extends React.Component {
     return (
       <div className="homepage-container">
         <Navbar />
-        <div className="content-container inner-margin">
+        <div className="content-container">
           {this.vGap("200px")}
           <ContentContainer />
           {this.vGap("300px")}

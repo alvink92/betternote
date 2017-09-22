@@ -1,5 +1,6 @@
 import React from "react";
 import NoteIndexItem from "./note_index_item";
+import { NavLink, Link } from "react-router-dom";
 
 class NoteIndex extends React.Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class NoteIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchNotes();
+    this.props.fetchNotes().then(notes => console.log(notes));
   }
 
   vGap(height) {
@@ -34,14 +35,19 @@ class NoteIndex extends React.Component {
 
   noteIndexItems() {
     return Object.keys(this.props.notes).map(id => (
-      <NoteIndexItem
+      <NavLink
+        className="show-link"
         key={id}
-        noteId={id}
-        history={this.props.history}
-        fetchNote={this.props.fetchNote}
-        note={this.props.notes[id]}
-        match={this.props.match}
-      />
+        onClick={() => this.props.fetchNote(id)}
+        to={`${this.props.match.path}/${id}`}
+      >
+        <NoteIndexItem
+          history={this.props.history}
+          fetchNote={this.props.fetchNote}
+          note={this.props.notes[id]}
+          match={this.props.match}
+        />
+      </NavLink>
     ));
   }
 

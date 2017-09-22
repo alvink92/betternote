@@ -20,6 +20,10 @@
   overflow-y: scroll;
 }
 
+.note-index-item-container {
+  color: black;
+}
+
 .notes-count {
   padding-bottom: 10px;
   font-size: 15px;
@@ -53,6 +57,7 @@
 }
 .note-item-title-section {
   overflow-x: hidden;
+  white-space: nowrap;
 }
 
 .note-item-lastupdated-section {
@@ -62,4 +67,12 @@
 .note-item-body-section {
   font-size: 11px;
   margin-top: 3px;
+}
+
+.active.show-link > * {
+  border: 2.5px solid #d9d9d9;
+}
+
+.show-link:hover {
+  text-decoration: none;
 }

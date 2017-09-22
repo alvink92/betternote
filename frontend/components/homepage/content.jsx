@@ -8,7 +8,7 @@ class Content extends React.Component {
 
   render() {
     return (
-      <div className="homepage-content">
+      <div className="homepage-content home-inner-width">
         <div className="desc-section">
           <section>
             <h1>Meet Betternote, your second brain.</h1>

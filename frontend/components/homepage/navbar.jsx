@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <header className="home-header inner-margin">
-      <div className="header-nav">
+    <header className="home-header">
+      <div className="header-nav home-inner-width">
         <ul className="left-section">
           <li>
             <img
