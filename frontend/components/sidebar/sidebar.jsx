@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink, Link } from "react-router-dom";
 
 class Sidebar extends React.Component {
   constructor(props) {
@@ -24,9 +25,6 @@ class Sidebar extends React.Component {
           </div>
         </div>
         <div className="btnGrp btnGrp2">
-          <div>
-            <i className="fa fa-star" aria-hidden="true" />
-          </div>
           <div>
             <i className="fa fa-sticky-note" aria-hidden="true" />
           </div>

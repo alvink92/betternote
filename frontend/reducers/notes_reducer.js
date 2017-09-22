@@ -13,7 +13,7 @@ const notesReducer = (state = { all: {}, curr: null }, action) => {
       newState = merge({}, state);
       newState.all = action.notes;
       if (!state.curr) {
-        newState.curr = state.curObject.values(action.notes)[0];
+        newState.curr = Object.values(action.notes)[0];
       }
       return newState;
     case RECEIVE_NOTE:

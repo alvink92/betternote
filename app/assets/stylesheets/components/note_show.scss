@@ -1,3 +1,6 @@
+.note-show-container {
+  overflow-y: scroll;
+}
 .note-opts-container {
   background: yellow;
 }
@@ -14,8 +17,4 @@
 .style-bar-container,
 .note-container {
   padding: 0px 45px;
-}
-
-.note-container {
-  overflow-y: scroll;
 }
