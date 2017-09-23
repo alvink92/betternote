@@ -2,7 +2,10 @@ import React from "react";
 
 const NotebookIndexItem = props => {
   return (
-    <div className="nb-item-container-wrapper">
+    <div
+      className="nb-item-container-wrapper"
+      onClick={() => props.history.push(`/notebooks/${props.notebook.id}`)}
+    >
       <div className="nb-item-container">
         <div className="nb-item">
           <div>

@@ -45,6 +45,7 @@ class TagSlider extends React.Component {
         {this.header()}
         <TagIndex
           tags={this.props.tags}
+          history={this.props.history}
           updateTag={this.props.updateTag}
           deleteTag={this.props.deleteTag}
         />

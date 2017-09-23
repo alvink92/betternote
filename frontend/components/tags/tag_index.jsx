@@ -12,6 +12,7 @@ class TagIndex extends React.Component {
         <TagIndexItem
           key={tag.id}
           tag={tag}
+          history={this.props.history}
           updateTag={this.props.updateTag}
           deleteTag={this.props.deleteTag}
         />

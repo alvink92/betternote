@@ -44,6 +44,7 @@ class NotebookSlider extends React.Component {
       <div className="sliding-pane">
         {this.header()}
         <NotebookIndex
+          history={this.props.history}
           notebooks={this.props.notebooks}
           deleteNotebook={this.props.deleteNotebook}
         />
