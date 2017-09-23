@@ -18,6 +18,13 @@ export const receiveSessionErrors = errors => {
   };
 };
 
+export const clearSessionErrors = () => {
+  return {
+    type: RECEIVE_SESSION_ERRORS,
+    errors: []
+  };
+};
+
 export const login = user => dispatch => {
   return APIUtil.login(user).then(
     currentUser => dispatch(receiveCurrentUser(currentUser)),
