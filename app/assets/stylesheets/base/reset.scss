@@ -84,3 +84,8 @@ input {
   display: block;
   clear: both;
 }
+
+button:focus,
+input:focus {
+  outline: 0;
+}

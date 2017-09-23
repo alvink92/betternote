@@ -21,9 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(<Root store={store} />, root);
 });
 
-import * as APIUtil from "./util/session_api_util";
-import * as SessAction from "./actions/session_actions";
-
-window.login = SessAction.login;
-window.signup = APIUtil.signup;
-window.logout = SessAction.logout;
+// import * as nb from "./actions/notebook_actions";
+// import * as tag from "./actions/tag_actions";
+//
+// window.nb = nb;
+// window.tag = tag;

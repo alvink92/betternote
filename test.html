@@ -8,24 +8,26 @@
       height: 100vh;
       width: 800px;
       background: brown;
-      left: 50px;
-      z-index: 999;
+      left: -400px;
+      z-index: 100;
     }
     #left-div { z-index: 999;width: 100px; float: left; background-color: #fcc; }
     #right-div { width: 100px; float: left; background-color: #ccf; }
     #middle-div { background-color: #cfc; }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+  $("button").click(function() {
+    $("button").slideToggle(10000);
+  });
+});
+</script>
 
 <div id="divMain">
-    <div id="left-div">
-        <div id="pane">
 
-        </div>
-    </div>
-    <div id="right-div">
-        right div
-    </div>
-    <div id="middle-div">
-        middle div<br />bit taller
-    </div>
+  <p>This is a paragraph.</p>
+
+  <button>Toggle slideUp() and slideDown()</button>
+
 </div>

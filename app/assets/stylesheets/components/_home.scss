@@ -9,3 +9,8 @@
   line-height: 22px;
   color: #000;
 }
+
+button:focus,
+input:focus {
+  outline: 0;
+}
