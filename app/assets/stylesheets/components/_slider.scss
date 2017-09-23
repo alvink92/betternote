@@ -1,0 +1,46 @@
+.sliding-pane {
+  height: 100vh;
+  width: 460px;
+  border: 3px solid #f2f2f2;
+  position: absolute !important;
+  top: 0px !important;
+  left: 72px !important;
+  background: white;
+  z-index: 100;
+}
+
+.header-container {
+  .title {
+    float: left;
+  }
+  .create {
+    float: right;
+  }
+}
+
+.header-wrap {
+  padding: 20px 0px 12px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid #ececec;
+
+  > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .search {
+    height: 35px;
+  }
+
+  .header-container {
+    height: 52px;
+  }
+}
+
+.margined > * {
+  width: 410px;
+  margin: 0 auto;
+}
