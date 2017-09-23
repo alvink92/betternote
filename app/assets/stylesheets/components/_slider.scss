@@ -34,6 +34,7 @@
     padding: 7px 9px;
     height: 35px;
     &::placeholder {
+      font-weight: 100;
       text-align: center;
     }
   }

@@ -9,7 +9,12 @@ class TagIndex extends React.Component {
   tagIndexItems() {
     if (this.props.tags) {
       return Object.values(this.props.tags).map(tag => (
-        <TagIndexItem key={tag.id} tag={tag} deleteTag={this.props.deleteTag} />
+        <TagIndexItem
+          key={tag.id}
+          tag={tag}
+          updateTag={this.props.updateTag}
+          deleteTag={this.props.deleteTag}
+        />
       ));
     }
   }

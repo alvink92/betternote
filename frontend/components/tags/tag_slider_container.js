@@ -4,6 +4,7 @@ import {
   fetchTags,
   createTag,
   deleteTag,
+  updateTag,
   clearTags
 } from "../../actions/tag_actions";
 import { withRouter } from "react-router";
@@ -16,6 +17,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     fetchTags: () => dispatch(fetchTags()),
     createTag: tag => dispatch(createTag(tag)),
+    updateTag: tag => dispatch(updateTag(tag)),
     deleteTag: id => dispatch(deleteTag(id)),
     clearTags: () => dispatch(clearTags())
   };
