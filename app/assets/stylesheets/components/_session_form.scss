@@ -1,7 +1,7 @@
 .session-form-container {
   display: flex;
   flex-direction: column;
-  padding: 0 35%;
+  align-items: center;
   background-color: #f3f3f3;
   min-height: 100vh;
 }
@@ -16,6 +16,7 @@
 }
 
 .form-header-container {
+  width: 385px;
   padding-top: 70px;
   padding-bottom: 25px;
 }
