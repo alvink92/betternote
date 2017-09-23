@@ -40,6 +40,7 @@
 
 .note-index-item-container {
   padding: 10px 20px 0 24px;
+  border: 2.5px solid white;
 }
 
 .note-index-item {
@@ -48,11 +49,6 @@
   border-bottom: 0.5px solid #ececec;
 }
 
-.note-index-item-container:hover {
-  cursor: pointer;
-  background: #2dbe60;
-  color: white;
-}
 .note-index-item-container:hover .note-index-item {
   border: none;
 }
@@ -72,6 +68,12 @@
 
 .active.show-link > .note-index-item-container {
   border: 2.5px solid #d9d9d9;
+}
+.note-index-item-container:hover {
+  cursor: pointer;
+  background: #2dbe60;
+  border: 2.5px solid #2dbe60 !important;
+  color: white;
 }
 
 .show-link:hover {

@@ -19,28 +19,42 @@
 }
 
 .header-wrap {
-  padding: 20px 0px 12px 0;
+  height: 122px;
+  padding: 18px 0px 10px 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   border-bottom: 1px solid #ececec;
 
   > * {
     display: flex;
     flex-direction: column;
-    justify-content: center;
   }
 
   .search {
+    padding: 7px 9px;
     height: 35px;
+    &::placeholder {
+      text-align: center;
+    }
   }
 
   .header-container {
     height: 52px;
+  }
+
+  .create {
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
 .margined > * {
   width: 410px;
   margin: 0 auto;
+}
+
+.nb-index-container,
+.tag-index-container {
+  overflow-y: scroll;
 }

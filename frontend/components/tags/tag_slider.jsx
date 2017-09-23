@@ -1,18 +1,18 @@
 import React from "react";
-import NotebookIndex from "./notebook_index";
+import TagIndex from "./tag_index";
 
-class NotebookSlider extends React.Component {
+class TagSlider extends React.Component {
   constructor(props) {
     super(props);
   }
 
   componentWillMount() {
     this.setState({ search: "" });
-    this.props.fetchNotebooks();
+    this.props.fetchTags();
   }
 
   componentWillUnmount() {
-    this.props.clearNotebooks();
+    this.props.clearTags();
   }
 
   searchInput(type) {
@@ -30,11 +30,11 @@ class NotebookSlider extends React.Component {
       <div className="header-wrap margined">
         <div className="header-container">
           <div className="header">
-            <div className="title">NOTEBOOKS</div>
+            <div className="title">TAGS</div>
             <div className="create">+</div>
           </div>
         </div>
-        <div className="search-container">{this.searchInput("notebook")}</div>
+        <div className="search-container">{this.searchInput("tag")}</div>
       </div>
     );
   }
@@ -43,13 +43,10 @@ class NotebookSlider extends React.Component {
     return (
       <div className="sliding-pane">
         {this.header()}
-        <NotebookIndex
-          notebooks={this.props.notebooks}
-          deleteNotebook={this.props.deleteNotebook}
-        />
+        <TagIndex tags={this.props.tags} deleteTag={this.props.deleteTag} />
       </div>
     );
   }
 }
 
-export default NotebookSlider;
+export default TagSlider;

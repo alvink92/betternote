@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import {
   fetchNotebooks,
   createNotebook,
-  deleteNotebook
+  deleteNotebook,
+  clearNotebooks
 } from "../../actions/notebook_actions";
 import { withRouter } from "react-router";
 
@@ -15,7 +16,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     fetchNotebooks: () => dispatch(fetchNotebooks()),
     createNotebook: notebook => dispatch(createNotebook(notebook)),
-    deleteNotebook: id => dispatch(deleteNotebook(id))
+    deleteNotebook: id => dispatch(deleteNotebook(id)),
+    clearNotebooks: () => dispatch(clearNotebooks())
   };
 };
 

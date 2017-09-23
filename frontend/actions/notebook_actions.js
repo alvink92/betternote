@@ -5,31 +5,38 @@ export const REMOVE_NOTEBOOK = "REMOVE_NOTEBOOK";
 export const RECEIVE_NOTEBOOKS = "RECEIVE_NOTEBOOKS";
 export const RECEIVE_NOTEBOOK_ERRORS = "RECEIVE_NOTEBOOK_ERRORS";
 
-const receiveNotebook = notebook => {
+export const receiveNotebook = notebook => {
   return {
     type: RECEIVE_NOTEBOOK,
     notebook
   };
 };
 
-const removeNotebook = notebook => {
+export const removeNotebook = notebook => {
   return {
     type: REMOVE_NOTEBOOK,
     notebook
   };
 };
 
-const receiveNotebooks = notebooks => {
+export const receiveNotebooks = notebooks => {
   return {
     type: RECEIVE_NOTEBOOKS,
     notebooks
   };
 };
 
-const receiveNotebookErrors = errors => {
+export const receiveNotebookErrors = errors => {
   return {
     type: RECEIVE_NOTEBOOK_ERRORS,
     errors
+  };
+};
+
+export const clearNotebooks = () => {
+  return {
+    type: RECEIVE_NOTEBOOKS,
+    notebooks: []
   };
 };
 

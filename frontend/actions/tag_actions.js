@@ -5,31 +5,38 @@ export const REMOVE_TAG = "REMOVE_TAG";
 export const RECEIVE_TAGS = "RECEIVE_TAGS";
 export const RECEIVE_TAG_ERRORS = "RECEIVE_TAG_ERRORS";
 
-const receiveTag = tag => {
+export const receiveTag = tag => {
   return {
     type: RECEIVE_TAG,
     tag
   };
 };
 
-const removeTag = tag => {
+export const removeTag = tag => {
   return {
     type: REMOVE_TAG,
     tag
   };
 };
 
-const receiveTags = tags => {
+export const receiveTags = tags => {
   return {
     type: RECEIVE_TAGS,
     tags
   };
 };
 
-const receiveTagErrors = errors => {
+export const receiveTagErrors = errors => {
   return {
     type: RECEIVE_TAG_ERRORS,
     errors
+  };
+};
+
+export const clearTags = () => {
+  return {
+    type: RECEIVE_TAGS,
+    tags: {}
   };
 };
 

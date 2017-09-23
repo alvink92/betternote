@@ -6,6 +6,16 @@ class Sidebar extends React.Component {
     super(props);
   }
 
+  componentWillReceiveProps(newProps) {
+    const oldUrl = this.props.match.url;
+    const newUrl = newProps.match.url;
+    if (oldUrl === "/notebooks" && newUrl === "/notebooks") {
+      this.props.history.push("/notes");
+    } else if (oldUrl === "/tags" && newUrl === "/tags") {
+      this.props.history.push("/notes");
+    }
+  }
+
   logoContainer() {
     return (
       <div className="logo-container">
