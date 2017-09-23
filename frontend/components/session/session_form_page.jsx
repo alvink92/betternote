@@ -65,6 +65,7 @@ class SessionFormPage extends React.Component {
 
           <div className="session-form-wrap">
             <SessionForm
+              match={this.props.match}
               errors={this.props.errors}
               history={this.props.history}
               login={this.props.login}

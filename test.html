@@ -3,14 +3,24 @@
     #divMain > * {
       height: 100vh;
     }
-    #left-div { width: 100px; float: left; background-color: #fcc; }
+    #pane{
+      position: absolute;
+      height: 100vh;
+      width: 800px;
+      background: brown;
+      left: 50px;
+      z-index: 999;
+    }
+    #left-div { z-index: 999;width: 100px; float: left; background-color: #fcc; }
     #right-div { width: 100px; float: left; background-color: #ccf; }
     #middle-div { background-color: #cfc; }
 </style>
 
 <div id="divMain">
     <div id="left-div">
-        left div
+        <div id="pane">
+
+        </div>
     </div>
     <div id="right-div">
         right div

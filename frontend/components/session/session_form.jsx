@@ -10,6 +10,11 @@ class SessionForm extends React.Component {
     this.handleDemoButtonClick = this.handleDemoButtonClick.bind(this);
   }
 
+  componentWillReceiveProps(newProps) {
+    if (this.props.match.url !== newProps.match.url) {
+    }
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.processForm(this.state).then(() => this.props.history.push("/"));
