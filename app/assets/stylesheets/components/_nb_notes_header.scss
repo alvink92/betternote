@@ -1,0 +1,44 @@
+.notebook-note-index-header-container {
+  height: 210px;
+  border-bottom: 1px solid #ececec;
+  display: flex;
+  flex-direction: column;
+
+  .title-container {
+    height: 152px;
+    display: flex;
+    flex-direction: column;
+    background: #393d41;
+    color: white;
+    padding: 13px;
+
+    .nb-info-row {
+      height: 25px;
+      .nb-info-btn {
+        float: right;
+        height: 18px;
+        width: 18px;
+        font-size: 10px;
+        border-radius: 50%;
+        border: 2px solid white;
+        background: #393d41;
+        text-align: center;
+        font-family: "Times New Roman", Times, serif;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .title {
+      margin: 0 auto;
+      font-weight: 100;
+    }
+  }
+  .notes-count-container {
+    height: 55px;
+    padding: 0 22px;
+    padding-top: 27px;
+  }
+}

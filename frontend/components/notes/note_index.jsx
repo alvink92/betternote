@@ -1,6 +1,8 @@
 import React from "react";
 import NoteIndexItem from "./note_index_item";
 import { NavLink, Link } from "react-router-dom";
+import TagNotesIndexHeader from "../tags/tag_notes_index_header";
+import NotebookNotesIndexHeader from "../notebooks/nb_notes_index_header";
 
 class NoteIndex extends React.Component {
   constructor(props) {
@@ -48,13 +50,7 @@ class NoteIndex extends React.Component {
     }
   }
 
-  header() {
-    let headerType;
-    if (this.props.match.params.notebookId) {
-    } else if (this.props.match.params.tagId) {
-    } else {
-    }
-
+  notesIndexHeader() {
     return (
       <div className="note-index-header-container">
         <h1>{"NOTES"}</h1>
@@ -64,6 +60,25 @@ class NoteIndex extends React.Component {
         </div>
       </div>
     );
+  }
+
+  header() {
+    let headerComponent;
+    if (this.props.match.path === "/tags/:tagId") {
+      headerComponent = (
+        <TagNotesIndexHeader tagId={this.props.match.params.tagId} />
+      );
+    } else if (this.props.match.path === "/notebooks/:notebookId") {
+      headerComponent = (
+        <NotebookNotesIndexHeader
+          notebookId={this.props.match.params.notebookId}
+        />
+      );
+    } else {
+      headerComponent = this.notesIndexHeader();
+    }
+
+    return headerComponent;
   }
 
   getShowNoteLink(id) {
