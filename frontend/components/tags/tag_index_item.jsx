@@ -7,6 +7,9 @@ class TagIndexItem extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.handleUpdateClick = this.handleUpdateClick.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleSaveChange = this.handleSaveChange.bind(this);
+    this.clickEnterListener = this.clickEnterListener.bind(this);
   }
 
   componentWillMount() {
@@ -32,6 +35,22 @@ class TagIndexItem extends React.Component {
     this.props.deleteTag(this.props.tag.id);
   }
 
+  handleUpdate(e) {
+    this.setState({ tagName: e.target.value });
+  }
+
+  handleSaveChange(e) {
+    this.props.updateTag({ id: this.props.tag.id, name: this.state.tagName });
+    this.setState({ editable: false });
+  }
+
+  clickEnterListener(e) {
+    if (e.key === "Enter") {
+      this.props.updateTag({ id: this.props.tag.id, name: this.state.tagName });
+      this.setState({ editable: false });
+    }
+  }
+
   hiddenModButtons() {
     return (
       <div className="mod-btn-container hidden">
@@ -49,7 +68,15 @@ class TagIndexItem extends React.Component {
     if (this.state.editable) {
       return (
         <div className="editable">
-          <input />
+          <input
+            className="edit-form"
+            value={this.state.tagName}
+            onChange={this.handleUpdate}
+            onKeyPress={this.clickEnterListener}
+          />
+          <div className="save-changes" onClick={this.handleSaveChange}>
+            <i className="fa fa-check-circle" aria-hidden="true" />
+          </div>
         </div>
       );
     } else {

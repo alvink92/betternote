@@ -1,5 +1,6 @@
 .tag-index-container {
   padding-left: 32px;
+  padding-bottom: 3px; // increase if overscrolling-y unecessarily
   .by-letter-container {
     margin-top: 32px;
     height: 50px;
@@ -12,7 +13,28 @@
     display: flex;
     flex-direction: row;
 
-    > .tag-item {
+    .editable {
+      display: flex;
+      flex-direction: row;
+      .edit-form {
+        animation: 1s ease-out 0s 1 slideInFromLeft;
+        width: 370px;
+        border-radius: 4px;
+        border: 1px solid #ababab;
+        margin-right: 15px;
+      }
+
+      .save-changes {
+        color: #888888 !important;
+        &:hover {
+          color: #2dbe60 !important;
+          cursor: pointer !important;
+        }
+      }
+    }
+
+    > .tag-item,
+    .edit-form {
       display: flex;
       flex-direction: row;
       height: 25px;
@@ -59,7 +81,7 @@
     .mod-btn-container {
       > * {
         margin-left: 15px;
-        color: #4f4f4f;
+        color: #888888;
         font-size: 18px;
         cursor: pointer;
         &:hover {
