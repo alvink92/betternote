@@ -93,7 +93,7 @@ class TagIndexItem extends React.Component {
     return (
       <div className="tag-item-container" onClick={this.handleClick}>
         {this.tagSwitch()}
-        <div className="hack hidden" />
+        <div className="hack" />
         {this.hiddenModButtons()}
       </div>
     );

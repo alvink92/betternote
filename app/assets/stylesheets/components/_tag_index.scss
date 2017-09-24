@@ -1,104 +1,141 @@
 .tag-index-container {
   padding-left: 32px;
-  padding-bottom: 3px; // increase if overscrolling-y unecessarily
+  //   // padding-bottom: 3px; // increase if overscrolling-y unecessarily
+
+  .tag-item-container {
+    height: 37px;
+    > * {
+      height: 25px;
+    }
+  }
 
   .by-letter-container {
     margin-top: 32px;
-    height: 50px;
+    display: flex;
+    flex-direction: column;
     .first-letter {
       color: #878787;
       height: 27px;
     }
-  }
-  .tag-item-container {
-    display: flex;
-    flex-direction: row;
 
-    .editable {
+    .tag-names-by-letter-container {
       display: flex;
-      flex-direction: row;
-      .edit-form {
-        color: #6b6b6b;
-        width: 370px;
-        border-radius: 4px;
-        border: 1px solid #ababab;
-        margin-right: 15px;
-      }
+      flex-direction: column;
 
-      .save-changes {
-        color: #888888 !important;
-        &:hover {
-          color: #2dbe60 !important;
-          cursor: pointer !important;
-        }
-      }
-    }
+      .tag-item-container {
+        display: flex;
+        flex-direction: row;
 
-    > .tag-item,
-    .edit-form {
-      display: flex;
-      flex-direction: row;
-      height: 25px;
-      padding: 0px 9px;
-    }
-
-    .tag-item {
-      border: 1px solid #2dbe60;
-      border-radius: 4px;
-      &:hover {
-        cursor: pointer;
-        background: #2dbe60;
-
-        ~ .mod-btn-container {
-          display: flex !important;
+        > .tag-item,
+        .hack {
+          display: flex;
           flex-direction: row;
         }
 
-        ~ .hack {
+        .tag-item {
+          background: #f8f8f8;
+          padding: 0 10px;
+          border: 1px solid #d1d1d1;
+          border-radius: 4px;
+          margin-right: 15px;
+          z-index: 1000;
+
+          .tag-name {
+            margin-right: 9px;
+            color: #6b6b6b;
+          }
+          .tag-count {
+            color: #2dbe60;
+          }
+
+          &:hover {
+            cursor: pointer;
+            background: #2dbe60;
+            border: 1px solid #2dbe60;
+
+            * {
+              color: white;
+            }
+            ~ .mod-btn-container {
+              display: flex !important;
+              flex-direction: row;
+            }
+
+            ~ .hack {
+              display: block;
+              position: absolute;
+              width: 300px;
+              height: 25px;
+              z-index: -100;
+            }
+          }
+        }
+
+        .hack {
+          background: transparent;
           display: block;
           position: absolute;
-          width: 200px;
+          width: 350px;
           height: 25px;
-          z-index: -100;
+          z-index: 300;
+
+          &:hover ~ .mod-btn-container {
+            display: flex !important;
+            flex-direction: row !important;
+          }
         }
-      }
 
-      &:hover * {
-        color: white !important;
-      }
-
-      > * {
-        font-weight: 100;
-      }
-      > .tag-name {
-        color: #6b6b6b;
-        margin-right: 5px;
-      }
-      > .tag-count {
-        color: #2dbe60;
-      }
-    }
-
-    .mod-btn-container {
-      > * {
-        margin-left: 15px;
-        color: #888888;
-        font-size: 18px;
-        cursor: pointer;
-        &:hover {
-          color: #2dbe60;
+        .mod-btn-container {
+          z-index: 1000;
+          > * {
+            color: #888888;
+            margin-right: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            &:hover {
+              color: #2dbe60;
+            }
+          }
+          &:hover {
+            display: flex !important;
+            flex-direction: row !important;
+          }
         }
       }
     }
   }
+
+  .editable {
+    z-index: 2000;
+    display: flex;
+    flex-direction: row;
+
+    .edit-form {
+      color: #6b6b6b;
+      width: 370px;
+      border-radius: 4px;
+      border: 1px solid #ababab;
+      margin-right: 15px;
+    }
+
+    .save-changes {
+      color: #888888 !important;
+      &:hover {
+        color: #2dbe60 !important;
+        cursor: pointer !important;
+      }
+    }
+  }
+
+  > .tag-item,
+  .edit-form {
+    display: flex;
+    flex-direction: row;
+    height: 25px;
+    padding: 0px 9px;
+  }
 }
 
-.hack:hover ~ .mod-btn-container {
-  display: flex !important;
-  flex-direction: row;
-}
-
-.mod-btn-container:hover {
-  display: flex !important;
-  flex-direction: row;
+.hidden {
+  display: none;
 }
