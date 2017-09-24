@@ -1,14 +1,24 @@
 import React from "react";
 
-const TagIndexItem = props => {
-  return (
-    <div
-      className="tag-item-container-wrapper"
-      onClick={() => props.history.push(`/tags/${props.tag.id}`)}
-    >
-      tag index item
-    </div>
-  );
-};
+class TagIndexItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+  handleClick(e) {
+    if (e.target.className !== "") {
+      this.props.history.push(`/tags/${this.props.tag.id}`);
+    }
+  }
+
+  render() {
+    return (
+      <div className="tag-name-container" onClick={this.handleClick}>
+        {this.props.tag.name}
+      </div>
+    );
+  }
+}
 
 export default TagIndexItem;

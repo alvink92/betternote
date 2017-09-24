@@ -8,12 +8,9 @@ class TagSlider extends React.Component {
 
   componentWillMount() {
     this.setState({ search: "" });
-    this.props.fetchTags();
   }
 
-  componentWillUnmount() {
-    this.props.clearTags();
-  }
+  componentWillUnmount() {}
 
   searchInput(type) {
     return (
@@ -44,6 +41,8 @@ class TagSlider extends React.Component {
       <div className="sliding-pane">
         {this.header()}
         <TagIndex
+          fetchTags={this.props.fetchTags}
+          clearTags={this.props.clearTags}
           tags={this.props.tags}
           history={this.props.history}
           updateTag={this.props.updateTag}
