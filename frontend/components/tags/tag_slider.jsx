@@ -73,7 +73,10 @@ class TagSlider extends React.Component {
               style={customStyles}
               contentLabel="Create Tag Modal"
             >
-              <TagCreate createTag={this.props.createTag} />
+              <TagCreate
+                createTag={this.props.createTag}
+                closeModal={this.closeModal}
+              />
             </Modal>
           </div>
         </div>

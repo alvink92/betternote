@@ -49,18 +49,6 @@
   -moz-animation: fadein 0.7s; /* Firefox */
   -webkit-animation: fadein 0.7s; /* Safari and Chrome */
   -o-animation: fadein 0.7s; /* Opera */
-
-  .create-container {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background: yellow;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 }
 
 .header-container {
