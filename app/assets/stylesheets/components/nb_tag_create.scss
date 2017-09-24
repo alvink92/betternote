@@ -9,10 +9,6 @@
   align-items: center;
   justify-content: center;
 
-  .tag-form-container {
-    height: 325px;
-  }
-
   * {
     display: flex;
     flex-direction: column;
@@ -30,6 +26,10 @@
       .fa {
         font-size: 40px;
       }
+    }
+
+    .create-title {
+      white-space: nowrap;
     }
   }
 

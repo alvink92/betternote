@@ -1,6 +1,6 @@
 import React from "react";
 
-class TagCreate extends React.Component {
+class NotebookCreate extends React.Component {
   constructor(props) {
     super(props);
 
@@ -10,21 +10,21 @@ class TagCreate extends React.Component {
   }
 
   componentWillMount() {
-    this.setState({ tagName: "" });
+    this.setState({ notebookTitle: "" });
   }
 
   handleChange(e) {
-    this.setState({ tagName: e.target.value });
+    this.setState({ notebookTitle: e.target.value });
   }
 
   handleCreate(e) {
-    this.props.createTag({ name: this.state.tagName });
+    this.props.createNotebook({ title: this.state.notebookTitle });
     this.props.closeModal();
   }
 
   clickEnterListener(e) {
     if (e.key === "Enter") {
-      this.props.createTag({ name: this.state.tagName });
+      this.props.createNotebook({ title: this.state.notebookTitle });
       this.props.closeModal();
     }
   }
@@ -32,29 +32,29 @@ class TagCreate extends React.Component {
   render() {
     return (
       <div className="create-container">
-        <div className="tag-create-form-container">
+        <div className="notebook-create-form-container">
           <div className="header">
             <div className="create-type-icon">
-              <i className="fa fa-tag" aria-hidden="true" />
+              <i className="fa fa-book" aria-hidden="true" />
             </div>
-            <div>CREATE TAG</div>
+            <div className="create-title">CREATE NOTEBOOK</div>
           </div>
           <input
             className="create-type-input"
-            value={this.state.tagName}
+            value={this.state.notebookTitle}
             onChange={this.handleChange}
             onKeyPress={this.clickEnterListener}
-            placeholder="Name your tag"
+            placeholder="Title your notebook"
           />
           <div className="action-btn-container">
             <button className="cancel-btn" onClick={this.props.closeModal}>
               cancel
             </button>
-            {this.state.tagName.length === 0 ? (
-              <button className="invalid-submit">Create tag</button>
+            {this.state.notebookTitle.length === 0 ? (
+              <button className="invalid-submit">Create notebook</button>
             ) : (
               <button className="submit-btn" onClick={this.handleCreate}>
-                Create tag
+                Create notebook
               </button>
             )}
           </div>
@@ -64,4 +64,4 @@ class TagCreate extends React.Component {
   }
 }
 
-export default TagCreate;
+export default NotebookCreate;

@@ -66,18 +66,6 @@ class TagSlider extends React.Component {
             <div className="create" onClick={this.openModal}>
               +
             </div>
-            <Modal
-              isOpen={this.state.modalIsOpen}
-              onAfterOpen={this.afterOpenModal}
-              onRequestClose={this.closeModal}
-              style={customStyles}
-              contentLabel="Create Tag Modal"
-            >
-              <TagCreate
-                createTag={this.props.createTag}
-                closeModal={this.closeModal}
-              />
-            </Modal>
           </div>
         </div>
         <div className="search-container">{this.searchInput("tag")}</div>
@@ -99,6 +87,18 @@ class TagSlider extends React.Component {
             deleteTag={this.props.deleteTag}
           />
         </div>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel="Create Tag Modal"
+        >
+          <TagCreate
+            createTag={this.props.createTag}
+            closeModal={this.closeModal}
+          />
+        </Modal>
       </div>
     );
   }
