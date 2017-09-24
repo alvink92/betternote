@@ -64,11 +64,14 @@ class NoteIndex extends React.Component {
 
   header() {
     let headerComponent;
-    if (this.props.match.path === "/tags/:tagId") {
+    if (this.props.match.params.tagId) {
       headerComponent = (
-        <TagNotesIndexHeader tagId={this.props.match.params.tagId} />
+        <TagNotesIndexHeader
+          tagId={this.props.match.params.tagId}
+          history={this.props.history}
+        />
       );
-    } else if (this.props.match.path === "/notebooks/:notebookId") {
+    } else if (this.props.match.params.notebookId) {
       headerComponent = (
         <NotebookNotesIndexHeader
           history={this.props.history}

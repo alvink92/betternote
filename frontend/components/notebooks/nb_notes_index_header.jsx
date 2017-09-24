@@ -35,8 +35,9 @@ class NotebookNotesIndexHeader extends React.Component {
       modalIsOpen: false
     });
 
-    getNotebook(this.props.notebookId).then(notebook =>
-      this.setState({ notebook: notebook })
+    getNotebook(this.props.notebookId).then(
+      notebook => this.setState({ notebook: notebook }),
+      err => this.props.history.push("/notes")
     );
   }
   openModal() {

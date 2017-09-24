@@ -6,14 +6,23 @@ class NoteShow extends React.Component {
   }
 
   componentDidMount() {
+    let dummy;
     if (this.props.match.params.noteId)
-      this.props.fetchNote(this.props.match.params.noteId);
+      this.props
+        .fetchNote(this.props.match.params.noteId)
+        .then(note => (dummy = note), err => this.props.history.push("/notes"));
   }
 
   componentWillReceiveProps(nextProps) {
+    let dummy;
     if (nextProps.match.params.noteId) {
       if (this.props.match.params.noteId !== nextProps.match.params.noteId) {
-        nextProps.fetchNote(nextProps.match.params.noteId);
+        nextProps
+          .fetchNote(nextProps.match.params.noteId)
+          .then(
+            note => (dummy = note),
+            err => this.props.history.push("/notes")
+          );
       }
     }
   }

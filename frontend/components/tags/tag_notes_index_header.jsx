@@ -8,8 +8,10 @@ class TagNotesIndexHeader extends React.Component {
   }
 
   componentWillMount() {
-    getTag(this.props.tagId).then(tag => this.setState({ tag: tag }));
-    console.log(this.state);
+    getTag(this.props.tagId).then(
+      tag => this.setState({ tag: tag }),
+      err => this.props.history.push("/notes")
+    );
   }
 
   render() {
