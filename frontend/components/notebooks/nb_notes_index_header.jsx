@@ -69,7 +69,7 @@ class NotebookNotesIndexHeader extends React.Component {
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           style={customStyles}
-          contentLabel="Create Tag Modal"
+          contentLabel="Update Notebook Modal"
         >
           <NotebookUpdate
             notebook={this.state.notebook}

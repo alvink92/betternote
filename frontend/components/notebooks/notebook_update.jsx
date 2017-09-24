@@ -8,30 +8,37 @@ class NotebookUpdate extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleCreate = this.handleCreate.bind(this);
-    // this.clickEnterListener = this.clickEnterListener.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.clickEnterListener = this.clickEnterListener.bind(this);
   }
 
   componentWillMount() {
-    this.setState({ notebook: this.props.notebook });
+    this.setState({
+      id: this.props.notebook.id,
+      title: this.props.notebook.title
+    });
   }
 
-  // handleChange(e) {
-  //   this.setState({ notebookTitle: e.target.value });
-  // }
+  handleChange(e) {
+    this.setState({ title: e.target.value });
+  }
   //
-  // handleCreate(e) {
-  //   this.props.createNotebook({ title: this.state.notebookTitle });
-  //   this.props.closeModal();
-  // }
+
+  handleDelete(e) {
+    deleteNotebook(this.state.id).then(this.props.closeModal());
+  }
+  handleUpdate(e) {
+    updateNotebook(this.state).then(this.props.closeModal());
+  }
   //
-  // clickEnterListener(e) {
-  //   if (e.key === "Enter") {
-  //     this.props.createNotebook({ title: this.state.notebookTitle });
-  //     this.props.closeModal();
-  //   }
-  // }
+  clickEnterListener(e) {
+    if (e.key === "Enter") {
+      updateNotebook(this.state);
+      this.props.closeModal();
+    }
+  }
 
   render() {
     return (
@@ -49,8 +56,12 @@ class NotebookUpdate extends React.Component {
             <div className="overview-container">
               <div className="overview">Overview</div>
               <div className="edit-form-wrapper">
-                <input className="edit-form" value={""} />
-                <div classname="edit-type">TITLE</div>
+                <input
+                  className="edit-form"
+                  value={this.state.title}
+                  onChange={this.handleChange}
+                  onKeyPress={this.clickEnterListener}
+                />
               </div>
               <div className="nb-desc">
                 <div className="desc-title">CREATOR:</div>
@@ -60,7 +71,9 @@ class NotebookUpdate extends React.Component {
                 </div>
               </div>
               <div className="delete-link-container">
-                <a className="deleteLink">Delete notebook</a>
+                <a className="deleteLink" onClick={this.handleDelete}>
+                  Delete notebook
+                </a>
               </div>
             </div>
             <div className="share-settings-container">
@@ -72,8 +85,15 @@ class NotebookUpdate extends React.Component {
             </div>
 
             <div className="nb-update-btn-container">
-              <button className="nb-update-cancel-btn">Cancel</button>
-              <button className="nb-save-btn">Save</button>
+              <button
+                className="nb-update-cancel-btn"
+                onClick={this.handleDelete}
+              >
+                Cancel
+              </button>
+              <button className="nb-save-btn" onClick={this.handleUpdate}>
+                Save
+              </button>
             </div>
           </div>
         </div>
