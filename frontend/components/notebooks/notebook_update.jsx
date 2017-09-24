@@ -32,6 +32,7 @@ class NotebookUpdate extends React.Component {
     this.props.closeModal();
   }
   handleUpdate(e) {
+    this.props.updateNotebookState(this.state);
     updateNotebook(this.state).then(this.props.closeModal());
   }
   //
