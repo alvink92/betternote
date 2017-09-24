@@ -1,39 +1,3 @@
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@-moz-keyframes fadein {
-  /* Firefox */
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@-webkit-keyframes fadein {
-  /* Safari and Chrome */
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@-o-keyframes fadein {
-  /* Opera */
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .sliding-pane-wrap {
   height: 100vh !important;
   position: absolute;
@@ -50,13 +14,6 @@
   left: 72px !important;
   background: white;
   z-index: 100;
-}
-.ReactModal__Overlay--after-open {
-  z-index: 5000 !important;
-  animation: fadein 0.7s;
-  -moz-animation: fadein 0.7s; /* Firefox */
-  -webkit-animation: fadein 0.7s; /* Safari and Chrome */
-  -o-animation: fadein 0.7s; /* Opera */
 }
 
 .header-container {
