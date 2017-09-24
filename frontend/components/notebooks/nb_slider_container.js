@@ -6,6 +6,7 @@ import {
   deleteNotebook,
   clearNotebooks
 } from "../../actions/notebook_actions";
+import { fetchNotes } from "../../actions/note_actions";
 import { withRouter } from "react-router";
 
 const mapStateToProps = (state, ownProps) => {
@@ -14,6 +15,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
+    fetchNotes: () => dispatch(fetchNotes()),
     fetchNotebooks: () => dispatch(fetchNotebooks()),
     createNotebook: notebook => dispatch(createNotebook(notebook)),
     deleteNotebook: id => dispatch(deleteNotebook(id)),
