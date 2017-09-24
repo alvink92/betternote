@@ -90,7 +90,7 @@ class NotebookUpdate extends React.Component {
             <div className="nb-update-btn-container">
               <button
                 className="nb-update-cancel-btn"
-                onClick={this.handleDelete}
+                onClick={this.props.closeModal}
               >
                 Cancel
               </button>
