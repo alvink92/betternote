@@ -71,6 +71,7 @@ class NoteIndex extends React.Component {
     } else if (this.props.match.path === "/notebooks/:notebookId") {
       headerComponent = (
         <NotebookNotesIndexHeader
+          history={this.props.history}
           notebookId={this.props.match.params.notebookId}
         />
       );

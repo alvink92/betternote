@@ -27,7 +27,9 @@ class NotebookUpdate extends React.Component {
   //
 
   handleDelete(e) {
-    deleteNotebook(this.state.id).then(this.props.closeModal());
+    deleteNotebook(this.state.id);
+    this.props.history.push("/notes");
+    this.props.closeModal();
   }
   handleUpdate(e) {
     updateNotebook(this.state).then(this.props.closeModal());

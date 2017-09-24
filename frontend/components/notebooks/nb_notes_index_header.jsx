@@ -72,6 +72,7 @@ class NotebookNotesIndexHeader extends React.Component {
           contentLabel="Update Notebook Modal"
         >
           <NotebookUpdate
+            history={this.props.history}
             notebook={this.state.notebook}
             closeModal={this.closeModal}
           />
