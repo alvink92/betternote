@@ -87,16 +87,18 @@ class TagSlider extends React.Component {
 
   render() {
     return (
-      <div className="sliding-pane">
-        {this.header()}
-        <TagIndex
-          fetchTags={this.props.fetchTags}
-          clearTags={this.props.clearTags}
-          tags={this.props.tags}
-          history={this.props.history}
-          updateTag={this.props.updateTag}
-          deleteTag={this.props.deleteTag}
-        />
+      <div className="sliding-pane-wrap">
+        <div className="sliding-pane">
+          {this.header()}
+          <TagIndex
+            fetchTags={this.props.fetchTags}
+            clearTags={this.props.clearTags}
+            tags={this.props.tags}
+            history={this.props.history}
+            updateTag={this.props.updateTag}
+            deleteTag={this.props.deleteTag}
+          />
+        </div>
       </div>
     );
   }

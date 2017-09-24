@@ -41,14 +41,16 @@ class NotebookSlider extends React.Component {
 
   render() {
     return (
-      <div className="sliding-pane">
-        {this.header()}
-        <NotebookIndex
-          fetchNotes={this.props.fetchNotes}
-          history={this.props.history}
-          notebooks={this.props.notebooks}
-          deleteNotebook={this.props.deleteNotebook}
-        />
+      <div className="sliding-pane-wrap">
+        <div className="sliding-pane">
+          {this.header()}
+          <NotebookIndex
+            fetchNotes={this.props.fetchNotes}
+            history={this.props.history}
+            notebooks={this.props.notebooks}
+            deleteNotebook={this.props.deleteNotebook}
+          />
+        </div>
       </div>
     );
   }
