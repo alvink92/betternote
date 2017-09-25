@@ -13,23 +13,16 @@ class NoteForm extends React.Component {
     this.handleTitleChange = this.handleTitleChange.bind(this);
   }
 
-  componentDidMount() {
-    console.log(this.props);
-    if (!this.props.isUpdateForm) {
-      this.setState({ note: emptyNote });
-      return;
-    }
-  }
+  componentDidMount() {}
 
   componentWillReceiveProps(newProps) {
-    console.log(newProps);
     if (!newProps.isUpdateForm) {
       this.setState({ note: emptyNote });
       return;
+    } else {
+      // let newNote = newProps.note ? newProps.note : { title: "", body: "" };
+      this.setState({ note: newProps.note });
     }
-
-    let newNote = newProps.note ? newProps.note : { title: "", body: "" };
-    this.setState({ note: newNote });
   }
 
   handleBodyChange(value) {
