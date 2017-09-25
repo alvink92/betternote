@@ -25,6 +25,11 @@
       border: 0px solid white;
       position: relative;
       top: 55px;
+
+      .ql-editor {
+        overflow-y: auto;
+        max-height: 75vh;
+      }
     }
   }
 }
