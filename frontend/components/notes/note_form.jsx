@@ -1,67 +1,65 @@
 import React from "react";
-import ReactQuill from "react-quill"; // ES6
+import ReactQuill from "react-quill";
 
 class NoteForm extends React.Component {
   constructor(props) {
     super(props);
     const note = this.props.note ? this.props.note : { title: "", body: "" };
-    this.state = { note: note, showTb: true }; // You can also pass a Quill Delta here
+    this.state = {
+      currNote: note,
+      savedNote: note,
+      autoSave: this.props.autoSave
+    };
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
-    this.hideToolbar = this.hideToolbar.bind(this);
-    this.showToolbar = this.showToolbar.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
     let newNote = newProps.note ? newProps.note : { title: "", body: "" };
-    this.setState({ note: newNote });
+    this.setState({ savedNote: newNote, currNote: newNote });
   }
 
   handleBodyChange(value) {
-    const updatedNote = Object.assign(this.state.note, { body: value });
-    this.setState({ note: updatedNote });
+    const updatedNote = Object.assign(this.state.currNote, { body: value });
+    this.setState({ currNote: updatedNote });
   }
 
   handleTitleChange(e) {
-    const updatedNote = Object.assign(this.state.note, {
+    const updatedNote = Object.assign(this.state.currNote, {
       title: e.target.value
     });
-    this.setState({ note: updatedNote });
+    this.setState({ currNote: updatedNote });
   }
 
-  hideToolbar() {
-    if (this.state.showTb) {
-      this.setState({ showTb: false });
-    }
-  }
-
-  showToolbar() {
-    if (!this.state.showTb) {
-      this.setState({ showTb: true });
-    }
-  }
-
-  toolbarSwitchOpts() {
-    const cname = this.state.showTb ? "show-tb" : "hide-tb";
-    return <div className={cname}>tbSwitch</div>;
+  noteOpts() {
+    return (
+      <div className="note-opts-container">
+        <div className="note-opts">notes, tags</div>
+      </div>
+    );
   }
 
   render() {
     return (
-      <div className="note-content-container">
-        <input
-          className="note-title"
-          value={this.state.note.title}
-          onChange={this.handleTitleChange}
-          placeholder="Title your note"
-          onClick={this.hideToolbar}
-        />
-        <ReactQuill
-          modules={modules}
-          value={this.state.note.body}
-          onChange={this.handleBodyChange}
-          onClick={this.showToolbar}
-        />
+      <div className="note-container">
+        {this.noteOpts()}
+        <div className="note-content-container">
+          <div className="note-content">
+            <input
+              className="note-title"
+              value={this.state.currNote.title}
+              onChange={this.handleTitleChange}
+              placeholder="Title your note"
+              onClick={this.hideToolbar}
+            />
+            <ReactQuill
+              modules={modules}
+              value={this.state.currNote.body}
+              onChange={this.handleBodyChange}
+              onClick={this.showToolbar}
+            />
+          </div>
+        </div>
       </div>
     );
   }

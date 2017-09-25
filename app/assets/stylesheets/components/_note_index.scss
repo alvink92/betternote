@@ -22,6 +22,24 @@
 }
 
 .note-index-item-container {
+  .note-item-title {
+    color: #4b4b4b;
+  }
+  .note-item.note-item-body-section,
+  .note-item-lastupdated-section {
+    color: #8f8f8f;
+  }
+  &:hover {
+    * {
+      color: white !important;
+    }
+    .note-item-delete {
+      display: block !important;
+    }
+  }
+}
+
+.note-index-item-container {
   color: black;
 }
 

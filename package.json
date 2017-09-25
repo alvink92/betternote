@@ -28,6 +28,7 @@
     "babel-preset-react": "^6.24.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-html-parser": "^2.0.0",
     "react-modal": "^2.3.2",
     "react-quill": "^1.1.0",
     "react-redux": "^5.0.6",
