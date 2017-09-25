@@ -8,7 +8,8 @@ class NoteForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      note: this.props.note
+      note: this.props.note,
+      expanded: this.props.isUpdateForm ? false : true
     };
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -50,10 +51,29 @@ class NoteForm extends React.Component {
     this.setState({ note: updatedNote });
   }
 
+  switchDoneCancelBtn() {
+    if (this.props.isUpdateForm) {
+      return <button className="note-edit-done-btn">done</button>;
+    } else {
+      return <button className="note-new-cancel-btn">cancel</button>;
+    }
+  }
+
+  switchExpandCollapseBtn() {
+    if (this.state.expanded) {
+      return this.switchDoneCancelBtn();
+    } else {
+      return <button className="note-expand-btn">expand</button>;
+    }
+  }
+
   noteOpts() {
     return (
       <div className="note-opts-container">
-        <div className="note-opts">notes, tags</div>
+        <div className="note-assocs-container">notes, tags</div>
+        <div className="note-expand-collapse-btn-container">
+          {this.switchExpandCollapseBtn()}
+        </div>
       </div>
     );
   }
