@@ -45,8 +45,10 @@ class Api::NotesController < ApplicationController
 
   def update
     @note = current_user.notes.where(id: params[:id]).first
+
     if @note
       if @note.update(note_params)
+        @note = Note.find_by_id(@note.id)
         render :show
       else
         render json: @note.errors.full_messages, status: 400

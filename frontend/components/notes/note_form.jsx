@@ -1,5 +1,6 @@
 import React from "react";
 import ReactQuill from "react-quill";
+import merge from "lodash/merge";
 
 const emptyNote = { title: "", body: "", notebook: {}, taggings: [] };
 
@@ -19,9 +20,21 @@ class NoteForm extends React.Component {
     if (!newProps.isUpdateForm) {
       this.setState({ note: emptyNote });
       return;
-    } else {
-      // let newNote = newProps.note ? newProps.note : { title: "", body: "" };
-      this.setState({ note: newProps.note });
+    }
+
+    const nextNote = merge({}, newProps.note);
+    if (
+      this.props.match.url !== newProps.match.url &&
+      !this.props.match.url.includes("note/new")
+    ) {
+      this.props.noteAction(this.state.note);
+    }
+    this.setState({ note: newProps.note });
+  }
+
+  componentWillUnmount() {
+    if (!this.props.match.url.includes("note/new")) {
+      this.props.noteAction(this.state.note);
     }
   }
 

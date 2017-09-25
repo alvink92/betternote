@@ -4,6 +4,7 @@ export const RECEIVE_NOTE = "RECEIVE_NOTE";
 export const REMOVE_NOTE = "REMOVE_NOTE";
 export const RECEIVE_NOTES = "RECEIVE_NOTES";
 export const RECEIVE_NOTE_ERRORS = "RECEIVE_NOTE_ERRORS";
+export const UPDATE_ONLY_NOTES_WITH_NOTE = "UPDATE_ONLY_NOTES_WITH_NOTE";
 
 const receiveNote = note => {
   return {
@@ -23,6 +24,13 @@ const receiveNotes = notes => {
   return {
     type: RECEIVE_NOTES,
     notes
+  };
+};
+
+const updateOnlyNotesWithNote = note => {
+  return {
+    type: UPDATE_ONLY_NOTES_WITH_NOTE,
+    note
   };
 };
 
@@ -70,7 +78,7 @@ export const createNote = note => dispatch => {
 
 export const updateNote = note => dispatch => {
   return NoteApiUtil.updateNote(note).then(
-    updatedNote => dispatch(receiveNote(updatedNote)),
+    updatedNote => dispatch(updateOnlyNotesWithNote(updatedNote)),
     errors => dispatch(receiveNoteErrors(errors))
   );
 };

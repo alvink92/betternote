@@ -34,7 +34,7 @@ class NotebookSlider extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.clearNotebooks();
+    // this.props.clearNotebooks();
   }
 
   openModal() {
