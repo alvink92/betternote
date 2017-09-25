@@ -29,7 +29,6 @@ class NoteShow extends React.Component {
   }
 
   render() {
-    console.log(this.props.currNote);
     return (
       <div className="note-show-container">
         <div className="note-opts-container">

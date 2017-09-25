@@ -11,7 +11,8 @@ class NoteForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    this.setState({ note: newProps.note });
+    let newNote = newProps.note ? newProps.note : { title: "", body: "" };
+    this.setState({ note: newNote });
   }
 
   handleBodyChange(value) {

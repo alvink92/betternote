@@ -9,7 +9,7 @@ class Api::NotesController < ApplicationController
       if notebook
         @notes = notebook.notes
       else
-        @notes = []
+        render json: ["notebook doesn't exist!"], status: 404
       end
     elsif params[:tag_id]
       tag = current_user.tags
@@ -17,7 +17,7 @@ class Api::NotesController < ApplicationController
       if tag
         @notes = tag.notes
       else
-        @notes = []
+        render json: ["tag doesn't exist!"], status: 404
       end
     else
       @notes = current_user.notes
@@ -29,7 +29,7 @@ class Api::NotesController < ApplicationController
     if @note
       render :show
     else
-      render json: nil, status: 404
+      render json: ["note doesn't exist!"], status: 404
     end
   end
 

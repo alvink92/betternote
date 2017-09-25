@@ -10,21 +10,24 @@ class NoteIndex extends React.Component {
   }
 
   componentDidMount() {
-    let fetchNotesAction;
+    let dummy;
+
     if (this.props.match.params.notebookId) {
-      fetchNotesAction = () =>
-        this.props.fetchNotebookNotes(this.props.match.params.notebookId);
+      this.props
+        .fetchNotebookNotes(this.props.match.params.notebookId)
+        .then(notes => dummy, error => this.history.push("/notes"));
     } else if (this.props.match.params.tagId) {
-      fetchNotesAction = () =>
-        this.props.fetchTagNotes(this.props.match.params.tagId);
+      this.props
+        .fetchTagNotes(this.props.match.params.tagId)
+        .then(notes => dummy, error => this.history.push("/notes"));
     } else {
-      fetchNotesAction = () => this.props.fetchNotes();
+      this.props.fetchNotes();
     }
-    fetchNotesAction();
   }
 
   componentWillReceiveProps(nextProps) {
     let willFetch = false;
+    let dummy;
 
     const oldParams = this.props.match.params;
     const newParams = nextProps.match.params;
@@ -36,17 +39,17 @@ class NoteIndex extends React.Component {
     }
 
     if (willFetch) {
-      let fetchNotesAction;
       if (nextProps.match.params.notebookId) {
-        fetchNotesAction = () =>
-          nextProps.fetchNotebookNotes(nextProps.match.params.notebookId);
+        nextProps
+          .fetchNotebookNotes(nextProps.match.params.notebookId)
+          .then(notes => dummy, error => this.history.push("/notes"));
       } else if (nextProps.match.params.tagId) {
-        fetchNotesAction = () =>
-          nextProps.fetchTagNotes(nextProps.match.params.tagId);
-      } else {
-        fetchNotesAction = () => nextProps.fetchNotes();
+        nextProps
+          .fetchTagNotes(nextProps.match.params.tagId)
+          .then(notes => dummy, error => this.history.push("/notes"));
+      } else if (nextProps.match.url.includes("/notes")) {
+        nextProps.fetchNotes();
       }
-      fetchNotesAction();
     }
   }
 
