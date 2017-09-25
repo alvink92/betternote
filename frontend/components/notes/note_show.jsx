@@ -1,11 +1,9 @@
 import React from "react";
-import ReactQuill from "react-quill"; // ES6
+import NoteForm from "./note_form";
 
 class NoteShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { text: "" }; // You can also pass a Quill Delta here
-    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -29,29 +27,20 @@ class NoteShow extends React.Component {
       }
     }
   }
-  handleChange(value) {
-    this.setState({ text: value });
-  }
+
   render() {
+    console.log(this.props.currNote);
     return (
       <div className="note-show-container">
         <div className="note-opts-container">
           <div className="note-opts">note options filler</div>
         </div>
-        <div className="style-bar-container">
-          <div className="style-bar">text style edit bar filler</div>
-        </div>
         <div className="note-container">
-          <div className="note">
-            <div className="note-title">
-              {this.props.currNote ? this.props.currNote.title : ""}
-            </div>
-            <div className="note-body">
-              {this.props.currNote ? this.props.currNote.body : ""}
-            </div>
-          </div>
+          <NoteForm
+            note={this.props.currNote}
+            updateNote={this.props.updateNote}
+          />
         </div>
-        <ReactQuill value={this.state.text} onChange={this.handleChange} />
       </div>
     );
   }

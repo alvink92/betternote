@@ -1,23 +1,17 @@
-.note-show-container {
-  overflow-y: scroll;
-}
 .note-opts-container {
   background: yellow;
 }
-.style-bar-container {
-  background: red;
-}
-.note-title {
-  background: green;
-  color: #2dbe60;
-}
-.note-body {
-  background: grey;
-}
 
-.style-bar-container,
-.note-container {
-  max-width: 925px;
-  min-width: 240px;
-  margin: 0px auto;
+.note-show-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .note-opts-container {
+    width: 100%;
+  }
+
+  .note-container {
+    width: 90%;
+  }
 }

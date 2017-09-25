@@ -1,0 +1,30 @@
+.note-content-container {
+  .note-title {
+    width: 100%;
+    position: relative;
+    top: 95px;
+    margin: 0px 12px;
+    border: 0px solid white;
+    color: #2dbe60;
+  }
+  .quill {
+    min-width: 240px;
+    max-width: 960px;
+
+    .ql-toolbar {
+      border: 0px solid white;
+      border-bottom: 2px solid #ececec;
+      height: 45px;
+
+      * {
+        vertical-align: top;
+      }
+    }
+
+    .ql-container {
+      border: 0px solid white;
+      position: relative;
+      top: 55px;
+    }
+  }
+}
