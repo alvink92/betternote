@@ -6,6 +6,10 @@
     margin: 0px 12px;
     border: 0px solid white;
     color: #2dbe60;
+
+    &::placeholder {
+      color: #2dbe60;
+    }
   }
   .quill {
     min-width: 240px;
@@ -14,7 +18,7 @@
     .ql-toolbar {
       border: 0px solid white;
       border-bottom: 2px solid #ececec;
-      height: 45px;
+      min-height: 45px;
 
       * {
         vertical-align: top;

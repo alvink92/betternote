@@ -1,6 +1,24 @@
 import React from "react";
 import ReactQuill from "react-quill"; // ES6
 
+const toolBarOpts = [
+  [{ font: [] }],
+  [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+  ["bold", "italic", "underline", "strike"], // toggled buttons
+  [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+  ["blockquote", "code-block"],
+  [{ align: [] }],
+  [{ list: "ordered" }, { list: "bullet" }],
+  [{ script: "sub" }, { script: "super" }], // superscript/subscript
+  ["clean"], // remove formatting button
+
+  ["link", "image", "video", "formula"] // misc
+];
+
+const modules = {
+  toolbar: toolBarOpts
+};
+
 class NoteForm extends React.Component {
   constructor(props) {
     super(props);
@@ -34,8 +52,10 @@ class NoteForm extends React.Component {
           className="note-title"
           value={this.state.note.title}
           onChange={this.handleTitleChange}
+          placeholder="Title your note"
         />
         <ReactQuill
+          modules={modules}
           value={this.state.note.body}
           onChange={this.handleBodyChange}
         />
