@@ -31,11 +31,7 @@ class NoteShow extends React.Component {
   render() {
     return (
       <div className="note-show-container">
-        <NoteFormContainer
-          isUpdateForm={true}
-          note={this.props.currNote}
-          autoSave={true}
-        />
+        <NoteFormContainer note={this.props.currNote} />
       </div>
     );
   }

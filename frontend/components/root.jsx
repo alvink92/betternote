@@ -11,6 +11,7 @@ const Root = ({ store }) => {
     <Provider store={store}>
       <HashRouter>
         <Switch>
+          <ProtectedRoute exact path="/notes/new" component={App} />
           <ProtectedRoute path="/notes/:noteId" component={App} />
           <ProtectedRoute path="/notes" component={App} />
           <ProtectedRoute

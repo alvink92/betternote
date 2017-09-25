@@ -5,14 +5,18 @@ import {
 } from "../actions/note_actions";
 import merge from "lodash/merge";
 
-const notesReducer = (state = { all: {}, curr: null }, action) => {
+const emptyNote = { title: "", body: "", notebook: {}, taggings: [] };
+
+const notesReducer = (state = { all: {}, curr: emptyNote }, action) => {
   Object.freeze(state);
   let newState;
   switch (action.type) {
     case RECEIVE_NOTES:
       newState = merge({}, state);
       newState.all = action.notes;
-      newState.curr = Object.values(action.notes)[0];
+      newState.curr = newState.curr.id
+        ? newState.curr
+        : Object.values(action.notes)[0];
       return newState;
     case RECEIVE_NOTE:
       newState = merge({}, state);

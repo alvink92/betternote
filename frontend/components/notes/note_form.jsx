@@ -1,34 +1,47 @@
 import React from "react";
 import ReactQuill from "react-quill";
 
+const emptyNote = { title: "", body: "", notebook: {}, taggings: [] };
+
 class NoteForm extends React.Component {
   constructor(props) {
     super(props);
-    const note = this.props.note ? this.props.note : { title: "", body: "" };
     this.state = {
-      currNote: note,
-      savedNote: note,
-      autoSave: this.props.autoSave
+      note: this.props.note
     };
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
   }
 
+  componentDidMount() {
+    console.log(this.props);
+    if (!this.props.isUpdateForm) {
+      this.setState({ note: emptyNote });
+      return;
+    }
+  }
+
   componentWillReceiveProps(newProps) {
+    console.log(newProps);
+    if (!newProps.isUpdateForm) {
+      this.setState({ note: emptyNote });
+      return;
+    }
+
     let newNote = newProps.note ? newProps.note : { title: "", body: "" };
-    this.setState({ savedNote: newNote, currNote: newNote });
+    this.setState({ note: newNote });
   }
 
   handleBodyChange(value) {
-    const updatedNote = Object.assign(this.state.currNote, { body: value });
-    this.setState({ currNote: updatedNote });
+    const updatedNote = Object.assign(this.state.note, { body: value });
+    this.setState({ note: updatedNote });
   }
 
   handleTitleChange(e) {
-    const updatedNote = Object.assign(this.state.currNote, {
+    const updatedNote = Object.assign(this.state.note, {
       title: e.target.value
     });
-    this.setState({ currNote: updatedNote });
+    this.setState({ note: updatedNote });
   }
 
   noteOpts() {
@@ -47,14 +60,14 @@ class NoteForm extends React.Component {
           <div className="note-content">
             <input
               className="note-title"
-              value={this.state.currNote.title}
+              value={this.state.note.title}
               onChange={this.handleTitleChange}
               placeholder="Title your note"
               onClick={this.hideToolbar}
             />
             <ReactQuill
               modules={modules}
-              value={this.state.currNote.body}
+              value={this.state.note.body}
               onChange={this.handleBodyChange}
               onClick={this.showToolbar}
             />
