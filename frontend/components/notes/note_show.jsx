@@ -1,8 +1,11 @@
 import React from "react";
+import ReactQuill from "react-quill"; // ES6
 
 class NoteShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { text: "" }; // You can also pass a Quill Delta here
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -26,7 +29,9 @@ class NoteShow extends React.Component {
       }
     }
   }
-
+  handleChange(value) {
+    this.setState({ text: value });
+  }
   render() {
     return (
       <div className="note-show-container">
@@ -46,6 +51,7 @@ class NoteShow extends React.Component {
             </div>
           </div>
         </div>
+        <ReactQuill value={this.state.text} onChange={this.handleChange} />
       </div>
     );
   }
