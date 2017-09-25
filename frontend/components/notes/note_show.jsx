@@ -1,5 +1,5 @@
 import React from "react";
-import NoteForm from "./note_form";
+import NoteFormContainer from "./note_form_container";
 
 class NoteShow extends React.Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class NoteShow extends React.Component {
   render() {
     return (
       <div className="note-show-container">
-        <NoteForm
+        <NoteFormContainer
           isUpdateForm={true}
           note={this.props.currNote}
           autoSave={true}
