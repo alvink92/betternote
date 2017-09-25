@@ -103,6 +103,7 @@ class NoteIndex extends React.Component {
         <NoteIndexItem
           history={this.props.history}
           fetchNote={this.props.fetchNote}
+          deleteNote={this.props.deleteNote}
           note={this.props.notes[id]}
           match={this.props.match}
         />

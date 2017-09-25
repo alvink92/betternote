@@ -53,8 +53,22 @@
   border: none;
 }
 .note-item-title-section {
-  overflow-x: hidden;
-  white-space: nowrap;
+  display: flex;
+  justify-content: space-between;
+  .note-item-title {
+    white-space: nowrap;
+    width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .note-item-delete {
+    font-size: 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
 
 .note-item-lastupdated-section {
