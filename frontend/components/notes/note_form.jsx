@@ -1,10 +1,6 @@
 import React from "react";
 import ReactQuill from "react-quill"; // ES6
 
-const modules = {
-  toolbar: toolBarOpts
-};
-
 class NoteForm extends React.Component {
   constructor(props) {
     super(props);
@@ -84,5 +80,9 @@ const toolBarOpts = [
 
   ["link", "image", "video", "formula"] // misc
 ];
+
+const modules = {
+  toolbar: toolBarOpts
+};
 
 export default NoteForm;
