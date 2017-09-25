@@ -32,7 +32,7 @@ class NoteShow extends React.Component {
     return (
       <div className="note-show-container">
         <div className="note-opts-container">
-          <div className="note-opts">note options filler</div>
+          <div className="note-opts" />
         </div>
         <div className="note-container">
           <NoteForm
