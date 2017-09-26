@@ -1,17 +1,5 @@
-.note-opts-container {
-  background: yellow;
-}
-
 .note-show-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  .note-opts-container {
-    width: 100%;
-  }
-
-  .note-container {
-    width: 90%;
-  }
 }

@@ -10,16 +10,29 @@ class NoteForm extends React.Component {
     this.state = {
       note: this.props.note,
       expanded: this.props.isUpdateForm ? false : true
+      // notebookId: this.props.note.notebook.id
+      //   ? this.props.note.notebook.id
+      //   : Object.keys(this.props.notebooks)[0]
     };
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.expandNote = this.expandNote.bind(this);
+    this.collapseNote = this.collapseNote.bind(this);
+    this.handleDoneClick = this.handleDoneClick.bind(this);
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    if (this.state.expanded) {
+      this.expandNote();
+    } else {
+      this.collapseNote();
+    }
+  }
 
   componentWillReceiveProps(newProps) {
     if (!newProps.isUpdateForm) {
       this.setState({ note: emptyNote });
+      this.expandNote();
       return;
     }
 
@@ -39,6 +52,56 @@ class NoteForm extends React.Component {
     }
   }
 
+  expandNote() {
+    this.setState({ expanded: true });
+
+    const sideBar = document.getElementsByClassName("sidebar")[0];
+    const notesIndexContainer = document.getElementsByClassName(
+      "note-index-container"
+    )[0];
+    const noteShowContainer = document.getElementsByClassName(
+      "note-content"
+    )[0];
+    const noteAssocsContainer = document.getElementsByClassName(
+      "note-assocs-container"
+    )[0];
+
+    sideBar.classList.add("move-side-bar-left");
+    notesIndexContainer.classList.add("move-note-index-container-left");
+    noteShowContainer.classList.add("move-note-content-left");
+    noteAssocsContainer.classList.add("move-note-assocs-container-left");
+
+    sideBar.classList.remove("move-side-bar-right");
+    notesIndexContainer.classList.remove("move-note-index-container-right");
+    noteShowContainer.classList.remove("move-note-content-right");
+    noteAssocsContainer.classList.remove("move-note-assocs-container-right");
+  }
+
+  collapseNote() {
+    this.setState({ expanded: false });
+
+    const sideBar = document.getElementsByClassName("sidebar")[0];
+    const notesIndexContainer = document.getElementsByClassName(
+      "note-index-container"
+    )[0];
+    const noteShowContainer = document.getElementsByClassName(
+      "note-content"
+    )[0];
+    const noteAssocsContainer = document.getElementsByClassName(
+      "note-assocs-container"
+    )[0];
+
+    sideBar.classList.add("move-side-bar-right");
+    notesIndexContainer.classList.add("move-note-index-container-right");
+    noteShowContainer.classList.add("move-note-content-right");
+    noteAssocsContainer.classList.add("move-note-assocs-container-right");
+
+    sideBar.classList.remove("move-side-bar-left");
+    notesIndexContainer.classList.remove("move-note-index-container-left");
+    noteShowContainer.classList.remove("move-note-content-left");
+    noteAssocsContainer.classList.remove("move-note-assocs-container-left");
+  }
+
   handleBodyChange(value) {
     const updatedNote = Object.assign(this.state.note, { body: value });
     this.setState({ note: updatedNote });
@@ -51,11 +114,37 @@ class NoteForm extends React.Component {
     this.setState({ note: updatedNote });
   }
 
-  switchDoneCancelBtn() {
+  handleDoneClick(e) {
     if (this.props.isUpdateForm) {
-      return <button className="note-edit-done-btn">done</button>;
+      this.props.noteAction(this.state.note);
     } else {
-      return <button className="note-new-cancel-btn">cancel</button>;
+      this.props
+        .noteAction(this.state.note)
+        .then(note =>
+          this.props.history.push(
+            `/notebooks/${this.state.notebookId}/notes/${note.id}`
+          )
+        );
+    }
+    this.collapseNote();
+  }
+
+  switchDoneCancelBtn() {
+    if (
+      !this.props.isUpdateForm &&
+      (this.state.note.title.length === 0 || this.state.note.body.length === 0)
+    ) {
+      return (
+        <button className="note-new-cancel-btn" onClick={this.collapseNote}>
+          Cancel
+        </button>
+      );
+    } else {
+      return (
+        <button className={`note-edit-done-btn`} onClick={this.handleDoneClick}>
+          Done
+        </button>
+      );
     }
   }
 
@@ -63,7 +152,11 @@ class NoteForm extends React.Component {
     if (this.state.expanded) {
       return this.switchDoneCancelBtn();
     } else {
-      return <button className="note-expand-btn">expand</button>;
+      return (
+        <button className="note-expand-btn" onClick={this.expandNote}>
+          <i className="fa fa-expand" aria-hidden="true" />
+        </button>
+      );
     }
   }
 
