@@ -17,6 +17,10 @@
   font-family: Helvetica, Arial, sans-serif;
 }
 
+.hard-hidden {
+  display: none !important;
+}
+
 .move-side-bar-left {
   transform: translateX(-520px);
   transition: all 0.25s linear;

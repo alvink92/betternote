@@ -32,18 +32,18 @@ class Sidebar extends React.Component {
     return (
       <div className="btnGrp btnGrp1">
         <div className="grp1-btn-cont">
-          <div className="grp1-btn">
-            <div>
+          <Link to="/notes/new" className="sidebar-link">
+            <div className="grp1-btn">
               <div className="fa my-plus">+</div>
             </div>
-          </div>
+          </Link>
         </div>
         <div className="grp1-btn-cont">
-          <div className="grp1-btn">
-            <div>
-              <i className="fa fa-search" aria-hidden="true" />
+          <a className="sidebar-link replacewith-Link">
+            <div className="grp1-btn">
+              <div className="fa fa-search" aria-hidden="true" />
             </div>
-          </div>
+          </a>
         </div>
       </div>
     );
@@ -52,24 +52,24 @@ class Sidebar extends React.Component {
   btnGrp2() {
     return (
       <div className="btnGrp btnGrp2">
-        <div className="filter-link-cont">
-          <NavLink to="/notes" className="filter-link">
+        <div className="sidebar-link-cont">
+          <NavLink to="/notes" className="sidebar-link">
             <div className="filter-btn-cont">
-              <i className="fa fa-file-text" aria-hidden="true" />
+              <div className="fa fa-file-text" aria-hidden="true" />
             </div>
           </NavLink>
         </div>
-        <div className="filter-link-cont">
-          <NavLink to="/notebooks" className="filter-link">
+        <div className="sidebar-link-cont">
+          <NavLink to="/notebooks" className="sidebar-link">
             <div className="filter-btn-cont">
-              <i className="fa fa-book" aria-hidden="true" />
+              <div className="fa fa-book" aria-hidden="true" />
             </div>
           </NavLink>
         </div>
-        <div className="filter-link-cont">
-          <NavLink to="/tags" className="filter-link">
+        <div className="sidebar-link-cont">
+          <NavLink to="/tags" className="sidebar-link">
             <div className="filter-btn-cont">
-              <i className="fa fa-tag" aria-hidden="true" />
+              <div className="fa fa-tag" aria-hidden="true" />
             </div>
           </NavLink>
         </div>
@@ -80,7 +80,7 @@ class Sidebar extends React.Component {
   logoutSection() {
     return (
       <button className="app-logout" onClick={this.props.logout}>
-        <i className="fa fa-sign-out" aria-hidden="true" />
+        <div className="fa fa-sign-out" aria-hidden="true" />
       </button>
     );
   }

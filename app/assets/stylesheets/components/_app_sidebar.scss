@@ -12,17 +12,17 @@
     text-align: center;
   }
   .fa {
-    margin-top: -4px;
     font-size: 22px;
     color: #2dbe60;
   }
 
   .btnGrp1 {
-    > .grp1-btn-cont {
+    .grp1-btn-cont {
       height: 48px;
-      > .grp1-btn {
+      .grp1-btn {
         display: flex;
         align-items: center;
+        justify-content: center;
         min-width: 38px;
         min-height: 38px;
         border-radius: 50%;
@@ -30,13 +30,10 @@
         border: 1px solid #e6e6e6;
         &:hover {
           background: #2dbe60;
+          cursor: pointer;
           * {
             color: white;
           }
-        }
-        > * {
-          vertical-align: center;
-          margin: 0 auto;
         }
       }
     }
@@ -50,11 +47,11 @@
   }
 }
 
-.filter-link-cont {
+.sidebar-link-cont {
   height: 50px;
 }
 
-.filter-link {
+.sidebar-link {
   > .filter-btn-cont {
     min-width: 38px;
     min-height: 38px;

@@ -64,7 +64,7 @@ class NotebookSlider extends React.Component {
           <div className="header">
             <div className="title">NOTEBOOKS</div>
             <div className="create" onClick={this.openModal}>
-              +
+              <i className="fa fa-plus-square-o" aria-hidden="true" />
             </div>
           </div>
         </div>

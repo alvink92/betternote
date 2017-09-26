@@ -64,9 +64,11 @@
     display: flex;
     justify-content: center;
     .note-content {
+      width: 960px;
       min-width: 240px;
       max-width: 960px;
       .note-title {
+        background: transparent;
         width: 100%;
         position: relative;
         top: 95px;
@@ -86,6 +88,16 @@
           border: 0px solid white;
           border-bottom: 2px solid #ececec;
           min-height: 45px;
+
+          span.ql-formats {
+            border-left: 1px solid #ececec;
+            > * {
+              height: 21px !important;
+            }
+            > button {
+              width: 21px !important;
+            }
+          }
 
           * {
             vertical-align: top;
