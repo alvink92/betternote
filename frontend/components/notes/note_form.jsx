@@ -25,6 +25,7 @@ class NoteForm extends React.Component {
 
   componentDidMount() {
     this.props.fetchNotebooks();
+    this.props.fetchTags();
     if (this.state.expanded) {
       this.expandNote();
     } else {
@@ -33,23 +34,21 @@ class NoteForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (!newProps.isUpdateForm) {
-      this.setState({ note: emptyNote });
-      this.expandNote();
-      return;
-    }
-
     const nextNote = merge({}, newProps.note);
+
+    // saves previous note to db if user clicks out
     if (
       this.props.match.url !== newProps.match.url &&
       !this.props.match.url.includes("note/new")
     ) {
       this.props.noteAction(this.state.note);
     }
+    // continues to new url
     this.setState({ note: newProps.note });
   }
 
   componentWillUnmount() {
+    // if component unmounts, then saves current note to db
     if (!this.props.match.url.includes("note/new")) {
       this.props.noteAction(this.state.note);
     }
@@ -119,19 +118,16 @@ class NoteForm extends React.Component {
 
   handleDoneClick(e) {
     const saveNote = merge({}, this.state.note);
-    saveNote.notebook_id = this.state.notebookId;
-    console.log("savenote", saveNote);
+    saveNote.notebook_id = this.state.notebookId
+      ? this.state.notebookId
+      : Object.keys(this.props.notebooks)[0];
+
     if (this.props.isUpdateForm) {
       this.props.noteAction(saveNote);
     } else {
-      this.props
-        .noteAction(saveNote)
-        .then(note =>
-          this.props.history.push(
-            `/notebooks/${note.notebookId}/notes/${note.id}`
-          )
-        );
+      this.props.noteAction(saveNote);
     }
+    // this.props.history.push(`/notebooks/${saveNote.notebookId}/notes`)
     this.collapseNote();
   }
 
