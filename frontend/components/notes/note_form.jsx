@@ -62,6 +62,40 @@ class NoteForm extends React.Component {
     }
   }
 
+  handleBodyChange(value) {
+    const updatedNote = Object.assign(this.state.note, { body: value });
+    this.setState({ note: updatedNote });
+  }
+
+  handleTitleChange(e) {
+    const updatedNote = Object.assign(this.state.note, {
+      title: e.target.value
+    });
+    this.setState({ note: updatedNote });
+  }
+
+  handleDoneClick(e) {
+    const saveNote = merge({}, this.state.note);
+    saveNote.notebook_id = this.state.notebookId;
+
+    if (this.props.isUpdateForm) {
+      this.props.noteAction(saveNote);
+    } else {
+      this.props.noteAction(saveNote);
+      // this.props.history.push(`/notebooks/${saveNote.notebookId}/notes`)
+    }
+    this.collapseNote();
+  }
+
+  toggleNoteList() {
+    const noteList = document.getElementsByClassName("note-list-wrap")[0];
+    if (Array.from(noteList.classList).includes("hidden")) {
+      noteList.classList.remove("hidden");
+    } else {
+      noteList.classList.add("hidden");
+    }
+  }
+
   expandNote() {
     this.setState({ expanded: true });
 
@@ -122,31 +156,6 @@ class NoteForm extends React.Component {
     noteOptsContainer.classList.remove("move-note-opts-wrap-left");
   }
 
-  handleBodyChange(value) {
-    const updatedNote = Object.assign(this.state.note, { body: value });
-    this.setState({ note: updatedNote });
-  }
-
-  handleTitleChange(e) {
-    const updatedNote = Object.assign(this.state.note, {
-      title: e.target.value
-    });
-    this.setState({ note: updatedNote });
-  }
-
-  handleDoneClick(e) {
-    const saveNote = merge({}, this.state.note);
-    saveNote.notebook_id = this.state.notebookId;
-
-    if (this.props.isUpdateForm) {
-      this.props.noteAction(saveNote);
-    } else {
-      this.props.noteAction(saveNote);
-      // this.props.history.push(`/notebooks/${saveNote.notebookId}/notes`)
-    }
-    this.collapseNote();
-  }
-
   switchDoneCancelBtn() {
     if (
       !this.props.isUpdateForm &&
@@ -192,14 +201,14 @@ class NoteForm extends React.Component {
   noteAssocs() {
     return (
       <div className="note-assocs-container">
-        <button className="curr-notebook">
+        <button className="curr-notebook" onClick={this.toggleNoteList}>
           <div className="fa fa-book" aria-hidden="true" />
           <div className="notebook-title">
             {this.state.note.notebook.id ? this.state.note.notebook.title : ""}
           </div>
           <i className="fa fa-angle-down" aria-hidden="true" />
         </button>
-        <div className="note-list-wrap">{this.notesList()}</div>
+        <div className="note-list-wrap hidden">{this.notesList()}</div>
         <div className="tag-list-wrap">
           <ul className="tag-list">tags</ul>
         </div>
@@ -211,6 +220,7 @@ class NoteForm extends React.Component {
     const newNotebook = this.props.notebooks[notebookId];
     const currNote = this.state.note;
     currNote.notebook = newNotebook ? newNotebook : {};
+    this.toggleNoteList();
     this.setState({ note: currNote });
   }
 
@@ -254,6 +264,11 @@ class NoteForm extends React.Component {
               className="note-title"
               value={this.state.note.title}
               onChange={this.handleTitleChange}
+              onKeyPress={e => {
+                if (e.key === "Enter") {
+                  $(".ql-editor").focus();
+                }
+              }}
               placeholder="Title your note"
               onClick={this.hideToolbar}
             />
