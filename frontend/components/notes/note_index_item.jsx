@@ -21,7 +21,7 @@ class NoteIndexItem extends React.Component {
         <div className="note-index-item">
           <div className="note-item-title-section">
             <div className="note-item-title">{this.props.note.title}</div>
-            <div className="note-item-delete hidden" onClick={this.deleteNote}>
+            <div className="note-item-delete" onClick={this.deleteNote}>
               <i className="fa fa-trash-o" aria-hidden="true" />
             </div>
           </div>

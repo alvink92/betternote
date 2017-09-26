@@ -12,9 +12,7 @@ class NoteForm extends React.Component {
     this.state = {
       note: this.props.note,
       expanded: this.props.isUpdateForm ? false : true,
-      notebookId: this.props.note.notebook.id
-        ? this.props.note.notebook.id
-        : null
+      selectedNotebookId: this.props.currNotebook.id
     };
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
