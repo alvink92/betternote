@@ -4,9 +4,8 @@ import {
   RECEIVE_NOTES,
   UPDATE_ONLY_NOTES_WITH_NOTE
 } from "../actions/note_actions";
+import { emptyNote } from "../util/entities_util";
 import merge from "lodash/merge";
-
-const emptyNote = { title: "", body: "", notebook: {}, taggings: [] };
 
 const notesReducer = (state = { all: {}, curr: emptyNote }, action) => {
   Object.freeze(state);
@@ -25,7 +24,6 @@ const notesReducer = (state = { all: {}, curr: emptyNote }, action) => {
       newState.curr = action.note;
       return newState;
     case UPDATE_ONLY_NOTES_WITH_NOTE:
-      console.log(action);
       newState = merge({}, state);
       newState.all[action.note.id] = action.note;
       return newState;

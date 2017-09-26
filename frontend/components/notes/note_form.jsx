@@ -3,10 +3,7 @@ import ReactQuill from "react-quill";
 import merge from "lodash/merge";
 import Modal from "react-modal";
 import NotebookUpdate from "../notebooks/notebook_update";
-
-// make a method to save change for both new and update
-
-const emptyNote = { title: "", body: "", notebook: {}, taggings: [] };
+import emptyNote from "../../util/entities_util";
 
 class NoteForm extends React.Component {
   constructor(props) {
@@ -14,8 +11,8 @@ class NoteForm extends React.Component {
     this.state = {
       note: this.props.note,
       expanded: this.props.isUpdateForm ? false : true
-      // selectedNotebookId: null
     };
+
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.expandNote = this.expandNote.bind(this);
@@ -39,16 +36,20 @@ class NoteForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    const nextNote = merge({}, newProps.note);
+    if (newProps.match.url.includes("/notes/new")) {
+      this.setState({ note: emptyNote });
+      this.expandNote();
+      return;
+    }
 
-    // saves previous note to db if user clicks out
+    // saves previous note to db if user clicks out (and note new note form)
     if (
       this.props.match.url !== newProps.match.url &&
-      !this.props.match.url.includes("note/new")
+      !this.props.match.url.includes("/note/new")
     ) {
-      this.props.noteAction(this.state.note);
+      this.props.noteAction(this.formattedNoteForNoteAction(this.props.note));
     }
-    // continues to new url
+    // sets note to new note when redirect to new url
     this.setState({
       note: newProps.note,
       selectedNotebookId: newProps.note.notebook.id
@@ -58,7 +59,7 @@ class NoteForm extends React.Component {
   componentWillUnmount() {
     // if component unmounts, then saves current note to db
     if (!this.props.match.url.includes("/note/new")) {
-      this.props.noteAction(this.state.note);
+      this.props.noteAction(this.formattedNoteForNoteAction(this.props.note));
     }
   }
 
@@ -75,16 +76,21 @@ class NoteForm extends React.Component {
   }
 
   handleDoneClick(e) {
-    const saveNote = merge({}, this.state.note);
-    saveNote.notebook_id = this.state.notebookId;
+    const actionNote = this.formattedNoteForNoteAction(this.props.note);
 
     if (this.props.isUpdateForm) {
-      this.props.noteAction(saveNote);
+      this.props.noteAction(actionNote);
     } else {
-      this.props.noteAction(saveNote);
+      this.props.noteAction(actionNote);
       // this.props.history.push(`/notebooks/${saveNote.notebookId}/notes`)
     }
     this.collapseNote();
+  }
+
+  formattedNoteForNoteAction(note) {
+    let formattedNote = merge({}, note);
+    formattedNote.notebook_id = formattedNote.notebook.id;
+    return formattedNote;
   }
 
   toggleNoteList() {
@@ -157,6 +163,7 @@ class NoteForm extends React.Component {
   }
 
   switchDoneCancelBtn() {
+    console.log("cancel", this.state);
     if (
       !this.props.isUpdateForm &&
       (this.state.note.title.length === 0 || this.state.note.body.length === 0)
@@ -176,6 +183,7 @@ class NoteForm extends React.Component {
   }
 
   switchExpandCollapseBtn() {
+    console.log("expa", this.state);
     if (this.state.expanded) {
       return this.switchDoneCancelBtn();
     } else {

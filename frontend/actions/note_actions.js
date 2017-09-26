@@ -1,4 +1,5 @@
 import * as NoteApiUtil from "../util/notes_api_util";
+import { emptyNote } from "../util/entities_util";
 
 export const RECEIVE_NOTE = "RECEIVE_NOTE";
 export const REMOVE_NOTE = "REMOVE_NOTE";
@@ -17,6 +18,13 @@ const removeNote = note => {
   return {
     type: REMOVE_NOTE,
     note
+  };
+};
+
+export const resetCurrNote = () => {
+  return {
+    type: RECEIVE_NOTE,
+    note: emptyNote
   };
 };
 

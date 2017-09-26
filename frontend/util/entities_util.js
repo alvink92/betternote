@@ -24,3 +24,5 @@ export const notesSortedByLastUpdated = notes => {
 
   return Object.values(notes).sort(compare);
 };
+
+export const emptyNote = { title: "", body: "", notebook: {}, taggings: [] };

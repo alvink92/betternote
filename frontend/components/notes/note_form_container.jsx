@@ -1,7 +1,12 @@
 import { connect } from "react-redux";
 import NoteForm from "./note_form";
 import { withRouter } from "react-router";
-import { fetchNote, updateNote, createNote } from "../../actions/note_actions";
+import {
+  fetchNote,
+  updateNote,
+  createNote,
+  resetCurrNote
+} from "../../actions/note_actions";
 import { fetchNotebooks } from "../../actions/notebook_actions";
 import { fetchTags } from "../../actions/tag_actions";
 
