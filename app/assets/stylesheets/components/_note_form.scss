@@ -5,6 +5,17 @@
     width: 100%;
     justify-content: space-between;
     .note-assocs-container {
+      display: flex;
+      flex-direction: row;
+
+      .note-list-wrap {
+        .note-list {
+          display: flex;
+          flex-direction: column;
+
+          position: absolute;
+        }
+      }
     }
 
     .note-expand-collapse-btn-container {

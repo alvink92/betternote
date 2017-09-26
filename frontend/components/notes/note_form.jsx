@@ -160,10 +160,28 @@ class NoteForm extends React.Component {
     }
   }
 
+  notesList() {
+    return (
+      <ul className="note-list">
+        <li className="add-new-notebook">new notebook</li>
+        {Object.values(this.props.notebooks).map(notebook => (
+          <li onClick={() => console.log(notebook.id)} className="notebook">
+            {notebook.title}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   noteOpts() {
     return (
       <div className="note-opts-container">
-        <div className="note-assocs-container">notes, tags</div>
+        <div className="note-assocs-container">
+          <div className="note-list-wrap">{this.notesList()}</div>
+          <div className="tag-list-wrap">
+            <ul className="tag-list">tags</ul>
+          </div>
+        </div>
         <div className="note-expand-collapse-btn-container">
           {this.switchExpandCollapseBtn()}
         </div>
