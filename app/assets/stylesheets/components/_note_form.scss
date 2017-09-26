@@ -64,8 +64,8 @@
     .curr-notebook {
       display: flex;
       flex-direction: row;
-      background: transparent;
-      border: 0px solid transparent;
+      background: white;
+      border: 0px solid white;
       margin-right: 15px;
       &:hover {
         cursor: pointer;
@@ -98,6 +98,14 @@
     .note-list-wrap {
       position: absolute;
       top: 50px;
+      width: 360px;
+      max-height: 420px;
+      z-index: 100000;
+      background: white;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04),
+        -6px 8px 15px rgba(0, 0, 0, 0.04), 6px 8px 15px rgba(0, 0, 0, 0.04);
+      border: 3px solid rgba(217, 217, 217, 0.4);
+
       .note-list {
         display: flex;
         flex-direction: column;
@@ -113,7 +121,7 @@
       min-width: 240px;
       max-width: 960px;
       .note-title {
-        background: transparent;
+        background: white;
         width: 100%;
         position: relative;
         top: 95px;

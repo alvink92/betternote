@@ -175,23 +175,6 @@ class NoteForm extends React.Component {
     }
   }
 
-  notesList() {
-    return (
-      <ul className="note-list">
-        <li className="add-new-notebook">new notebook</li>
-        {Object.values(this.props.notebooks).map(notebook => (
-          <li
-            key={notebook.id}
-            onClick={() => console.log(notebook.id)}
-            className="notebook"
-          >
-            {notebook.title}
-          </li>
-        ))}
-      </ul>
-    );
-  }
-
   noteOpts() {
     return (
       <div className="note-opts-container">
@@ -218,6 +201,23 @@ class NoteForm extends React.Component {
           <ul className="tag-list">tags</ul>
         </div>
       </div>
+    );
+  }
+
+  notesList() {
+    return (
+      <ul className="note-list">
+        <li className="add-new-notebook">new notebook</li>
+        {Object.values(this.props.notebooks).map(notebook => (
+          <li
+            key={notebook.id}
+            onClick={() => console.log(notebook.id)}
+            className="notebook"
+          >
+            {notebook.title}
+          </li>
+        ))}
+      </ul>
     );
   }
 
