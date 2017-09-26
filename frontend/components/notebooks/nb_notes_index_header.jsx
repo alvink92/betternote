@@ -26,6 +26,8 @@ class NotebookNotesIndexHeader extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+
+    this.updateNotebookState = this.updateNotebookState.bind(this);
   }
 
   componentWillMount() {
@@ -38,9 +40,11 @@ class NotebookNotesIndexHeader extends React.Component {
     this.setState({ modalIsOpen: true });
   }
 
-  // updateNotebookState(notebook) {
-  //   this.setState({ notebook: Object.assign(this.props.currNotebook, notebook) });
-  // }
+  updateNotebookState(notebook) {
+    this.setState({
+      notebook: Object.assign(this.props.currNotebook, notebook)
+    });
+  }
 
   afterOpenModal() {}
 
@@ -49,7 +53,6 @@ class NotebookNotesIndexHeader extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="notebook-note-index-header-container">
         <div className="title-container">
