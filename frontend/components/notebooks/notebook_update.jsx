@@ -1,8 +1,4 @@
 import React from "react";
-import {
-  updateNotebook,
-  deleteNotebook
-} from "../../util/notebooks_api_util.js";
 
 class NotebookUpdate extends React.Component {
   constructor(props) {
@@ -27,18 +23,19 @@ class NotebookUpdate extends React.Component {
   //
 
   handleDelete(e) {
-    deleteNotebook(this.state.id);
+    this.props.deleteNotebook(this.state.id);
     this.props.history.push("/notes");
     this.props.closeModal();
   }
   handleUpdate(e) {
-    this.props.updateNotebookState(this.state);
-    updateNotebook(this.state).then(this.props.closeModal());
+    console.log("asdf");
+    this.props.updateNotebook(this.state);
+    this.props.closeModal();
   }
   //
   clickEnterListener(e) {
     if (e.key === "Enter") {
-      updateNotebook(this.state);
+      this.props.updateNotebook(this.state);
       this.props.closeModal();
     }
   }

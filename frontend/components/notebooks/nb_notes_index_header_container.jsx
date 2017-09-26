@@ -1,7 +1,11 @@
 import { connect } from "react-redux";
 import NotebookNotesIndexHeader from "./nb_notes_index_header";
 import { withRouter } from "react-router";
-import { fetchNotebook } from "../../actions/notebook_actions";
+import {
+  fetchNotebook,
+  updateNotebook,
+  deleteNotebook
+} from "../../actions/notebook_actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -11,7 +15,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    fetchNotebook: id => dispatch(fetchNotebook(id))
+    fetchNotebook: id => dispatch(fetchNotebook(id)),
+    updateNotebook: notebook => dispatch(updateNotebook(notebook)),
+    deleteNotebook: id => dispatch(deleteNotebook(id))
   };
 };
 

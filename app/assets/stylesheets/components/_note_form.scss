@@ -116,15 +116,6 @@
         display: flex;
         flex-direction: column;
 
-        .create-new-notebook {
-          color: #878787;
-          font-weight: 600;
-          &:hover {
-            color: #2dbe60 !important;
-            background: white !important;
-          }
-        }
-
         .notebook-title-container + .active {
           color: #2dbe60 !important;
         }
@@ -151,6 +142,15 @@
               overflow-x: hidden;
               text-overflow: ellipsis;
             }
+          }
+        }
+
+        .create-new-notebook {
+          color: #878787;
+          font-weight: 600;
+          &:hover {
+            color: #2dbe60 !important;
+            background: white !important;
           }
         }
       }

@@ -1,6 +1,8 @@
 import React from "react";
 import ReactQuill from "react-quill";
 import merge from "lodash/merge";
+import Modal from "react-modal";
+import NotebookUpdate from "../notebooks/notebook_update";
 
 // make a method to save change for both new and update
 
