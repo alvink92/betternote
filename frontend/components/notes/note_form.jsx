@@ -12,7 +12,7 @@ class NoteForm extends React.Component {
     this.state = {
       note: this.props.note,
       expanded: this.props.isUpdateForm ? false : true,
-      selectedNotebookId: this.props.currNotebook.id
+      selectedNotebookId: null
     };
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -22,7 +22,11 @@ class NoteForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchNotebooks();
+    this.props.fetchNotebooks().then(notebooks => {
+      if (!this.state.selectedNotebookId) {
+        this.state.selectedNotebookId = Object.keys(this.props.notebooks)[0];
+      }
+    });
     this.props.fetchTags();
     if (this.state.expanded) {
       this.expandNote();
@@ -42,12 +46,15 @@ class NoteForm extends React.Component {
       this.props.noteAction(this.state.note);
     }
     // continues to new url
-    this.setState({ note: newProps.note });
+    this.setState({
+      note: newProps.note,
+      selectedNotebookId: newProps.note.notebookId
+    });
   }
 
   componentWillUnmount() {
     // if component unmounts, then saves current note to db
-    if (!this.props.match.url.includes("note/new")) {
+    if (!this.props.match.url.includes("/note/new")) {
       this.props.noteAction(this.state.note);
     }
   }
@@ -116,16 +123,14 @@ class NoteForm extends React.Component {
 
   handleDoneClick(e) {
     const saveNote = merge({}, this.state.note);
-    saveNote.notebook_id = this.state.notebookId
-      ? this.state.notebookId
-      : Object.keys(this.props.notebooks)[0];
+    saveNote.notebook_id = this.state.notebookId;
 
     if (this.props.isUpdateForm) {
       this.props.noteAction(saveNote);
     } else {
       this.props.noteAction(saveNote);
+      // this.props.history.push(`/notebooks/${saveNote.notebookId}/notes`)
     }
-    // this.props.history.push(`/notebooks/${saveNote.notebookId}/notes`)
     this.collapseNote();
   }
 
@@ -165,7 +170,11 @@ class NoteForm extends React.Component {
       <ul className="note-list">
         <li className="add-new-notebook">new notebook</li>
         {Object.values(this.props.notebooks).map(notebook => (
-          <li onClick={() => console.log(notebook.id)} className="notebook">
+          <li
+            key={notebook.id}
+            onClick={() => console.log(notebook.id)}
+            className="notebook"
+          >
             {notebook.title}
           </li>
         ))}

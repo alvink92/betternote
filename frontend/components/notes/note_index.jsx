@@ -3,6 +3,7 @@ import NoteIndexItem from "./note_index_item";
 import { NavLink, Link } from "react-router-dom";
 import TagNotesIndexHeader from "../tags/tag_notes_index_header";
 import NotebookNotesIndexHeaderContainer from "../notebooks/nb_notes_index_header_container";
+import { notesSortedByLastUpdated } from "../../util/entities_util";
 
 class NoteIndex extends React.Component {
   constructor(props) {
@@ -101,13 +102,17 @@ class NoteIndex extends React.Component {
   }
 
   noteIndexItems() {
-    return Object.keys(this.props.notes).map(id => (
-      <NavLink className="show-link" key={id} to={this.getShowNoteLink(id)}>
+    return notesSortedByLastUpdated(this.props.notes).map(note => (
+      <NavLink
+        className="show-link"
+        key={note.id}
+        to={this.getShowNoteLink(note.id)}
+      >
         <NoteIndexItem
           history={this.props.history}
           fetchNote={this.props.fetchNote}
           deleteNote={this.props.deleteNote}
-          note={this.props.notes[id]}
+          note={note}
           match={this.props.match}
         />
       </NavLink>

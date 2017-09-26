@@ -10,3 +10,17 @@ export const tagsByFirstLetterThenName = tags => {
   }
   return hsh;
 };
+
+export const notesSortedByLastUpdated = notes => {
+  function compare(a, b) {
+    if (new Date(a.updated_at) < new Date(b.updated_at)) {
+      return 1;
+    } else if (new Date(a.updated_at) > new Date(b.updated_at)) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }
+
+  return Object.values(notes).sort(compare);
+};
