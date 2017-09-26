@@ -15,11 +15,11 @@ class NoteIndex extends React.Component {
     if (this.props.match.params.notebookId) {
       this.props
         .fetchNotebookNotes(this.props.match.params.notebookId)
-        .then(notes => dummy, error => this.history.push("/notes"));
+        .then(notes => dummy);
     } else if (this.props.match.params.tagId) {
       this.props
         .fetchTagNotes(this.props.match.params.tagId)
-        .then(notes => dummy, error => this.history.push("/notes"));
+        .then(notes => dummy);
     } else {
       this.props.fetchNotes();
     }
@@ -36,18 +36,23 @@ class NoteIndex extends React.Component {
       willFetch = true;
     } else if (oldParams.tagId !== newParams.tagId) {
       willFetch = true;
+    } else if (
+      this.props.match.url !== nextProps.match.url &&
+      nextProps.match.url === "/notes"
+    ) {
+      willFetch = true;
     }
 
     if (willFetch) {
       if (nextProps.match.params.notebookId) {
         nextProps
           .fetchNotebookNotes(nextProps.match.params.notebookId)
-          .then(notes => dummy, error => this.history.push("/notes"));
+          .then(notes => dummy);
       } else if (nextProps.match.params.tagId) {
         nextProps
           .fetchTagNotes(nextProps.match.params.tagId)
-          .then(notes => dummy, error => this.history.push("/notes"));
-      } else if (nextProps.match.url.includes("/notes")) {
+          .then(notes => dummy);
+      } else if (nextProps.match.url === "/notes") {
         nextProps.fetchNotes();
       }
     }

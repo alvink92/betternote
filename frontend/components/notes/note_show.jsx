@@ -11,7 +11,7 @@ class NoteShow extends React.Component {
     if (this.props.match.params.noteId)
       this.props
         .fetchNote(this.props.match.params.noteId)
-        .then(note => (dummy = note), err => this.props.history.push("/notes"));
+        .then(note => (dummy = note));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -20,10 +20,7 @@ class NoteShow extends React.Component {
       if (this.props.match.params.noteId !== nextProps.match.params.noteId) {
         nextProps
           .fetchNote(nextProps.match.params.noteId)
-          .then(
-            note => (dummy = note),
-            err => this.props.history.push("/notes")
-          );
+          .then(note => (dummy = note));
       }
     }
   }
