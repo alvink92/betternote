@@ -1,7 +1,7 @@
 import React from "react";
 import { getNotebook } from "../../util/notebooks_api_util";
 import Modal from "react-modal";
-import NotebookUpdate from "./notebook_update";
+import NotebookUpdateContainer from "./notebook_update_container";
 
 const customStyles = {
   content: {
@@ -67,12 +67,10 @@ class NotebookNotesIndexHeader extends React.Component {
           style={customStyles}
           contentLabel="Update Notebook Modal"
         >
-          <NotebookUpdate
+          <NotebookUpdateContainer
             history={this.props.history}
             notebook={this.props.currNotebook}
             closeModal={this.closeModal}
-            updateNotebook={this.props.updateNotebook}
-            deleteNotebook={this.props.deleteNotebook}
           />
         </Modal>
       </div>
