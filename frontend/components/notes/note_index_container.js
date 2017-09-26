@@ -14,7 +14,8 @@ import {
 const mapStateToProps = state => {
   return {
     notes: state.entities.notes.all,
-    currNote: state.entities.notes.curr
+    currNote: state.entities.notes.curr,
+    currNotebook: state.entities.notebooks.curr
   };
 };
 

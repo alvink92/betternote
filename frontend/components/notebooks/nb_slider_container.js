@@ -10,7 +10,10 @@ import { fetchNotes } from "../../actions/note_actions";
 import { withRouter } from "react-router";
 
 const mapStateToProps = (state, ownProps) => {
-  return { notebooks: state.entities.notebooks };
+  return {
+    notebooks: state.entities.notebooks.all,
+    currNotebook: state.entities.notebooks.curr
+  };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {

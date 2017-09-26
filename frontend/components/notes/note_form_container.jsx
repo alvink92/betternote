@@ -7,7 +7,8 @@ import { fetchTags } from "../../actions/tag_actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    notebooks: state.entities.notebooks,
+    notebooks: state.entities.notebooks.all,
+    currNotebook: state.entities.notebooks.curr,
     tags: state.entities.tags,
     isUpdateForm: ownProps.match.url.includes("notes/new") ? false : true,
     autoSave: ownProps.match.url.includes("notes/new") ? false : true

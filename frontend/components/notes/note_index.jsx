@@ -2,7 +2,7 @@ import React from "react";
 import NoteIndexItem from "./note_index_item";
 import { NavLink, Link } from "react-router-dom";
 import TagNotesIndexHeader from "../tags/tag_notes_index_header";
-import NotebookNotesIndexHeader from "../notebooks/nb_notes_index_header";
+import NotebookNotesIndexHeaderContainer from "../notebooks/nb_notes_index_header_container";
 
 class NoteIndex extends React.Component {
   constructor(props) {
@@ -75,12 +75,7 @@ class NoteIndex extends React.Component {
         />
       );
     } else if (this.props.match.params.notebookId) {
-      headerComponent = (
-        <NotebookNotesIndexHeader
-          history={this.props.history}
-          notebookId={this.props.match.params.notebookId}
-        />
-      );
+      headerComponent = <NotebookNotesIndexHeaderContainer />;
     } else {
       headerComponent = this.notesIndexHeader();
     }

@@ -22,31 +22,25 @@ const customStyles = {
 class NotebookNotesIndexHeader extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { notebook: { title: "", noteIds: [] } };
 
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.updateNotebookState = this.updateNotebookState.bind(this);
   }
 
   componentWillMount() {
+    this.props.fetchNotebook(this.props.match.params.notebookId);
     this.setState({
       modalIsOpen: false
     });
-
-    getNotebook(this.props.notebookId).then(
-      notebook => this.setState({ notebook: notebook }),
-      err => this.props.history.push("/notes")
-    );
   }
   openModal() {
     this.setState({ modalIsOpen: true });
   }
 
-  updateNotebookState(notebook) {
-    this.setState({ notebook: Object.assign(this.state.notebook, notebook) });
-  }
+  // updateNotebookState(notebook) {
+  //   this.setState({ notebook: Object.assign(this.props.currNotebook, notebook) });
+  // }
 
   afterOpenModal() {}
 
@@ -55,6 +49,7 @@ class NotebookNotesIndexHeader extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="notebook-note-index-header-container">
         <div className="title-container">
@@ -63,11 +58,11 @@ class NotebookNotesIndexHeader extends React.Component {
               i
             </div>
           </div>
-          <div className="title">{this.state.notebook.title}</div>
+          <div className="title">{this.props.currNotebook.title}</div>
         </div>
         <div className="notes-count-container">
           <div className="notes-count">
-            {this.state.notebook.noteIds.length} notes
+            {this.props.currNotebook.noteIds.length} notes
           </div>
         </div>
         <Modal
@@ -79,7 +74,7 @@ class NotebookNotesIndexHeader extends React.Component {
         >
           <NotebookUpdate
             history={this.props.history}
-            notebook={this.state.notebook}
+            notebook={this.props.currNotebook}
             closeModal={this.closeModal}
             updateNotebookState={this.updateNotebookState}
           />

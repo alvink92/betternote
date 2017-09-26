@@ -5,15 +5,26 @@ import {
 } from "../actions/notebook_actions";
 import merge from "lodash/merge";
 
-const notebooksReducer = (state = {}, action) => {
+const nullNotebook = { title: "", noteIds: [] };
+
+const notebooksReducer = (state = { all: {}, curr: nullNotebook }, action) => {
   Object.freeze(state);
   let newState;
   switch (action.type) {
     case RECEIVE_NOTEBOOKS:
-      return action.notebooks;
+      newState = merge({}, state);
+      newState.all = action.notebooks;
+      if (!newState.curr.id) {
+        let firstKey = Object.keys(action.notebooks)[0];
+        if (firstKey) {
+          newState.curr = action.notebooks[Object.keys(action.notebooks)[0]];
+        }
+      }
+      return newState;
     case RECEIVE_NOTEBOOK:
       newState = merge({}, state);
-      newState[action.notebook.id] = action.notebook;
+      newState.all[action.notebook.id] = action.notebook;
+      newState.curr = action.notebook;
       return newState;
     case REMOVE_NOTEBOOK:
       newState = merge({}, state);
