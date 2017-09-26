@@ -1,22 +1,15 @@
 .note-container {
   width: 90%;
+
+  .note-opts-assocs-wrapper {
+    position: relative;
+    top: 13px;
+  }
+
   .note-opts-container {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    .note-assocs-container {
-      display: flex;
-      flex-direction: row;
-
-      .note-list-wrap {
-        .note-list {
-          display: flex;
-          flex-direction: column;
-
-          position: absolute;
-        }
-      }
-    }
 
     .note-expand-collapse-btn-container {
       button {
@@ -60,6 +53,58 @@
       }
     }
   }
+
+  .note-assocs-container {
+    display: flex;
+    flex-direction: row;
+    height: 23px;
+    position: relative;
+    top: 12px;
+
+    .curr-notebook {
+      display: flex;
+      flex-direction: row;
+      background: transparent;
+      border: 0px solid transparent;
+      margin-right: 15px;
+      &:hover {
+        cursor: pointer;
+      }
+
+      > * {
+        padding-right: 10px;
+        color: #606060;
+      }
+
+      .fa {
+        font-size: 15px;
+      }
+
+      .fa-book {
+        color: #c4c4c4;
+      }
+
+      .notebook-title {
+        font-size: 12px;
+        font-weight: 590;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 180px;
+        vertical-align: text-top;
+      }
+    }
+
+    .note-list-wrap {
+      position: absolute;
+      top: 50px;
+      .note-list {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
   .note-content-container {
     display: flex;
     justify-content: center;

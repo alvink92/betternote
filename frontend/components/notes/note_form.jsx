@@ -11,8 +11,8 @@ class NoteForm extends React.Component {
     super(props);
     this.state = {
       note: this.props.note,
-      expanded: this.props.isUpdateForm ? false : true,
-      selectedNotebookId: null
+      expanded: this.props.isUpdateForm ? false : true
+      // selectedNotebookId: null
     };
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -48,7 +48,7 @@ class NoteForm extends React.Component {
     // continues to new url
     this.setState({
       note: newProps.note,
-      selectedNotebookId: newProps.note.notebookId
+      selectedNotebookId: newProps.note.notebook.id
     });
   }
 
@@ -72,16 +72,21 @@ class NoteForm extends React.Component {
     const noteAssocsContainer = document.getElementsByClassName(
       "note-assocs-container"
     )[0];
+    const noteOptsContainer = document.getElementsByClassName(
+      "note-opts-wrap"
+    )[0];
 
     sideBar.classList.add("move-side-bar-left");
     notesIndexContainer.classList.add("move-note-index-container-left");
     noteShowContainer.classList.add("move-note-content-left");
     noteAssocsContainer.classList.add("move-note-assocs-container-left");
+    noteOptsContainer.classList.add("move-note-opts-wrap-left");
 
     sideBar.classList.remove("move-side-bar-right");
     notesIndexContainer.classList.remove("move-note-index-container-right");
     noteShowContainer.classList.remove("move-note-content-right");
     noteAssocsContainer.classList.remove("move-note-assocs-container-right");
+    noteOptsContainer.classList.remove("move-note-opts-wrap-right");
   }
 
   collapseNote() {
@@ -97,16 +102,21 @@ class NoteForm extends React.Component {
     const noteAssocsContainer = document.getElementsByClassName(
       "note-assocs-container"
     )[0];
+    const noteOptsContainer = document.getElementsByClassName(
+      "note-opts-wrap"
+    )[0];
 
     sideBar.classList.add("move-side-bar-right");
     notesIndexContainer.classList.add("move-note-index-container-right");
     noteShowContainer.classList.add("move-note-content-right");
     noteAssocsContainer.classList.add("move-note-assocs-container-right");
+    noteOptsContainer.classList.add("move-note-opts-wrap-right");
 
     sideBar.classList.remove("move-side-bar-left");
     notesIndexContainer.classList.remove("move-note-index-container-left");
     noteShowContainer.classList.remove("move-note-content-left");
     noteAssocsContainer.classList.remove("move-note-assocs-container-left");
+    noteOptsContainer.classList.remove("move-note-opts-wrap-left");
   }
 
   handleBodyChange(value) {
@@ -185,14 +195,27 @@ class NoteForm extends React.Component {
   noteOpts() {
     return (
       <div className="note-opts-container">
-        <div className="note-assocs-container">
-          <div className="note-list-wrap">{this.notesList()}</div>
-          <div className="tag-list-wrap">
-            <ul className="tag-list">tags</ul>
-          </div>
-        </div>
+        <div className="note-opts-wrap">note opts</div>
         <div className="note-expand-collapse-btn-container">
           {this.switchExpandCollapseBtn()}
+        </div>
+      </div>
+    );
+  }
+
+  noteAssocs() {
+    return (
+      <div className="note-assocs-container">
+        <button className="curr-notebook">
+          <div className="fa fa-book" aria-hidden="true" />
+          <div className="notebook-title">
+            {this.state.note.notebook.id ? this.state.note.notebook.title : ""}
+          </div>
+          <i className="fa fa-angle-down" aria-hidden="true" />
+        </button>
+        <div className="note-list-wrap">{this.notesList()}</div>
+        <div className="tag-list-wrap">
+          <ul className="tag-list">tags</ul>
         </div>
       </div>
     );
@@ -201,7 +224,10 @@ class NoteForm extends React.Component {
   render() {
     return (
       <div className="note-container">
-        {this.noteOpts()}
+        <div className="note-opts-assocs-wrapper">
+          {this.noteOpts()}
+          {this.noteAssocs()}
+        </div>
         <div className="note-content-container">
           <div className="note-content">
             <input
