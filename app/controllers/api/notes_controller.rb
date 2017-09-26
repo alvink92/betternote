@@ -34,6 +34,7 @@ class Api::NotesController < ApplicationController
   end
 
   def create
+
     @note = Note.new(note_params)
     @note.author_id = current_user.id
     if @note.save

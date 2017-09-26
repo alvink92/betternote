@@ -95,8 +95,10 @@ class NoteForm extends React.Component {
   }
 
   formattedNoteForNoteAction(note) {
-    let formattedNote = merge({}, note);
-    formattedNote.notebook_id = formattedNote.notebook.id;
+    let formattedNote = {};
+    formattedNote.title = note.title;
+    formattedNote.body = note.body;
+    formattedNote.notebook_id = note.notebook.id;
     return formattedNote;
   }
 

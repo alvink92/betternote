@@ -102,13 +102,13 @@ class NoteIndex extends React.Component {
   }
 
   noteIndexItems() {
+    let uniqueHelperHack = 999999;
     return notesSortedByLastUpdated(this.props.notes).map(note => (
       <NavLink
         className="show-link"
-        key={note.id ? note.id : 0}
+        key={note.id ? note.id : uniqueHelperHack--}
         to={this.getShowNoteLink(note.id)}
       >
-        // key={note.id ? note.id : 0} => hack. undefined gives warning for key
         <NoteIndexItem
           history={this.props.history}
           fetchNote={this.props.fetchNote}
