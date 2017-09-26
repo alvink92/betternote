@@ -206,18 +206,28 @@ class NoteForm extends React.Component {
 
   notesList() {
     return (
-      <ul className="note-list">
-        <li className="add-new-notebook">new notebook</li>
+      <div className="note-list">
+        <div className="create-new-notebook notebook-title-container">
+          <div className="notebook-title-wrapper">
+            <div className="notebook-title">
+              <div>Create new notebook</div>
+            </div>
+          </div>
+        </div>
         {Object.values(this.props.notebooks).map(notebook => (
-          <li
+          <div
             key={notebook.id}
             onClick={() => console.log(notebook.id)}
-            className="notebook"
+            className={`notebook-title-container${this.state.note.notebook.id
+              ? this.state.note.notebook.id === notebook.id ? " active" : ""
+              : ""}`}
           >
-            {notebook.title}
-          </li>
+            <div className="notebook-title-wrapper">
+              <div className="notebook-title">{notebook.title}</div>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     );
   }
 

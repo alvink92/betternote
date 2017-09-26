@@ -4,6 +4,7 @@
   .note-opts-assocs-wrapper {
     position: relative;
     top: 13px;
+    z-index: 300;
   }
 
   .note-opts-container {
@@ -99,7 +100,12 @@
       position: absolute;
       top: 25px;
       width: 360px;
-      max-height: 420px;
+      max-width: 420px;
+      color: #828282;
+      font-weight: 200;
+      border-top: 1px solid #ececec;
+
+      overflow-y: auto;
       z-index: 100000;
       background: white;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04),
@@ -109,6 +115,44 @@
       .note-list {
         display: flex;
         flex-direction: column;
+
+        .create-new-notebook {
+          color: #878787;
+          font-weight: 600;
+          &:hover {
+            color: #2dbe60 !important;
+            background: white !important;
+          }
+        }
+
+        .notebook-title-container + .active {
+          color: #2dbe60 !important;
+        }
+
+        .notebook-title-container {
+          height: 50px;
+          padding: 0px 16px;
+          display: flex;
+
+          &:hover {
+            background: #2dbe60;
+            color: white !important;
+            cursor: pointer;
+          }
+
+          .notebook-title-wrapper {
+            border-top: 1px solid #ececec;
+            width: 100%;
+            display: flex;
+            padding: 0 10px;
+            align-items: center;
+
+            .notebook-title {
+              overflow-x: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+        }
       }
     }
   }
