@@ -2,6 +2,8 @@ import React from "react";
 import ReactQuill from "react-quill";
 import merge from "lodash/merge";
 
+// make a method to save change for both new and update
+
 const emptyNote = { title: "", body: "", notebook: {}, taggings: [] };
 
 class NoteForm extends React.Component {
@@ -9,10 +11,10 @@ class NoteForm extends React.Component {
     super(props);
     this.state = {
       note: this.props.note,
-      expanded: this.props.isUpdateForm ? false : true
-      // notebookId: this.props.note.notebook.id
-      //   ? this.props.note.notebook.id
-      //   : Object.keys(this.props.notebooks)[0]
+      expanded: this.props.isUpdateForm ? false : true,
+      notebookId: this.props.note.notebook.id
+        ? this.props.note.notebook.id
+        : null
     };
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -22,6 +24,7 @@ class NoteForm extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchNotebooks();
     if (this.state.expanded) {
       this.expandNote();
     } else {
@@ -115,14 +118,17 @@ class NoteForm extends React.Component {
   }
 
   handleDoneClick(e) {
+    const saveNote = merge({}, this.state.note);
+    saveNote.notebook_id = this.state.notebookId;
+    console.log("savenote", saveNote);
     if (this.props.isUpdateForm) {
-      this.props.noteAction(this.state.note);
+      this.props.noteAction(saveNote);
     } else {
       this.props
-        .noteAction(this.state.note)
+        .noteAction(saveNote)
         .then(note =>
           this.props.history.push(
-            `/notebooks/${this.state.notebookId}/notes/${note.id}`
+            `/notebooks/${note.notebookId}/notes/${note.id}`
           )
         );
     }
