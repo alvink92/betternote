@@ -37,7 +37,7 @@ class NoteForm extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.match.url.includes("/notes/new")) {
-      this.setState({ note: emptyNote });
+      this.props.resetCurrNote();
       this.expandNote();
       return;
     }
@@ -80,11 +80,18 @@ class NoteForm extends React.Component {
 
     if (this.props.isUpdateForm) {
       this.props.noteAction(actionNote);
+      this.collapseNote();
     } else {
-      this.props.noteAction(actionNote);
-      // this.props.history.push(`/notebooks/${saveNote.notebookId}/notes`)
+      this.props
+        .noteAction(actionNote)
+        .then(note =>
+          this.props.history.push(
+            `/notebooks/${note.notebookId}/notes/${note.id}`,
+            err => this.props.history.push(`/notes`).then(this.collapseNote())
+          )
+        )
+        .then(this.collapseNote());
     }
-    this.collapseNote();
   }
 
   formattedNoteForNoteAction(note) {
@@ -163,10 +170,11 @@ class NoteForm extends React.Component {
   }
 
   switchDoneCancelBtn() {
-    console.log("cancel", this.state);
     if (
       !this.props.isUpdateForm &&
-      (this.state.note.title.length === 0 || this.state.note.body.length === 0)
+      (this.state.note.title.length === 0 ||
+        this.state.note.body.length === 0 ||
+        !this.state.note.notebook.id)
     ) {
       return (
         <button className="note-new-cancel-btn" onClick={this.collapseNote}>
@@ -183,7 +191,6 @@ class NoteForm extends React.Component {
   }
 
   switchExpandCollapseBtn() {
-    console.log("expa", this.state);
     if (this.state.expanded) {
       return this.switchDoneCancelBtn();
     } else {

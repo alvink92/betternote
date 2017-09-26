@@ -28,7 +28,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     fetchNote: id => dispatch(fetchNote(id)),
     noteAction: note => dispatch(noteAction(note)),
     fetchNotebooks: () => dispatch(fetchNotebooks()),
-    fetchTags: () => dispatch(fetchTags())
+    fetchTags: () => dispatch(fetchTags()),
+    resetCurrNote: () => dispatch(resetCurrNote())
   };
 };
 
