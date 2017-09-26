@@ -24,11 +24,10 @@ class NotebookUpdate extends React.Component {
 
   handleDelete(e) {
     this.props.deleteNotebook(this.state.id);
-    this.props.history.push("/notes");
+    this.props.fetchNotes().then(this.props.history.push("/notes"));
     this.props.closeModal();
   }
   handleUpdate(e) {
-    console.log("asdf");
     this.props.updateNotebook(this.state);
     this.props.closeModal();
   }

@@ -21,6 +21,7 @@ class NoteForm extends React.Component {
     this.expandNote = this.expandNote.bind(this);
     this.collapseNote = this.collapseNote.bind(this);
     this.handleDoneClick = this.handleDoneClick.bind(this);
+    this.handleSelectNotebookClick = this.handleSelectNotebookClick.bind(this);
   }
 
   componentDidMount() {
@@ -206,6 +207,13 @@ class NoteForm extends React.Component {
     );
   }
 
+  handleSelectNotebookClick(notebookId) {
+    const newNotebook = this.props.notebooks[notebookId];
+    const currNote = this.state.note;
+    currNote.notebook = newNotebook ? newNotebook : {};
+    this.setState({ note: currNote });
+  }
+
   notesList() {
     return (
       <div className="note-list">
@@ -219,7 +227,7 @@ class NoteForm extends React.Component {
         {Object.values(this.props.notebooks).map(notebook => (
           <div
             key={notebook.id}
-            onClick={() => console.log(notebook.id)}
+            onClick={() => this.handleSelectNotebookClick(notebook.id)}
             className={`notebook-title-container${this.state.note.notebook.id
               ? this.state.note.notebook.id === notebook.id ? " active" : ""
               : ""}`}
