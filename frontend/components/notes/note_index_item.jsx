@@ -4,6 +4,15 @@ import ReactHtmlParser from "react-html-parser";
 class NoteIndexItem extends React.Component {
   constructor(props) {
     super(props);
+
+    this.deleteNote = this.deleteNote.bind(this);
+  }
+
+  deleteNote(e) {
+    e.preventDefault();
+    if (e.target.className === "fa fa-trash-o") {
+      this.props.deleteNote(this.props.note.id);
+    }
   }
 
   render() {
@@ -12,10 +21,7 @@ class NoteIndexItem extends React.Component {
         <div className="note-index-item">
           <div className="note-item-title-section">
             <div className="note-item-title">{this.props.note.title}</div>
-            <div
-              className="note-item-delete hidden"
-              onClick={() => this.props.deleteNote(this.props.note.id)}
-            >
+            <div className="note-item-delete hidden" onClick={this.deleteNote}>
               <i className="fa fa-trash-o" aria-hidden="true" />
             </div>
           </div>
