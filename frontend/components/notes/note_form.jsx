@@ -110,6 +110,9 @@ class NoteForm extends React.Component {
     formattedNote.title = note.title;
     formattedNote.body = note.body;
     formattedNote.notebook_id = note.notebook.id;
+    if (note.id) {
+      formattedNote.id = note.id;
+    }
     return formattedNote;
   }
 

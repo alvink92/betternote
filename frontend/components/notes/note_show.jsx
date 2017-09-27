@@ -30,23 +30,20 @@ class NoteShow extends React.Component {
   render() {
     return (
       <div className="note-show-container">
-        <Switch>
-          <Route path="/notes/new">
-            <NoteFormContainer
-              note={{
-                title: "",
-                body: "",
-                notebook: {},
-                taggings: [],
-                last_updated: ""
-              }}
-              prevUrl={this.props.match.url}
-            />
-          </Route>
-          <Route path="/">
-            <NoteFormContainer note={this.props.currNote} />
-          </Route>
-        </Switch>
+        {this.props.match.url === "/notes/new" ? (
+          <NoteFormContainer
+            note={{
+              title: "",
+              body: "",
+              notebook: {},
+              taggings: [],
+              last_updated: ""
+            }}
+            prevUrl={this.props.match.url}
+          />
+        ) : (
+          <NoteFormContainer note={this.props.currNote} />
+        )}
       </div>
     );
   }
