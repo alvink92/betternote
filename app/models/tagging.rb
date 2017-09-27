@@ -20,6 +20,11 @@ class Tagging < ApplicationRecord
   foreign_key: :tag_id,
   class_name: :Tag
 
+  belongs_to :owner,
+  primary_key: :id,
+  foreign_key: :owner_id,
+  class_name: :User
+
   validates :note_id, :tag_id, presence: true
   validates_uniqueness_of :note_id, scope: [:tag_id]
 

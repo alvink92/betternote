@@ -1,39 +1,49 @@
 class Api::TaggingsController < ApplicationController
   before_action :ensure_login
 
-  def create
-    tag = Tag.find_by_id(tagging_params[:tag_id])
-    note = Note.find_by_id(taggin_params[:note_id])
+  # INCOMING VERY HACKY CODE
 
-    if tag.owner_id != note.author_id
+  def create
+    @tag = Tag.find_by_name(tagging_params[:tag_name])
+    unless @tag
+      @tag = Tag.create(name: tagging_params[:tag_name], owner_id: current_user.id)
+    end
+    note = Note.find_by_id(tagging_params[:note_id])
+
+    if @tag.owner_id != note.author_id
       render json: ["Forbidden taggings creation"], status: 403
       return
     end
 
-    if tag.owner_id != current_user.id
+    if @tag.owner_id != current_user.id
       render json: ["Unauthorized user"], status: 401
     end
 
-    @tagging = Tagging.new(tagging_params)
+    @tagging = Tagging.new(tag_id: @tag.id,
+       note_id: tagging_params[:note_id], owner_id: current_user.id)
 
     if @tagging.save
-      render json: @tagging
+      render :show
     else
       render json: @tagging.errors.full_messages, status: 400
     end
   end
 
   def destroy
+    @tag = Tag.find_by_name(tagging_params[:tag_name])
     @tagging = current_user.taggings.find_by(
       note_id: tagging_params[:note_id],
-      tag_id: tagging_params[:tag_id])
-    @tagging.destroy
-    render json: @tagging
+      tag_id: @tag.id)
+    if @tagging.destroy
+      render :show
+    else
+      render json: @tagging.errors.full_messages, status: 400
+    end
   end
 
   private
 
   def tagging_params
-    params.require(:tagging).permit(:tag_id, :note_id)
+    params.require(:tagging).permit(:tag_name, :note_id)
   end
 end

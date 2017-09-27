@@ -20,11 +20,11 @@ export const createTag = tag => {
   });
 };
 
-export const addTagToNote = (noteId, tagId) => {
+export const addTagToNote = (noteId, tagName) => {
   return $.ajax({
     method: "POST",
     url: `api/taggings/`,
-    data: { tagging: { note_id: noteId, tag_id: tagId } }
+    data: { tagging: { note_id: noteId, tag_name: tagName } }
   });
 };
 
@@ -43,10 +43,10 @@ export const deleteTag = tagId => {
   });
 };
 
-export const removeTagFromNote = (noteId, tagId) => {
+export const removeTagFromNote = (noteId, tagName) => {
   return $.ajax({
     method: "DELETE",
     url: `api/taggings`,
-    data: { tagging: { note_id: noteId, tag_id: tagId } }
+    data: { tagging: { note_id: noteId, tag_name: tagName } }
   });
 };

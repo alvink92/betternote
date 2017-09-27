@@ -77,8 +77,8 @@ export const createTag = tag => dispatch => {
   );
 };
 
-export const addTagToNote = (noteId, tagId) => dispatch => {
-  return TagApiUtil.addTagToNote(noteId, tagId).then(
+export const addTagToNote = (noteId, tagName) => dispatch => {
+  return TagApiUtil.addTagToNote(noteId, tagName).then(
     tagging => dispatch(receiveTagging(tagging)),
     errors => dispatch(receiveTagErrors(errors))
   );
@@ -98,8 +98,8 @@ export const deleteTag = tagId => dispatch => {
   );
 };
 
-export const removeTagFromNote = (noteId, tagId) => dispatch => {
-  return TagApiUtil.removeTagFromNote(noteId, tagId).then(tagging =>
+export const removeTagFromNote = (noteId, tagName) => dispatch => {
+  return TagApiUtil.removeTagFromNote(noteId, tagName).then(tagging =>
     dispatch(removeTagging(tagging), errors =>
       dispatch(receiveTagErrors(errors))
     )

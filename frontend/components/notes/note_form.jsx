@@ -3,6 +3,7 @@ import ReactQuill from "react-quill";
 import merge from "lodash/merge";
 import Modal from "react-modal";
 import NotebookUpdate from "../notebooks/notebook_update";
+import NoteFormTags from "../tags/note_form_tags";
 // import emptyNote from "../../util/entities_util";
 
 class NoteForm extends React.Component {
@@ -23,6 +24,11 @@ class NoteForm extends React.Component {
     this.handleDeleteNote = this.handleDeleteNote.bind(this);
   }
 
+  // move this somewhere else when Done
+  addTag(name) {}
+
+  removeTag(name) {}
+
   componentWillMount() {
     if (Object.keys(this.props.notebooks).length === 0) {
       this.props.fetchNotebooks().then(notebooks => {
@@ -30,9 +36,6 @@ class NoteForm extends React.Component {
           this.state.selectedNotebookId = Object.keys(this.props.notebooks)[0];
         }
       });
-    }
-    if (Object.keys(this.props.tags).length === 0) {
-      this.props.fetchTags();
     }
   }
 
@@ -262,9 +265,7 @@ class NoteForm extends React.Component {
           <i className="fa fa-angle-down" aria-hidden="true" />
         </button>
         <div className="note-list-wrap hidden">{this.notesList()}</div>
-        <div className="tag-list-wrap">
-          <ul className="tag-list">tags</ul>
-        </div>
+        {<NoteFormTags noteTags={this.state.note.tags} />}
       </div>
     );
   }

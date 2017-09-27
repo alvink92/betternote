@@ -9,12 +9,11 @@ import {
   deleteNote
 } from "../../actions/note_actions";
 import { fetchNotebooks } from "../../actions/notebook_actions";
-import { fetchTags } from "../../actions/tag_actions";
+import { removeTagFromNote, addTagToNote } from "../../actions/tag_actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {
     notebooks: state.entities.notebooks.all,
-    tags: state.entities.tags,
     isUpdateForm: ownProps.match.url.includes("notes/new") ? false : true,
     autoSave: ownProps.match.url.includes("notes/new") ? false : true
   };
@@ -29,7 +28,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     fetchNote: id => dispatch(fetchNote(id)),
     noteAction: note => dispatch(noteAction(note)),
     fetchNotebooks: () => dispatch(fetchNotebooks()),
-    fetchTags: () => dispatch(fetchTags()),
+    addTagToNote: (noteId, tagName) => dispatch(addTagToNote(noteId, tagName)),
+    removeTagFromNote: (noteId, tagName) =>
+      dispatch(removeTagFromNote(noteId, tagName)),
     resetCurrNote: () => dispatch(resetCurrNote())
   };
 };
