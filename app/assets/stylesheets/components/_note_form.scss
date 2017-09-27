@@ -97,12 +97,17 @@
     position: relative;
     top: 12px;
 
+    * {
+      align-items: center;
+    }
+
     .curr-notebook {
       display: flex;
       flex-direction: row;
       background: white;
       border: 0px solid white;
       margin-right: 15px;
+
       &:hover {
         cursor: pointer;
       }

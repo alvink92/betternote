@@ -257,13 +257,13 @@ class NoteForm extends React.Component {
   noteAssocs() {
     return (
       <div className="note-assocs-container">
-        <button className="curr-notebook" onClick={this.toggleNoteList}>
+        <div className="curr-notebook" onClick={this.toggleNoteList}>
           <div className="fa fa-book" aria-hidden="true" />
           <div className="notebook-title">
             {this.state.note.notebook.id ? this.state.note.notebook.title : ""}
           </div>
           <i className="fa fa-angle-down" aria-hidden="true" />
-        </button>
+        </div>
         <div className="note-list-wrap hidden">{this.notesList()}</div>
         {
           <NoteFormTags
