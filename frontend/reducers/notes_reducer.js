@@ -17,6 +17,7 @@ const notesReducer = (state = { all: {}, curr: emptyNote }, action) => {
       newState.curr = newState.curr.id
         ? newState.curr
         : Object.values(action.notes)[0];
+      newState.curr = newState.curr ? newState.curr : emptyNote;
       return newState;
     case RECEIVE_NOTE:
       newState = merge({}, state);
@@ -30,7 +31,10 @@ const notesReducer = (state = { all: {}, curr: emptyNote }, action) => {
     case REMOVE_NOTE:
       newState = merge({}, state);
       delete newState.all[action.note.id];
-      newState.curr = Object.values(newState.all)[0];
+      newState.curr = Object.values(newState.all)[0]
+        ? Object.values(newState.all)[0]
+        : emptyNote;
+
       return newState;
     default:
       return state;

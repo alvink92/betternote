@@ -20,6 +20,7 @@ class NoteForm extends React.Component {
     this.handleCancelClick = this.handleCancelClick.bind(this);
     this.handleDoneClick = this.handleDoneClick.bind(this);
     this.handleSelectNotebookClick = this.handleSelectNotebookClick.bind(this);
+    this.handleDeleteNote = this.handleDeleteNote.bind(this);
   }
 
   componentWillMount() {
@@ -75,6 +76,16 @@ class NoteForm extends React.Component {
   handleBodyChange(value) {
     const updatedNote = Object.assign(this.state.note, { body: value });
     this.setState({ note: updatedNote });
+  }
+
+  handleDeleteNote(e) {
+    this.props.deleteNote(this.state.note.id);
+    const params = this.props.match.params;
+    let newUrl = this.props.match.path.replace("/:noteId", "");
+    Object.keys(params).forEach(paramKey => {
+      newUrl = newUrl.replace(`:${paramKey}`, params[paramKey]);
+    });
+    this.props.history.push(newUrl);
   }
 
   handleTitleChange(e) {
@@ -223,7 +234,16 @@ class NoteForm extends React.Component {
   noteOpts() {
     return (
       <div className="note-opts-container">
-        <div className="note-opts-wrap">note opts</div>
+        <div className="note-opts-wrap">
+          <div className="note-info-wrap">
+            <div className="note-info-btn">i</div>
+          </div>
+          <div className="note-delete-wrap" onClick={this.handleDeleteNote}>
+            <div className="note-delete-btn">
+              <div className="fa fa-trash-o" />
+            </div>
+          </div>
+        </div>
         <div className="note-expand-collapse-btn-container">
           {this.switchExpandCollapseBtn()}
         </div>

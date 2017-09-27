@@ -5,7 +5,8 @@ import {
   fetchNote,
   updateNote,
   createNote,
-  resetCurrNote
+  resetCurrNote,
+  deleteNote
 } from "../../actions/note_actions";
 import { fetchNotebooks } from "../../actions/notebook_actions";
 import { fetchTags } from "../../actions/tag_actions";
@@ -24,6 +25,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     ? createNote
     : updateNote;
   return {
+    deleteNote: id => dispatch(deleteNote(id)),
     fetchNote: id => dispatch(fetchNote(id)),
     noteAction: note => dispatch(noteAction(note)),
     fetchNotebooks: () => dispatch(fetchNotebooks()),

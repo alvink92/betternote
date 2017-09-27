@@ -3,7 +3,7 @@ import {
   REMOVE_NOTEBOOK,
   RECEIVE_NOTEBOOKS
 } from "../actions/notebook_actions";
-import { RECEIVE_NOTE } from "../actions/note_actions";
+import { RECEIVE_NOTE, REMOVE_NOTE } from "../actions/note_actions";
 import merge from "lodash/merge";
 
 const nullNotebook = { title: "", noteIds: [] };
@@ -34,9 +34,9 @@ const notebooksReducer = (state = { all: {}, curr: nullNotebook }, action) => {
     case RECEIVE_NOTE:
       newState = merge({}, state);
       if (Object.keys(newState.all).includes(action.note.notebook.id)) {
-        let notebookNoteIds = newState[action.note.notebook.id].noteIds;
+        let notebookNoteIds = newState.all[action.note.notebook.id].noteIds;
         if (!notebookNoteIds.includes(action.note.id)) {
-          newState[action.note.notebook.id].noteIds.push(action.note.id);
+          newState.all[action.note.notebook.id].noteIds.push(action.note.id);
         }
       }
 
@@ -46,7 +46,24 @@ const notebooksReducer = (state = { all: {}, curr: nullNotebook }, action) => {
         }
       }
       return newState;
+    case REMOVE_NOTE:
+      newState = merge({}, state);
+      if (Object.keys(newState.all).includes(action.note.notebook.id)) {
+        let notebookNoteIds = newState.all[action.note.notebook.id].noteIds;
+        notebookNoteIds = notebookNoteIds.filter(
+          item => item !== action.note.id
+        );
+        newState.all[action.note.notebook.id].noteIds = notebookNoteIds;
+      }
 
+      if (newState.curr.id === action.note.notebook.id) {
+        let notebookNoteIds = newState.curr.noteIds;
+        notebookNoteIds = notebookNoteIds.filter(
+          item => item !== action.note.id
+        );
+        newState.curr.noteIds = notebookNoteIds;
+      }
+      return newState;
     default:
       return state;
   }

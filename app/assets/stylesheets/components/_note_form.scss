@@ -12,6 +12,41 @@
     width: 100%;
     justify-content: space-between;
 
+    .note-opts-wrap {
+      display: flex;
+      flex-direction: row;
+      color: #ababab;
+
+      > * {
+        margin-right: 17px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20px;
+        height: 20px;
+
+        &:hover {
+          cursor: pointer;
+          color: #2dbe60 !important;
+        }
+      }
+
+      .note-info-wrap {
+        border-radius: 50%;
+        border: 2px solid #ababab;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 14px;
+
+        &:hover {
+          border: 2px solid #2dbe60 !important;
+        }
+      }
+
+      .note-delete-wrap {
+        font-size: 19px;
+      }
+    }
+
     .note-expand-collapse-btn-container {
       button {
         height: 31px;
@@ -186,8 +221,11 @@
           border-bottom: 2px solid #ececec;
           min-height: 45px;
 
-          span.ql-formats {
+          span.ql-formats:not(:first-child) {
             border-left: 1px solid #ececec;
+          }
+
+          span.ql-formats {
             > * {
               height: 21px !important;
             }
