@@ -1,8 +1,18 @@
 import React from "react";
 
-class NoteIndex extends React.Component {
+class NoteFormTags extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      newTagName: ""
+    };
+
+    this.handleAddTagChange = this.handleAddTagChange.bind(this);
+  }
+
+  handleAddTagChange(e) {
+    this.setState({ newTagName: e.target.value });
   }
 
   render() {
@@ -19,9 +29,15 @@ class NoteIndex extends React.Component {
             );
           })}
         </div>
+        <input
+          className="add-note-tag"
+          onChange={this.handleAddTagChange}
+          value={this.state.newTagName}
+          placeholder="+"
+        />
       </div>
     );
   }
 }
 
-export default NoteIndex;
+export default NoteFormTags;
