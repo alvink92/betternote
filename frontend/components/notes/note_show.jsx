@@ -1,5 +1,7 @@
 import React from "react";
 import NoteFormContainer from "./note_form_container";
+import emptyNote from "../../util/entities_util";
+import { Route, Switch } from "react-router-dom";
 
 class NoteShow extends React.Component {
   constructor(props) {
@@ -28,7 +30,23 @@ class NoteShow extends React.Component {
   render() {
     return (
       <div className="note-show-container">
-        <NoteFormContainer note={this.props.currNote} />
+        <Switch>
+          <Route path="/notes/new">
+            <NoteFormContainer
+              note={{
+                title: "",
+                body: "",
+                notebook: {},
+                taggings: [],
+                last_updated: ""
+              }}
+              prevUrl={this.props.match.url}
+            />
+          </Route>
+          <Route path="/">
+            <NoteFormContainer note={this.props.currNote} />
+          </Route>
+        </Switch>
       </div>
     );
   }

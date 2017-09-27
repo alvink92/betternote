@@ -3,7 +3,7 @@ import ReactQuill from "react-quill";
 import merge from "lodash/merge";
 import Modal from "react-modal";
 import NotebookUpdate from "../notebooks/notebook_update";
-import emptyNote from "../../util/entities_util";
+// import emptyNote from "../../util/entities_util";
 
 class NoteForm extends React.Component {
   constructor(props) {
@@ -17,17 +17,25 @@ class NoteForm extends React.Component {
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.expandNote = this.expandNote.bind(this);
     this.collapseNote = this.collapseNote.bind(this);
+    this.handleCancelClick = this.handleCancelClick.bind(this);
     this.handleDoneClick = this.handleDoneClick.bind(this);
     this.handleSelectNotebookClick = this.handleSelectNotebookClick.bind(this);
   }
 
+  componentWillMount() {
+    if (Object.keys(this.props.notebooks).length === 0) {
+      this.props.fetchNotebooks().then(notebooks => {
+        if (!this.state.selectedNotebookId) {
+          this.state.selectedNotebookId = Object.keys(this.props.notebooks)[0];
+        }
+      });
+    }
+    if (Object.keys(this.props.tags).length === 0) {
+      this.props.fetchTags();
+    }
+  }
+
   componentDidMount() {
-    this.props.fetchNotebooks().then(notebooks => {
-      if (!this.state.selectedNotebookId) {
-        this.state.selectedNotebookId = Object.keys(this.props.notebooks)[0];
-      }
-    });
-    this.props.fetchTags();
     if (this.state.expanded) {
       this.expandNote();
     } else {
@@ -36,15 +44,15 @@ class NoteForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.match.url.includes("/notes/new")) {
-      this.props.resetCurrNote();
-      if (!this.state.expanded) {
-        this.expandNote();
-      }
-      return;
+    // if navigate to new note form always have it expanded
+    if (
+      this.props.match.url !== newProps.match.url &&
+      newProps.match.url.includes("/notes/new")
+    ) {
+      this.expandNote();
     }
 
-    // saves previous note to db if user clicks out (and note new note form)
+    // saves previous note to db if user clicks out
     if (
       this.props.match.url !== newProps.match.url &&
       !this.props.match.url.includes("/note/new")
@@ -53,8 +61,7 @@ class NoteForm extends React.Component {
     }
     // sets note to new note when redirect to new url
     this.setState({
-      note: newProps.note,
-      selectedNotebookId: newProps.note.notebook.id
+      note: newProps.note
     });
   }
 
@@ -79,7 +86,7 @@ class NoteForm extends React.Component {
 
   handleDoneClick(e) {
     const actionNote = this.formattedNoteForNoteAction(this.props.note);
-    console.log("hello");
+
     if (this.props.isUpdateForm) {
       this.props.noteAction(actionNote);
       this.collapseNote();
@@ -89,6 +96,13 @@ class NoteForm extends React.Component {
     }
 
     this.collapseNote();
+  }
+
+  handleCancelClick(e) {
+    this.collapseNote();
+    if (this.props.prevUrl) {
+      this.props.history.goBack();
+    }
   }
 
   formattedNoteForNoteAction(note) {
@@ -176,7 +190,10 @@ class NoteForm extends React.Component {
         !this.state.note.notebook.id)
     ) {
       return (
-        <button className="note-new-cancel-btn" onClick={this.collapseNote}>
+        <button
+          className="note-new-cancel-btn"
+          onClick={this.handleCancelClick}
+        >
           Cancel
         </button>
       );
