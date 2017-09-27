@@ -9,7 +9,7 @@ import {
   deleteNote
 } from "../../actions/note_actions";
 import { fetchNotebooks } from "../../actions/notebook_actions";
-import { removeTagFromNote, addTagToNote } from "../../actions/tag_actions";
+// import { removeTagFromNote, addTagToNote } from "../../actions/tag_actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -28,9 +28,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     fetchNote: id => dispatch(fetchNote(id)),
     noteAction: note => dispatch(noteAction(note)),
     fetchNotebooks: () => dispatch(fetchNotebooks()),
-    addTagToNote: (noteId, tagName) => dispatch(addTagToNote(noteId, tagName)),
-    removeTagFromNote: (noteId, tagName) =>
-      dispatch(removeTagFromNote(noteId, tagName)),
+    // addTagToNote: (noteId, tagName) => dispatch(addTagToNote(noteId, tagName)),
+    // removeTagFromNote: (noteId, tagName) =>
+    //   dispatch(removeTagFromNote(noteId, tagName)),
     resetCurrNote: () => dispatch(resetCurrNote())
   };
 };

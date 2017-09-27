@@ -35,7 +35,7 @@ class NoteFormTags extends React.Component {
         <div className="note-form-tags">
           {noteTags.map(tag => {
             return (
-              <div className="note-form-tag-container">
+              <div key={tag.name} className="note-form-tag-container">
                 <div className="note-form-tag">{tag.name}</div>
                 <div
                   className="note-form-tag-delete"

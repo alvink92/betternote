@@ -38,13 +38,6 @@ class Sidebar extends React.Component {
             </div>
           </Link>
         </div>
-        <div className="grp1-btn-cont">
-          <a className="sidebar-link replacewith-Link">
-            <div className="grp1-btn">
-              <div className="fa fa-search" aria-hidden="true" />
-            </div>
-          </a>
-        </div>
       </div>
     );
   }

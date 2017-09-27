@@ -73,9 +73,11 @@ class NoteForm extends React.Component {
     }
   }
 
-  addTagToState(tag) {
+  addTagToState(addTag) {
     let newNote = this.state.note;
-    newNote.tags.push(tag);
+    if (!newNote.tags.map(tag => tag.name).includes(addTag.name)) {
+      newNote.tags.push(addTag);
+    }
     this.setState({ note: newNote });
   }
 
@@ -139,6 +141,7 @@ class NoteForm extends React.Component {
     if (note.id) {
       formattedNote.id = note.id;
     }
+    console.log(formattedNote);
     return formattedNote;
   }
 
