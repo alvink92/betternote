@@ -7,12 +7,6 @@ class NoteFormTags extends React.Component {
     this.state = {
       newTagName: ""
     };
-
-    this.handleAddTagChange = this.handleAddTagChange.bind(this);
-  }
-
-  handleAddTagChange(e) {
-    this.setState({ newTagName: e.target.value });
   }
 
   render() {
@@ -30,8 +24,7 @@ class NoteFormTags extends React.Component {
           })}
         </div>
         <input
-          className="add-note-tag"
-          onChange={this.handleAddTagChange}
+          className="new-tag"
           value={this.state.newTagName}
           placeholder="+"
         />

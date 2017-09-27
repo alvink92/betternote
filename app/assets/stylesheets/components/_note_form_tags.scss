@@ -14,7 +14,7 @@
   }
 
   .note-form-tag-container,
-  .add-note-tag {
+  #add-note-tag {
     margin-right: 7px;
     border: 1px solid #ececec;
     background: #f8f8f8;
@@ -23,14 +23,17 @@
     padding: 0px 6px;
   }
 
+  .note-form-tags,
+  #add-note-tag {
+    font-size: 13px;
+    color: #606060;
+  }
+
   .note-form-tags {
     display: flex;
     flex-direction: row;
-    font-size: 13px;
-    color: #606060;
 
-    .note-form-tag-container,
-    .add-tag-note {
+    .note-form-tag-container {
       display: flex;
       justify-content: center;
 
@@ -41,6 +44,6 @@
   }
 
   .add-note-tag {
-    width: auto;
+    min-width: 32px;
   }
 }
