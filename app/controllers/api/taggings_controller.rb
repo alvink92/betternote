@@ -4,7 +4,7 @@ class Api::TaggingsController < ApplicationController
   # INCOMING VERY HACKY CODE
 
   def create
-    @tag = Tag.find_by_name(tagging_params[:tag_name])
+    @tag = current_user.tags.find_by_name(tagging_params[:tag_name])
     unless @tag
       @tag = Tag.create(name: tagging_params[:tag_name], owner_id: current_user.id)
     end
@@ -30,7 +30,7 @@ class Api::TaggingsController < ApplicationController
   end
 
   def destroy
-    @tag = Tag.find_by_name(tagging_params[:tag_name])
+    @tag = current_user.tags.find_by_name(tagging_params[:tag_name])
     @tagging = current_user.taggings.find_by(
       note_id: tagging_params[:note_id],
       tag_id: @tag.id)
