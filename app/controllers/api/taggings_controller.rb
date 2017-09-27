@@ -23,6 +23,14 @@ class Api::TaggingsController < ApplicationController
     end
   end
 
+  def destroy
+    @tagging = current_user.taggings.find_by(
+      note_id: tagging_params[:note_id],
+      tag_id: tagging_params[:tag_id])
+    @tagging.destroy
+    render json: @tagging
+  end
+
   private
 
   def tagging_params

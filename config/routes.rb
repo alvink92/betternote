@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       resources :notes, only: [:index]
     end
 
-    resources :taggings, only: [:create, :destroy]
+    resources :taggings, only: [:create]
+    delete 'taggings', :to => 'taggings#destroy'
   end
 end
