@@ -38,7 +38,9 @@ class NoteForm extends React.Component {
   componentWillReceiveProps(newProps) {
     if (newProps.match.url.includes("/notes/new")) {
       this.props.resetCurrNote();
-      this.expandNote();
+      if (!this.state.expanded) {
+        this.expandNote();
+      }
       return;
     }
 
@@ -77,24 +79,16 @@ class NoteForm extends React.Component {
 
   handleDoneClick(e) {
     const actionNote = this.formattedNoteForNoteAction(this.props.note);
-
+    console.log("hello");
     if (this.props.isUpdateForm) {
       this.props.noteAction(actionNote);
       this.collapseNote();
     } else {
-      this.props
-        .noteAction(actionNote)
-        .then(note =>
-          this.props.history.push(
-            `/notebooks/${actionNote.notebook_id}/notes/`,
-            err => {
-              this.props.history.push(`/notes`);
-              this.collapseNote();
-            }
-          )
-        )
-        .then(this.collapseNote());
+      this.props.noteAction(actionNote);
+      this.props.history.push(`/notebooks/${actionNote.notebook_id}/notes/`);
     }
+
+    this.collapseNote();
   }
 
   formattedNoteForNoteAction(note) {
