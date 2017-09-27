@@ -100,3 +100,12 @@
 .fa-sign-out {
   color: gray !important;
 }
+
+// hacky centering fix
+.sidebar-link .grp1-btn {
+  margin-top: -4px;
+}
+
+.sidebar-link .filter-btn-cont {
+  padding-left: 1.5px;
+}
