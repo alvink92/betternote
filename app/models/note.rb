@@ -13,7 +13,7 @@
 
 class Note < ApplicationRecord
   validates :author, :notebook, :title, presence: true
-  validates_uniqueness_of :title, scope: [:author_id, :notebook_id]
+  # validates_uniqueness_of :title, scope: [:author_id, :notebook_id]
 
   include ActionView::Helpers::DateHelper
 

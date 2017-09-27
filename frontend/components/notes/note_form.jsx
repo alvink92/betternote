@@ -86,8 +86,11 @@ class NoteForm extends React.Component {
         .noteAction(actionNote)
         .then(note =>
           this.props.history.push(
-            `/notebooks/${note.notebookId}/notes/${note.id}`,
-            err => this.props.history.push(`/notes`).then(this.collapseNote())
+            `/notebooks/${actionNote.notebook_id}/notes/`,
+            err => {
+              this.props.history.push(`/notes`);
+              this.collapseNote();
+            }
           )
         )
         .then(this.collapseNote());
