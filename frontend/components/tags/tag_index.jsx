@@ -12,7 +12,7 @@ class TagIndex extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.clearTags();
+    // this.props.clearTags();
   }
 
   tagIndexItems() {

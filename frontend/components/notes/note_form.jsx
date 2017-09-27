@@ -76,11 +76,6 @@ class NoteForm extends React.Component {
     }
   }
 
-  handleBodyChange(value) {
-    const updatedNote = Object.assign(this.state.note, { body: value });
-    this.setState({ note: updatedNote });
-  }
-
   handleDeleteNote(e) {
     this.props.deleteNote(this.state.note.id);
     const params = this.props.match.params;
@@ -89,6 +84,11 @@ class NoteForm extends React.Component {
       newUrl = newUrl.replace(`:${paramKey}`, params[paramKey]);
     });
     this.props.history.push(newUrl);
+  }
+
+  handleBodyChange(value) {
+    const updatedNote = Object.assign(this.state.note, { body: value });
+    this.setState({ note: updatedNote });
   }
 
   handleTitleChange(e) {
@@ -265,7 +265,13 @@ class NoteForm extends React.Component {
           <i className="fa fa-angle-down" aria-hidden="true" />
         </button>
         <div className="note-list-wrap hidden">{this.notesList()}</div>
-        {<NoteFormTags noteTags={this.state.note.tags} />}
+        {
+          <NoteFormTags
+            noteTags={this.state.note.tags}
+            addTagToNote={this.props.addTagToNote}
+            removeTagFromNote={this.props.removeTagFromNote}
+          />
+        }
       </div>
     );
   }

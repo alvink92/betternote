@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // import * as nb from "./actions/notebook_actions";
-import * as tag from "./actions/tag_actions";
-//
-// window.nb = nb;
+// import * as tag from "./actions/tag_actions";
+// //
+// // window.nb = nb;
 // window.tag = tag;

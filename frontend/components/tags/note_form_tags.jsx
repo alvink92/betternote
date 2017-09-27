@@ -6,9 +6,19 @@ class NoteIndex extends React.Component {
   }
 
   render() {
+    const noteTags = this.props.noteTags ? this.props.noteTags : [];
     return (
       <div className="note-form-tags-container">
-        <div className="note-form-tags" />
+        <div className="fa fa-tag" />
+        <div className="note-form-tags">
+          {noteTags.map(tag => {
+            return (
+              <div className="note-form-tag-container">
+                <div className="note-form-tag">{tag.name}</div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }
