@@ -3,6 +3,7 @@ import {
   REMOVE_NOTEBOOK,
   RECEIVE_NOTEBOOKS
 } from "../actions/notebook_actions";
+import { RECEIVE_NOTE } from "../actions/note_actions";
 import merge from "lodash/merge";
 
 const nullNotebook = { title: "", noteIds: [] };
@@ -30,6 +31,21 @@ const notebooksReducer = (state = { all: {}, curr: nullNotebook }, action) => {
       newState = merge({}, state);
       delete newState.all[action.notebook.id];
       return newState;
+    case RECEIVE_NOTE:
+      newState = merge({}, state);
+      if (Object.keys(newState.all).includes(action.note.notebook.id)) {
+        let notebookNoteIds = newState[action.note.notebook.id].noteIds;
+        if (!notebookNoteIds.includes(action.note.id)) {
+          newState[action.note.notebook.id].noteIds.push(action.note.id);
+        }
+      }
+      if (newState.curr.id === action.note.notebook.id) {
+        if (!newState.curr.notebookIds.includes(action.note.id)) {
+          newState.curr.notebookIds.push(action.note.id);
+        }
+      }
+      return newState;
+
     default:
       return state;
   }
