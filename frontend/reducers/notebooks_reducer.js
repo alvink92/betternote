@@ -39,9 +39,10 @@ const notebooksReducer = (state = { all: {}, curr: nullNotebook }, action) => {
           newState[action.note.notebook.id].noteIds.push(action.note.id);
         }
       }
+
       if (newState.curr.id === action.note.notebook.id) {
-        if (!newState.curr.notebookIds.includes(action.note.id)) {
-          newState.curr.notebookIds.push(action.note.id);
+        if (!newState.curr.noteIds.includes(action.note.id)) {
+          newState.curr.noteIds.push(action.note.id);
         }
       }
       return newState;
