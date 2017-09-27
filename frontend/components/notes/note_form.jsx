@@ -55,7 +55,7 @@ class NoteForm extends React.Component {
     // saves previous note to db if user clicks out
     if (
       this.props.match.url !== newProps.match.url &&
-      !this.props.match.url.includes("/note/new")
+      this.props.isUpdateForm
     ) {
       this.props.noteAction(this.formattedNoteForNoteAction(this.props.note));
     }
@@ -67,7 +67,7 @@ class NoteForm extends React.Component {
 
   componentWillUnmount() {
     // if component unmounts, then saves current note to db
-    if (!this.props.match.url.includes("/note/new")) {
+    if (this.props.isUpdateForm) {
       this.props.noteAction(this.formattedNoteForNoteAction(this.props.note));
     }
   }
