@@ -142,6 +142,7 @@ class NoteForm extends React.Component {
       "note-opts-wrap"
     )[0];
 
+    // setTimeout(() => sideBar.classList.add("move-side-bar-left"), 200);
     sideBar.classList.add("move-side-bar-left");
     notesIndexContainer.classList.add("move-note-index-container-left");
     noteShowContainer.classList.add("move-note-content-left");

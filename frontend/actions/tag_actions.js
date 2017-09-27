@@ -1,9 +1,11 @@
 import * as TagApiUtil from "../util/tags_api_util";
 
 export const RECEIVE_TAG = "RECEIVE_TAG";
+export const RECEIVE_TAGGING = "RECEIVE_TAGGING";
 export const REMOVE_TAG = "REMOVE_TAG";
 export const RECEIVE_TAGS = "RECEIVE_TAGS";
 export const RECEIVE_TAG_ERRORS = "RECEIVE_TAG_ERRORS";
+export const REMOVE_TAGGING = "REMOVE_TAGGING";
 
 export const receiveTag = tag => {
   return {
@@ -12,10 +14,10 @@ export const receiveTag = tag => {
   };
 };
 
-export const removeTag = tag => {
+export const receiveTagging = tagging => {
   return {
-    type: REMOVE_TAG,
-    tag
+    type: RECEIVE_TAGGING,
+    tagging
   };
 };
 
@@ -26,10 +28,17 @@ export const receiveTags = tags => {
   };
 };
 
-export const receiveTagErrors = errors => {
+export const removeTag = tag => {
   return {
-    type: RECEIVE_TAG_ERRORS,
-    errors
+    type: REMOVE_TAG,
+    tag
+  };
+};
+
+export const removeTagging = tagging => {
+  return {
+    type: REMOVE_TAGGING,
+    tagging
   };
 };
 
@@ -37,6 +46,13 @@ export const clearTags = () => {
   return {
     type: RECEIVE_TAGS,
     tags: {}
+  };
+};
+
+export const receiveTagErrors = errors => {
+  return {
+    type: RECEIVE_TAG_ERRORS,
+    errors
   };
 };
 
@@ -61,6 +77,13 @@ export const createTag = tag => dispatch => {
   );
 };
 
+export const addTagToNote = (noteId, tagId) => dispatch => {
+  return TagApiUtil.addTagToNote(noteId, tagId).then(
+    tagging => dispatch(receiveTagging(tagging)),
+    errors => dispatch(receiveTagErrors(errors))
+  );
+};
+
 export const updateTag = tag => dispatch => {
   return TagApiUtil.updateTag(tag).then(
     updatedTag => dispatch(receiveTag(updatedTag)),
@@ -72,5 +95,13 @@ export const deleteTag = tagId => dispatch => {
   return TagApiUtil.deleteTag(tagId).then(
     removedTag => dispatch(removeTag(removedTag)),
     errors => dispatch(receiveTagErrors(errors))
+  );
+};
+
+export const removeTagFromNote = (noteId, tagId) => dispatch => {
+  return TagApiUtil.removeTagFromNote(noteId, tagId).then(tagging =>
+    dispatch(removeTagging(tagging), errors =>
+      dispatch(receiveTagErrors(errors))
+    )
   );
 };
