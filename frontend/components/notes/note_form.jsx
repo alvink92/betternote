@@ -14,6 +14,8 @@ class NoteForm extends React.Component {
       expanded: this.props.isUpdateForm ? false : true
     };
 
+    this.addTagToState = this.addTagToState.bind(this);
+    this.removeTagFromState = this.removeTagFromState.bind(this);
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.expandNote = this.expandNote.bind(this);
@@ -23,11 +25,6 @@ class NoteForm extends React.Component {
     this.handleSelectNotebookClick = this.handleSelectNotebookClick.bind(this);
     this.handleDeleteNote = this.handleDeleteNote.bind(this);
   }
-
-  // move this somewhere else when Done
-  addTag(name) {}
-
-  removeTag(name) {}
 
   componentWillMount() {
     if (Object.keys(this.props.notebooks).length === 0) {
@@ -74,6 +71,20 @@ class NoteForm extends React.Component {
     if (this.props.isUpdateForm) {
       this.props.noteAction(this.formattedNoteForNoteAction(this.props.note));
     }
+  }
+
+  addTagToState(tag) {
+    let newNote = this.state.note;
+    newNote.tags.push(tag);
+    this.setState({ note: newNote });
+  }
+
+  removeTagFromState(removeTag) {
+    let newNote = this.state.note;
+    newNote.tags = this.state.note.tags.filter(
+      tag => tag.name !== removeTag.name
+    );
+    this.setState({ note: newNote });
   }
 
   handleDeleteNote(e) {
@@ -124,6 +135,7 @@ class NoteForm extends React.Component {
     formattedNote.title = note.title;
     formattedNote.body = note.body;
     formattedNote.notebook_id = note.notebook.id;
+    formattedNote.tags = note.tags ? note.tags : [];
     if (note.id) {
       formattedNote.id = note.id;
     }
@@ -267,9 +279,12 @@ class NoteForm extends React.Component {
         <div className="note-list-wrap hidden">{this.notesList()}</div>
         {
           <NoteFormTags
+            noteId={this.state.note.id}
             noteTags={this.state.note.tags}
-            addTagToNote={this.props.addTagToNote}
+            addTagToState={this.addTagToState}
+            removeTagFromState={this.removeTagFromState}
             removeTagFromNote={this.props.removeTagFromNote}
+            isUpdateForm={this.props.isUpdateForm}
           />
         }
       </div>

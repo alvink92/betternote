@@ -45,6 +45,7 @@ class Api::NotesController < ApplicationController
   end
 
   def update
+    debugger
     @note = current_user.notes.where(id: params[:id]).first
 
     if @note
@@ -72,6 +73,6 @@ class Api::NotesController < ApplicationController
   private
 
   def note_params
-    params.require(:note).permit(:notebook_id, :title, :body)
+    params.require(:note).permit(:notebook_id, :title, :body, :tags)
   end
 end

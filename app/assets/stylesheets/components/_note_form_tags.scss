@@ -14,7 +14,7 @@
   }
 
   .note-form-tag-container,
-  #add-note-tag {
+  .add-note-tag {
     margin-right: 7px;
     border: 1px solid #ececec;
     background: #f8f8f8;
@@ -24,14 +24,21 @@
   }
 
   .note-form-tags,
-  #add-note-tag {
+  .add-note-tag {
     font-size: 13px;
     color: #606060;
+  }
+
+  .note-form-tags::-webkit-scrollbar {
+    display: none;
   }
 
   .note-form-tags {
     display: flex;
     flex-direction: row;
+    max-width: 600px;
+    overflow-x: auto;
+    overflow-y: hidden;
 
     .note-form-tag-container {
       display: flex;
@@ -39,11 +46,22 @@
 
       &:hover {
         cursor: default;
+        background: #2dbe60;
+        color: white;
+      }
+
+      .note-form-tag {
+        margin-right: 5px;
+      }
+
+      .note-form-tag-delete {
+        cursor: pointer;
+        font-size: 11px;
       }
     }
   }
 
   .add-note-tag {
-    min-width: 32px;
+    width: 45px;
   }
 }
