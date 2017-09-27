@@ -146,13 +146,11 @@ class NoteForm extends React.Component {
     sideBar.classList.add("move-side-bar-left");
     notesIndexContainer.classList.add("move-note-index-container-left");
     noteShowContainer.classList.add("move-note-content-left");
-    noteAssocsContainer.classList.add("move-note-assocs-container-left");
     noteOptsContainer.classList.add("move-note-opts-wrap-left");
 
     sideBar.classList.remove("move-side-bar-right");
     notesIndexContainer.classList.remove("move-note-index-container-right");
     noteShowContainer.classList.remove("move-note-content-right");
-    noteAssocsContainer.classList.remove("move-note-assocs-container-right");
     noteOptsContainer.classList.remove("move-note-opts-wrap-right");
   }
 
@@ -289,12 +287,10 @@ class NoteForm extends React.Component {
   render() {
     return (
       <div className="note-container">
-        <div className="note-opts-assocs-wrapper">
-          {this.noteOpts()}
-          {this.noteAssocs()}
-        </div>
+        <div className="note-opts-assocs-wrapper">{this.noteOpts()}</div>
         <div className="note-content-container">
           <div className="note-content">
+            {this.noteAssocs()}
             <input
               className="note-title"
               value={this.state.note.title}
