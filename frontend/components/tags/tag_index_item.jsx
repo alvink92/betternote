@@ -52,7 +52,9 @@ class TagIndexItem extends React.Component {
   }
 
   hiddenModButtons() {
-    return (
+    return this.state.editable ? (
+      <div className="mod-btn-container hidden" />
+    ) : (
       <div className="mod-btn-container hidden">
         <div className="tag-edit" onClick={this.handleUpdateClick}>
           <i className="fa fa-pencil" aria-hidden="true" />
@@ -92,9 +94,10 @@ class TagIndexItem extends React.Component {
   render() {
     return (
       <div className="tag-item-container" onClick={this.handleClick}>
-        {this.tagSwitch()}
-        <div className="hack" />
-        {this.hiddenModButtons()}
+        <div className="tag-opts-wrap">
+          {this.tagSwitch()}
+          {this.hiddenModButtons()}
+        </div>
       </div>
     );
   }

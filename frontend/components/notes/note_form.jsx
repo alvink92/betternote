@@ -429,6 +429,7 @@ class NoteForm extends React.Component {
               value={this.state.note.body}
               onChange={this.handleBodyChange}
               onClick={this.showToolbar}
+              placeholder="Drag files here or just start typing..."
             />
           </div>
         </div>

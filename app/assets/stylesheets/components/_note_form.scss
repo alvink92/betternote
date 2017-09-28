@@ -257,7 +257,7 @@
 
           .ql-editor {
             overflow-y: auto;
-            max-height: 75vh;
+            max-height: calc(100vh - 210px);
           }
         }
       }
