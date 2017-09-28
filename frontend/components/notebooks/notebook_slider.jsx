@@ -26,6 +26,7 @@ class NotebookSlider extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.handleSliderOverlayClick = this.handleSliderOverlayClick.bind(this);
   }
 
   componentWillMount() {
@@ -45,6 +46,10 @@ class NotebookSlider extends React.Component {
 
   closeModal() {
     this.setState({ modalIsOpen: false });
+  }
+
+  handleSliderOverlayClick() {
+    this.props.history.push("/notes");
   }
 
   searchInput(type) {
@@ -85,6 +90,10 @@ class NotebookSlider extends React.Component {
             deleteNotebook={this.props.deleteNotebook}
           />
         </div>
+        <div
+          onClick={this.handleSliderOverlayClick}
+          className="slider-overlay"
+        />
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
