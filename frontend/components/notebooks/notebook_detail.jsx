@@ -1,6 +1,6 @@
 import React from "react";
 
-class NotebookUpdate extends React.Component {
+class NotebookDetail extends React.Component {
   constructor(props) {
     super(props);
 
@@ -101,4 +101,4 @@ class NotebookUpdate extends React.Component {
   }
 }
 
-export default NotebookUpdate;
+export default NotebookDetail;

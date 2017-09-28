@@ -2,7 +2,7 @@ import React from "react";
 import ReactQuill from "react-quill";
 import merge from "lodash/merge";
 import Modal from "react-modal";
-import NotebookUpdate from "../notebooks/notebook_update";
+import NotebookCreate from "../notebooks/notebook_create";
 import NoteFormTags from "../tags/note_form_tags";
 // import emptyNote from "../../util/entities_util";
 

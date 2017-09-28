@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import NotebookUpdate from "./notebook_update";
+import NotebookDetail from "./notebook_detail";
 import { withRouter } from "react-router";
 import { updateNotebook, deleteNotebook } from "../../actions/notebook_actions";
 import { fetchNotes } from "../../actions/note_actions";
@@ -17,5 +17,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(NotebookUpdate)
+  connect(mapStateToProps, mapDispatchToProps)(NotebookDetail)
 );
