@@ -30,6 +30,7 @@ export const emptyNote = {
   body: "",
   notebook: {},
   tags: [],
+  username: "",
   last_updated: "",
   created_at: "",
   updated_at: ""

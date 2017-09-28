@@ -4,7 +4,17 @@ import merge from "lodash/merge";
 import Modal from "react-modal";
 import NotebookCreate from "../notebooks/notebook_create";
 import NoteFormTags from "../tags/note_form_tags";
-// import emptyNote from "../../util/entities_util";
+import NoteDetailContainer from "./note_detail_container";
+
+const modalStyles = {
+  content: {
+    top: "0px",
+    left: "0px",
+    height: "100%",
+    width: "100%",
+    overflow: "hidden"
+  }
+};
 
 class NoteForm extends React.Component {
   constructor(props) {
@@ -14,19 +24,30 @@ class NoteForm extends React.Component {
       expanded: this.props.isUpdateForm ? false : true
     };
 
+    // action handlers
     this.addTagDispatch = this.addTagDispatch.bind(this);
     this.removeTagDispatch = this.removeTagDispatch.bind(this);
-    this.handleBodyChange = this.handleBodyChange.bind(this);
-    this.handleTitleChange = this.handleTitleChange.bind(this);
+    // UI
     this.expandNote = this.expandNote.bind(this);
     this.collapseNote = this.collapseNote.bind(this);
+    // Click/onchange handlers
+    this.handleBodyChange = this.handleBodyChange.bind(this);
+    this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleCancelClick = this.handleCancelClick.bind(this);
     this.handleDoneClick = this.handleDoneClick.bind(this);
     this.handleSelectNotebookClick = this.handleSelectNotebookClick.bind(this);
     this.handleDeleteNote = this.handleDeleteNote.bind(this);
+    // modal
+    this.openModal = this.openModal.bind(this);
+    this.afterOpenModal = this.afterOpenModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
   componentWillMount() {
+    this.setState({
+      modalIsOpen: false
+    });
+
     if (Object.keys(this.props.notebooks).length === 0) {
       this.props.fetchNotebooks().then(notebooks => {
         if (!this.state.selectedNotebookId) {
@@ -71,6 +92,16 @@ class NoteForm extends React.Component {
     if (this.props.isUpdateForm) {
       this.props.noteAction(this.formattedNoteForNoteAction(this.props.note));
     }
+  }
+
+  openModal() {
+    this.setState({ modalIsOpen: true });
+  }
+
+  afterOpenModal() {}
+
+  closeModal() {
+    this.setState({ modalIsOpen: false });
   }
 
   addTagDispatch(addTag) {
@@ -151,12 +182,11 @@ class NoteForm extends React.Component {
     if (note.id) {
       formattedNote.id = note.id;
     }
-    console.log(formattedNote);
     return formattedNote;
   }
 
-  toggleNoteList() {
-    const noteList = document.getElementsByClassName("note-list-wrap")[0];
+  toggleNotebooksList() {
+    const noteList = document.getElementsByClassName("notebook-list-wrap")[0];
     if (Array.from(noteList.classList).includes("hidden")) {
       noteList.classList.remove("hidden");
     } else {
@@ -185,12 +215,16 @@ class NoteForm extends React.Component {
     sideBar.classList.add("move-side-bar-left");
     notesIndexContainer.classList.add("move-note-index-container-left");
     noteShowContainer.classList.add("move-note-content-left");
-    noteOptsContainer.classList.add("move-note-opts-wrap-left");
+    if (noteOptsContainer) {
+      noteOptsContainer.classList.add("move-note-opts-wrap-left");
+    }
 
     sideBar.classList.remove("move-side-bar-right");
     notesIndexContainer.classList.remove("move-note-index-container-right");
     noteShowContainer.classList.remove("move-note-content-right");
-    noteOptsContainer.classList.remove("move-note-opts-wrap-right");
+    if (noteOptsContainer) {
+      noteOptsContainer.classList.remove("move-note-opts-wrap-right");
+    }
   }
 
   collapseNote() {
@@ -203,9 +237,6 @@ class NoteForm extends React.Component {
     const noteShowContainer = document.getElementsByClassName(
       "note-content"
     )[0];
-    const noteAssocsContainer = document.getElementsByClassName(
-      "note-assocs-container"
-    )[0];
     const noteOptsContainer = document.getElementsByClassName(
       "note-opts-wrap"
     )[0];
@@ -213,14 +244,16 @@ class NoteForm extends React.Component {
     sideBar.classList.add("move-side-bar-right");
     notesIndexContainer.classList.add("move-note-index-container-right");
     noteShowContainer.classList.add("move-note-content-right");
-    noteAssocsContainer.classList.add("move-note-assocs-container-right");
-    noteOptsContainer.classList.add("move-note-opts-wrap-right");
+    if (noteOptsContainer) {
+      noteOptsContainer.classList.add("move-note-opts-wrap-right");
+    }
 
     sideBar.classList.remove("move-side-bar-left");
     notesIndexContainer.classList.remove("move-note-index-container-left");
     noteShowContainer.classList.remove("move-note-content-left");
-    noteAssocsContainer.classList.remove("move-note-assocs-container-left");
-    noteOptsContainer.classList.remove("move-note-opts-wrap-left");
+    if (noteOptsContainer) {
+      noteOptsContainer.classList.remove("move-note-opts-wrap-left");
+    }
   }
 
   switchDoneCancelBtn() {
@@ -264,7 +297,7 @@ class NoteForm extends React.Component {
       return (
         <div className="note-opts-container">
           <div className="note-opts-wrap">
-            <div className="note-info-wrap">
+            <div className="note-info-wrap" onClick={this.openModal}>
               <div className="note-info-btn">i</div>
             </div>
             <div className="note-delete-wrap" onClick={this.handleDeleteNote}>
@@ -293,14 +326,14 @@ class NoteForm extends React.Component {
   noteAssocs() {
     return (
       <div className="note-assocs-container">
-        <div className="curr-notebook" onClick={this.toggleNoteList}>
+        <div className="curr-notebook" onClick={this.toggleNotebooksList}>
           <div className="fa fa-book" aria-hidden="true" />
           <div className="notebook-title">
             {this.state.note.notebook.id ? this.state.note.notebook.title : ""}
           </div>
           <i className="fa fa-angle-down" aria-hidden="true" />
         </div>
-        <div className="note-list-wrap hidden">{this.notesList()}</div>
+        <div className="notebook-list-wrap hidden">{this.notebookList()}</div>
         {
           <NoteFormTags
             noteId={this.state.note.id}
@@ -319,13 +352,13 @@ class NoteForm extends React.Component {
     const newNotebook = this.props.notebooks[notebookId];
     const currNote = this.state.note;
     currNote.notebook = newNotebook ? newNotebook : {};
-    this.toggleNoteList();
+    this.toggleNotebooksList();
     this.setState({ note: currNote });
   }
 
-  notesList() {
+  notebookList() {
     return (
-      <div className="note-list">
+      <div className="notebook-list">
         <div className="create-new-notebook notebook-title-container">
           <div className="notebook-title-wrapper">
             <div className="notebook-title">
@@ -347,6 +380,20 @@ class NoteForm extends React.Component {
           </div>
         ))}
       </div>
+    );
+  }
+
+  noteDetail() {
+    return (
+      <Modal
+        isOpen={this.state.modalIsOpen}
+        onAfterOpen={this.afterOpenModal}
+        onRequestClose={this.closeModal}
+        style={modalStyles}
+        contentLabel="Note Detail Modal"
+      >
+        <NoteDetailContainer closeModal={this.closeModal} />
+      </Modal>
     );
   }
 
@@ -377,6 +424,7 @@ class NoteForm extends React.Component {
             />
           </div>
         </div>
+        {this.noteDetail()}
       </div>
     );
   }
