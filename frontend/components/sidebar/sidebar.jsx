@@ -12,7 +12,25 @@ class Sidebar extends React.Component {
     this.hideAllPanes = this.hideAllPanes.bind(this);
   }
 
+  componentDidMount() {
+    if (this.props.match.url === "/notebooks") {
+      this.showNbsPane();
+    } else if (this.props.match.url === "/tags") {
+      this.showTagsPane();
+    } else {
+      this.hideAllPanes();
+    }
+  }
+
   componentWillReceiveProps(newProps) {
+    if (newProps.match.url === "/notebooks") {
+      this.showNbsPane();
+    } else if (newProps.match.url === "/tags") {
+      this.showTagsPane();
+    } else {
+      this.hideAllPanes();
+    }
+
     const oldUrl = this.props.match.url;
     const newUrl = newProps.match.url;
     if (oldUrl === "/notebooks" && newUrl === "/notebooks") {
@@ -53,12 +71,24 @@ class Sidebar extends React.Component {
     dom.classList.add("slideOutLeft");
   }
 
-  showNbsPane() {
+  showNbsPane(e) {
+    if (e) {
+      if (e.currentTarget.className.includes("active")) {
+        this.hideNbsPane();
+        return;
+      }
+    }
     this.hideTagsPane();
     this.slidePanelInLeft("notebooks-sliding-pane");
   }
 
-  showTagsPane() {
+  showTagsPane(e) {
+    if (e) {
+      if (e.currentTarget.className.includes("active")) {
+        this.hideTagsPane();
+        return;
+      }
+    }
     this.hideNbsPane();
     this.slidePanelInLeft("tags-sliding-pane");
   }
@@ -99,21 +129,21 @@ class Sidebar extends React.Component {
       <div className="btnGrp btnGrp2">
         <div className="sidebar-link-cont">
           <NavLink to="/notes" className="sidebar-link">
-            <div className="filter-btn-cont" onClick={this.hideAllPanes}>
+            <div className="filter-btn-cont">
               <div className="fa fa-file-text" aria-hidden="true" />
             </div>
           </NavLink>
         </div>
         <div className="sidebar-link-cont">
           <NavLink to="/notebooks" className="sidebar-link">
-            <div className="filter-btn-cont" onClick={this.showNbsPane}>
+            <div className="filter-btn-cont">
               <div className="fa fa-book" aria-hidden="true" />
             </div>
           </NavLink>
         </div>
         <div className="sidebar-link-cont">
           <NavLink to="/tags" className="sidebar-link">
-            <div className="filter-btn-cont" onClick={this.showTagsPane}>
+            <div className="filter-btn-cont">
               <div className="fa fa-tag" aria-hidden="true" />
             </div>
           </NavLink>
@@ -133,7 +163,10 @@ class Sidebar extends React.Component {
   render() {
     return (
       <div className="sidebar-container">
-        <div onClick={this.hideAllPanes} className="slider-overlay hidden" />
+        <div
+          onClick={() => this.props.history.push("/notes")}
+          className="slider-overlay hidden"
+        />
         <div className="sidebar">
           {this.logoContainer()}
           {this.btnGrp1()}
