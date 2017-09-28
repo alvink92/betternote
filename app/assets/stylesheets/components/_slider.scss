@@ -14,8 +14,6 @@
   left: 72px !important;
   background: white;
   z-index: 500;
-
-  overflow-y: auto;
 }
 
 .header-container {
@@ -70,5 +68,10 @@
 
 .nb-index-container,
 .tag-index-container {
-  overflow-y: auto;
+  overflow-y: scroll;
+  height: calc(100vh - 120px);
+  max-height: calc(100vh - 130px);
+}
+
+.nb-index-container {
 }

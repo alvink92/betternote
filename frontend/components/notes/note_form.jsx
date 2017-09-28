@@ -130,6 +130,19 @@ class NoteForm extends React.Component {
     }
   }
 
+  noteContainerClickListener(e) {
+    const noteList = document.getElementsByClassName("notebook-list-wrap")[0];
+    if (e.target.className !== "curr-notebook-title") {
+      if (noteList) {
+        noteList.classList.add("hidden");
+      }
+    } else if (e.target.className === "curr-notebook-title") {
+      if (noteList) {
+        noteList.classList.remove("hidden");
+      }
+    }
+  }
+
   handleDeleteNote(e) {
     this.props.deleteNote(this.state.note.id);
     const params = this.props.match.params;
@@ -183,15 +196,6 @@ class NoteForm extends React.Component {
       formattedNote.id = note.id;
     }
     return formattedNote;
-  }
-
-  toggleNotebooksList() {
-    const noteList = document.getElementsByClassName("notebook-list-wrap")[0];
-    if (Array.from(noteList.classList).includes("hidden")) {
-      noteList.classList.remove("hidden");
-    } else {
-      noteList.classList.add("hidden");
-    }
   }
 
   expandNote() {
@@ -326,9 +330,9 @@ class NoteForm extends React.Component {
   noteAssocs() {
     return (
       <div className="note-assocs-container">
-        <div className="curr-notebook" onClick={this.toggleNotebooksList}>
+        <div className="curr-notebook">
           <div className="fa fa-book" aria-hidden="true" />
-          <div className="notebook-title">
+          <div className="curr-notebook-title">
             {this.state.note.notebook.id ? this.state.note.notebook.title : ""}
           </div>
           <i className="fa fa-angle-down" aria-hidden="true" />
@@ -349,10 +353,14 @@ class NoteForm extends React.Component {
   }
 
   handleSelectNotebookClick(notebookId) {
+    const noteList = document.getElementsByClassName("notebook-list-wrap")[0];
+
     const newNotebook = this.props.notebooks[notebookId];
     const currNote = this.state.note;
     currNote.notebook = newNotebook ? newNotebook : {};
-    this.toggleNotebooksList();
+    // if (noteList) {
+    //   noteList.classList.add("hidden");
+    // }
     this.setState({ note: currNote });
   }
 
@@ -399,7 +407,7 @@ class NoteForm extends React.Component {
 
   render() {
     return (
-      <div className="note-container">
+      <div className="note-container" onClick={this.noteContainerClickListener}>
         <div className="note-opts-assocs-wrapper">{this.noteOpts()}</div>
         <div className="note-content-container">
           <div className="note-content">
