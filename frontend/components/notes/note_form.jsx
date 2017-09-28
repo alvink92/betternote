@@ -132,11 +132,19 @@ class NoteForm extends React.Component {
 
   noteContainerClickListener(e) {
     const noteList = document.getElementsByClassName("notebook-list-wrap")[0];
-    if (e.target.className !== "curr-notebook-title") {
+    if (
+      e.target.className !== "curr-notebook-title" &&
+      e.target.className !== "fa fa-book" &&
+      e.target.className !== "fa fa-angle-down"
+    ) {
       if (noteList) {
         noteList.classList.add("hidden");
       }
-    } else if (e.target.className === "curr-notebook-title") {
+    } else if (
+      e.target.className === "curr-notebook-title" ||
+      e.target.className !== "fa fa-book" ||
+      e.target.className !== "fa fa-angle-down"
+    ) {
       if (noteList) {
         noteList.classList.remove("hidden");
       }
