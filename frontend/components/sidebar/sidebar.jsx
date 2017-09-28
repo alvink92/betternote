@@ -4,6 +4,12 @@ import { NavLink, Link } from "react-router-dom";
 class Sidebar extends React.Component {
   constructor(props) {
     super(props);
+
+    this.showNbsPane = this.showNbsPane.bind(this);
+    this.showTagsPane = this.showTagsPane.bind(this);
+    this.hideNbsPane = this.hideNbsPane.bind(this);
+    this.hideTagsPane = this.hideTagsPane.bind(this);
+    this.hideAllPanes = this.hideAllPanes.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -28,11 +34,57 @@ class Sidebar extends React.Component {
     );
   }
 
+  slidePanelInLeft(panelClassName) {
+    let dom = document.getElementsByClassName(panelClassName)[0];
+    let overlay = document.getElementsByClassName("slider-overlay")[0];
+
+    overlay.classList.remove("hidden");
+    dom.classList.remove("hidden");
+    dom.classList.remove("slideOutLeft");
+    dom.classList.add("slideInLeft");
+  }
+
+  slidePanelOutLeft(panelClassName) {
+    let dom = document.getElementsByClassName(panelClassName)[0];
+    let overlay = document.getElementsByClassName("slider-overlay")[0];
+
+    overlay.classList.add("hidden");
+    dom.classList.remove("slideInLeft");
+    dom.classList.add("slideOutLeft");
+  }
+
+  showNbsPane() {
+    this.hideTagsPane();
+    this.slidePanelInLeft("notebooks-sliding-pane");
+  }
+
+  showTagsPane() {
+    this.hideNbsPane();
+    this.slidePanelInLeft("tags-sliding-pane");
+  }
+
+  hideNbsPane() {
+    this.slidePanelOutLeft("notebooks-sliding-pane");
+  }
+
+  hideTagsPane() {
+    this.slidePanelOutLeft("tags-sliding-pane");
+  }
+
+  hideAllPanes() {
+    this.hideTagsPane();
+    this.hideNbsPane();
+  }
+
   btnGrp1() {
     return (
       <div className="btnGrp btnGrp1">
         <div className="grp1-btn-cont">
-          <Link to="/notes/new" className="sidebar-link">
+          <Link
+            to="/notes/new"
+            onClick={this.hideAllPanes}
+            className="sidebar-link"
+          >
             <div className="grp1-btn">
               <div className="fa my-plus">+</div>
             </div>
@@ -47,21 +99,21 @@ class Sidebar extends React.Component {
       <div className="btnGrp btnGrp2">
         <div className="sidebar-link-cont">
           <NavLink to="/notes" className="sidebar-link">
-            <div className="filter-btn-cont">
+            <div className="filter-btn-cont" onClick={this.hideAllPanes}>
               <div className="fa fa-file-text" aria-hidden="true" />
             </div>
           </NavLink>
         </div>
         <div className="sidebar-link-cont">
           <NavLink to="/notebooks" className="sidebar-link">
-            <div className="filter-btn-cont">
+            <div className="filter-btn-cont" onClick={this.showNbsPane}>
               <div className="fa fa-book" aria-hidden="true" />
             </div>
           </NavLink>
         </div>
         <div className="sidebar-link-cont">
           <NavLink to="/tags" className="sidebar-link">
-            <div className="filter-btn-cont">
+            <div className="filter-btn-cont" onClick={this.showTagsPane}>
               <div className="fa fa-tag" aria-hidden="true" />
             </div>
           </NavLink>
@@ -80,11 +132,14 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <div className="sidebar">
-        {this.logoContainer()}
-        {this.btnGrp1()}
-        {this.btnGrp2()}
-        {this.logoutSection()}
+      <div className="sidebar-container">
+        <div onClick={this.hideAllPanes} className="slider-overlay hidden" />
+        <div className="sidebar">
+          {this.logoContainer()}
+          {this.btnGrp1()}
+          {this.btnGrp2()}
+          {this.logoutSection()}
+        </div>
       </div>
     );
   }

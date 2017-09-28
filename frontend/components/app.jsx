@@ -12,10 +12,13 @@ const App = props => {
       <SidebarContainer />
       <NoteIndexContainer />
       <NoteShowContainer />
-      <Route exact path="/notebooks" component={NotebookSliderContainer} />
-      <Route exact path="/tags" component={TagSliderContainer} />
+      <NotebookSliderContainer />
+      <TagSliderContainer />
     </div>
   );
 };
 
 export default App;
+
+// <Route exact path="/notebooks" component={NotebookSliderContainer} />
+// <Route exact path="/tags" component={TagSliderContainer} />

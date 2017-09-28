@@ -49,9 +49,7 @@ class TagSlider extends React.Component {
     this.setState({ modalIsOpen: false });
   }
 
-  handleSliderOverlayClick() {
-    this.props.history.push("/notes");
-  }
+  handleSliderOverlayClick() {}
 
   searchInput(type) {
     return (
@@ -82,7 +80,7 @@ class TagSlider extends React.Component {
   render() {
     return (
       <div className="sliding-pane-wrap">
-        <div className="sliding-pane animated slideInLeft">
+        <div className="tags-sliding-pane sliding-pane hidden animated">
           {this.header()}
           <TagIndex
             fetchTags={this.props.fetchTags}
@@ -93,10 +91,6 @@ class TagSlider extends React.Component {
             deleteTag={this.props.deleteTag}
           />
         </div>
-        <div
-          onClick={this.handleSliderOverlayClick}
-          className="slider-overlay"
-        />
         <Modal
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
