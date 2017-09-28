@@ -260,23 +260,34 @@ class NoteForm extends React.Component {
   }
 
   noteOpts() {
-    return (
-      <div className="note-opts-container">
-        <div className="note-opts-wrap">
-          <div className="note-info-wrap">
-            <div className="note-info-btn">i</div>
-          </div>
-          <div className="note-delete-wrap" onClick={this.handleDeleteNote}>
-            <div className="note-delete-btn">
-              <div className="fa fa-trash-o" />
+    if (this.props.isUpdateForm) {
+      return (
+        <div className="note-opts-container">
+          <div className="note-opts-wrap">
+            <div className="note-info-wrap">
+              <div className="note-info-btn">i</div>
+            </div>
+            <div className="note-delete-wrap" onClick={this.handleDeleteNote}>
+              <div className="note-delete-btn">
+                <div className="fa fa-trash-o" />
+              </div>
             </div>
           </div>
+          <div className="note-expand-collapse-btn-container">
+            {this.switchExpandCollapseBtn()}
+          </div>
         </div>
-        <div className="note-expand-collapse-btn-container">
-          {this.switchExpandCollapseBtn()}
+      );
+    } else {
+      return (
+        <div className="note-opts-container">
+          <div className="placeholder" />
+          <div className="note-expand-collapse-btn-container">
+            {this.switchExpandCollapseBtn()}
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 
   noteAssocs() {

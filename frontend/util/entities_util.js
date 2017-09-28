@@ -29,6 +29,8 @@ export const emptyNote = {
   title: "",
   body: "",
   notebook: {},
-  taggings: [],
-  last_updated: ""
+  tags: [],
+  last_updated: "",
+  created_at: "",
+  updated_at: ""
 };
