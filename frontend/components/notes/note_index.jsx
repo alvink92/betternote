@@ -8,6 +8,8 @@ import { notesSortedByLastUpdated } from "../../util/entities_util";
 class NoteIndex extends React.Component {
   constructor(props) {
     super(props);
+
+    this.currNotes = this.currNotes.bind(this);
   }
 
   componentDidMount() {
@@ -59,13 +61,28 @@ class NoteIndex extends React.Component {
     }
   }
 
+  currNotes() {
+    let notes = {};
+
+    if (this.props.match.params.notebookId) {
+      this.props.currNotebook.noteIds.forEach(noteId => {
+        if (this.props.notes[noteId]) {
+          notes[noteId] = this.props.notes[noteId];
+        }
+      });
+    } else {
+      notes = this.props.notes;
+    }
+    return notes;
+  }
+
   notesIndexHeader() {
     return (
       <div className="note-index-header-container">
         <h1>{"NOTES"}</h1>
         <br />
         <div className="notes-count">
-          {Object.keys(this.props.notes).length + " notes"}
+          {Object.keys(this.currNotes()).length + " notes"}
         </div>
       </div>
     );
@@ -103,7 +120,7 @@ class NoteIndex extends React.Component {
 
   noteIndexItems() {
     let uniqueHelperHack = 999999;
-    return notesSortedByLastUpdated(this.props.notes).map(note => (
+    return notesSortedByLastUpdated(this.currNotes()).map(note => (
       <NavLink
         className="show-link"
         key={note.id ? note.id : uniqueHelperHack--}
