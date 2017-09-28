@@ -37,12 +37,11 @@ class NoteForm extends React.Component {
     this.handleDoneClick = this.handleDoneClick.bind(this);
     this.handleSelectNotebookClick = this.handleSelectNotebookClick.bind(this);
     this.handleDeleteNote = this.handleDeleteNote.bind(this);
+
     // modal
     this.openNoteDetailModal = this.openNoteDetailModal.bind(this);
-    this.afterOpenNoteDetailModal = this.afterOpenNoteDetailModal.bind(this);
     this.closeNoteDetailModal = this.closeNoteDetailModal.bind(this);
     this.openNoteCreateModal = this.openNoteCreateModal.bind(this);
-    this.afterNoteCreateOpenModal = this.afterOpenNoteCreateModal.bind(this);
     this.closeNoteCreateModal = this.closeNoteCreateModal.bind(this);
   }
 
@@ -101,8 +100,6 @@ class NoteForm extends React.Component {
     this.setState({ noteDetailModalIsOpen: true });
   }
 
-  afterOpenNoteDetailModal() {}
-
   closeNoteDetailModal() {
     this.setState({ noteDetailModalIsOpen: false });
   }
@@ -110,8 +107,6 @@ class NoteForm extends React.Component {
   openNoteCreateModal() {
     this.setState({ noteCreateModalIsOpen: true });
   }
-
-  afterOpenNoteCreateModal() {}
 
   closeNoteCreateModal() {
     this.setState({ noteCreateModalIsOpen: false });
@@ -159,7 +154,11 @@ class NoteForm extends React.Component {
       e.target.className !== "fa fa-angle-down"
     ) {
       if (noteList) {
-        noteList.classList.remove("hidden");
+        if (noteList.classList.includes("hidden")) {
+          noteList.classList.remove("hidden");
+        } else {
+          noteList.classList.add("hidden");
+        }
       }
     }
   }
