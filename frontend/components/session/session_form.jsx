@@ -8,6 +8,7 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateInput = this.updateInput.bind(this);
     this.handleDemoButtonClick = this.handleDemoButtonClick.bind(this);
+    this.clickEnterListener = this.clickEnterListener.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -19,6 +20,15 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.processForm(this.state).then(() => this.props.history.push("/"));
+  }
+
+  clickEnterListener(e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      this.props
+        .processForm(this.state)
+        .then(() => this.props.history.push("/"));
+    }
   }
 
   handleDemoButtonClick(e) {
@@ -91,6 +101,7 @@ class SessionForm extends React.Component {
           className="creds"
           type="text"
           onChange={this.updateInput("username")}
+          onKeyPress={this.clickEnterListener}
           value={this.state.username}
           placeholder="Username"
         />
@@ -98,6 +109,7 @@ class SessionForm extends React.Component {
           className="creds"
           type="password"
           onChange={this.updateInput("password")}
+          onKeyPress={this.clickEnterListener}
           value={this.state.password}
           placeholder="Password"
         />
