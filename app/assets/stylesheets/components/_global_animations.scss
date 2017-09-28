@@ -1,0 +1,83 @@
+.move-side-bar-left {
+  transform: translateX(-520px);
+  transition: all 0.25s linear;
+}
+
+.move-note-index-container-left {
+  transform: translateX(-440px);
+  transition: all 0.25s linear;
+}
+
+.move-note-content-left {
+  transform: translateX(-210px);
+  transition: all 0.25s linear;
+}
+
+.move-note-opts-wrap-left {
+  transform: translateX(-420px);
+  transition: all 0.25s linear;
+}
+
+.move-side-bar-right {
+  transform: translateX(0px);
+  transition: all 0.35s linear;
+}
+
+.move-note-index-container-right,
+.move-note-content-right,
+.move-note-opts-wrap-right {
+  transform: translateX(0px);
+  transition: all 0.25s linear;
+}
+
+button:focus,
+input:focus {
+  outline: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  /* Firefox */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  /* Safari and Chrome */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  /* Opera */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.ReactModal__Overlay--after-open {
+  z-index: 5000 !important;
+  animation: fadein 0.7s;
+  -moz-animation: fadein 0.7s; /* Firefox */
+  -webkit-animation: fadein 0.7s; /* Safari and Chrome */
+  -o-animation: fadein 0.7s; /* Opera */
+}

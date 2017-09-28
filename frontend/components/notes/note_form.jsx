@@ -2,7 +2,7 @@ import React from "react";
 import ReactQuill from "react-quill";
 import merge from "lodash/merge";
 import Modal from "react-modal";
-import NotebookCreate from "../notebooks/notebook_create";
+import NotebookCreateContainer from "../notebooks/notebook_create_container";
 import NoteFormTags from "../tags/note_form_tags";
 import NoteDetailContainer from "./note_detail_container";
 
@@ -38,14 +38,17 @@ class NoteForm extends React.Component {
     this.handleSelectNotebookClick = this.handleSelectNotebookClick.bind(this);
     this.handleDeleteNote = this.handleDeleteNote.bind(this);
     // modal
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.openNoteDetailModal = this.openNoteDetailModal.bind(this);
+    this.afterOpenNoteDetailModal = this.afterOpenNoteDetailModal.bind(this);
+    this.closeNoteDetailModal = this.closeNoteDetailModal.bind(this);
+    this.openNoteCreateModal = this.openNoteCreateModal.bind(this);
+    this.afterNoteCreateOpenModal = this.afterOpenNoteCreateModal.bind(this);
+    this.closeNoteCreateModal = this.closeNoteCreateModal.bind(this);
   }
 
   componentWillMount() {
     this.setState({
-      modalIsOpen: false
+      noteDetailModalIsOpen: false
     });
 
     if (Object.keys(this.props.notebooks).length === 0) {
@@ -94,14 +97,24 @@ class NoteForm extends React.Component {
     }
   }
 
-  openModal() {
-    this.setState({ modalIsOpen: true });
+  openNoteDetailModal() {
+    this.setState({ noteDetailModalIsOpen: true });
   }
 
-  afterOpenModal() {}
+  afterOpenNoteDetailModal() {}
 
-  closeModal() {
-    this.setState({ modalIsOpen: false });
+  closeNoteDetailModal() {
+    this.setState({ noteDetailModalIsOpen: false });
+  }
+
+  openNoteCreateModal() {
+    this.setState({ noteCreateModalIsOpen: true });
+  }
+
+  afterOpenNoteCreateModal() {}
+
+  closeNoteCreateModal() {
+    this.setState({ noteCreateModalIsOpen: false });
   }
 
   addTagDispatch(addTag) {
@@ -309,7 +322,7 @@ class NoteForm extends React.Component {
       return (
         <div className="note-opts-container">
           <div className="note-opts-wrap">
-            <div className="note-info-wrap" onClick={this.openModal}>
+            <div className="note-info-wrap" onClick={this.openNoteDetailModal}>
               <div className="note-info-btn">i</div>
             </div>
             <div className="note-delete-wrap" onClick={this.handleDeleteNote}>
@@ -375,7 +388,10 @@ class NoteForm extends React.Component {
   notebookList() {
     return (
       <div className="notebook-list">
-        <div className="create-new-notebook notebook-title-container">
+        <div
+          onClick={this.openNoteCreateModal}
+          className="create-new-notebook notebook-title-container"
+        >
           <div className="notebook-title-wrapper">
             <div className="notebook-title">
               <div>Create new notebook</div>
@@ -402,13 +418,27 @@ class NoteForm extends React.Component {
   noteDetail() {
     return (
       <Modal
-        isOpen={this.state.modalIsOpen}
-        onAfterOpen={this.afterOpenModal}
-        onRequestClose={this.closeModal}
+        isOpen={this.state.noteDetailModalIsOpen}
+        onAfterOpen={this.afterOpenNoteDetailModal}
+        onRequestClose={this.closeNoteDetailModal}
         style={modalStyles}
         contentLabel="Note Detail Modal"
       >
-        <NoteDetailContainer closeModal={this.closeModal} />
+        <NoteDetailContainer closeModal={this.closeNoteDetailModal} />
+      </Modal>
+    );
+  }
+
+  notebookCreate() {
+    return (
+      <Modal
+        isOpen={this.state.noteCreateModalIsOpen}
+        onAfterOpen={this.afterOpenNoteCreateModal}
+        onRequestClose={this.closeNoteCreateModal}
+        style={modalStyles}
+        contentLabel="Note Create Modal"
+      >
+        <NotebookCreateContainer closeModal={this.closeNoteCreateModal} />
       </Modal>
     );
   }
@@ -442,6 +472,7 @@ class NoteForm extends React.Component {
           </div>
         </div>
         {this.noteDetail()}
+        {this.notebookCreate()}
       </div>
     );
   }
