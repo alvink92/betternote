@@ -1,33 +1,5 @@
-<style>
-    #divMain { width: 100%;height: 100vh }
-    #divMain > * {
-      height: 100vh;
-    }
-    #pane{
-      position: absolute;
-      height: 100vh;
-      width: 800px;
-      background: brown;
-      left: -400px;
-      z-index: 100;
-    }
-    #left-div { z-index: 999;width: 100px; float: left; background-color: #fcc; }
-    #right-div { width: 100px; float: left; background-color: #ccf; }
-    #middle-div { background-color: #cfc; }
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-  $("button").click(function() {
-    $("button").slideToggle(10000);
-  });
-});
-</script>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
 
-<div id="divMain">
-
-  <p>This is a paragraph.</p>
-
-  <button>Toggle slideUp() and slideDown()</button>
-
-</div>
+<h1 class="animated slideInLeft">Example</h1>

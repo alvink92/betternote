@@ -5,6 +5,7 @@ import Modal from "react-modal";
 import NotebookCreateContainer from "../notebooks/notebook_create_container";
 import NoteFormTags from "../tags/note_form_tags";
 import NoteDetailContainer from "./note_detail_container";
+import { emptyNote } from "../../util/entities_util";
 
 const modalStyles = {
   content: {
@@ -192,8 +193,16 @@ class NoteForm extends React.Component {
       this.props.noteAction(actionNote);
       this.collapseNote();
     } else {
-      this.props.noteAction(actionNote);
-      this.props.history.push(`/notebooks/${actionNote.notebook_id}/notes/`);
+      this.props.noteAction(actionNote).then(
+        action =>
+          this.props.history.push(
+            `/notebooks/${actionNote.notebook_id}/notes/${action.note.id}`
+          ),
+        err => {
+          this.props.history.push("/notes");
+          this.setState({ note: emptyNote });
+        }
+      );
     }
 
     this.collapseNote();

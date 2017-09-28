@@ -82,7 +82,7 @@ class TagSlider extends React.Component {
   render() {
     return (
       <div className="sliding-pane-wrap">
-        <div className="sliding-pane">
+        <div className="sliding-pane animated slideInLeft">
           {this.header()}
           <TagIndex
             fetchTags={this.props.fetchTags}

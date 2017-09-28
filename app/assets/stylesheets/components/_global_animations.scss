@@ -1,3 +1,7 @@
+.sliding-pane {
+  -vendor-animation-duration: 0.15s;
+}
+
 .move-side-bar-left {
   transform: translateX(-520px);
   transition: all 0.25s linear;
