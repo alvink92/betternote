@@ -18,10 +18,8 @@ class NoteFormTags extends React.Component {
 
   pressEnterListener(e) {
     if (e.key === "Enter") {
-      if (this.props.isUpdateForm) {
-        const tag = { name: this.state.newTagName };
-        this.props.addTagToState(tag);
-      }
+      const tag = { name: this.state.newTagName };
+      this.props.addTagDispatch(tag);
 
       this.setState({ newTagName: "" });
     }
@@ -39,7 +37,7 @@ class NoteFormTags extends React.Component {
                 <div className="note-form-tag">{tag.name}</div>
                 <div
                   className="note-form-tag-delete"
-                  onClick={() => this.props.removeTagFromState(tag)}
+                  onClick={() => this.props.removeTagDispatch(tag)}
                 >
                   x
                 </div>

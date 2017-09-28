@@ -34,10 +34,25 @@ class Api::NotesController < ApplicationController
   end
 
   def create
-
     @note = Note.new(note_params)
     @note.author_id = current_user.id
     if @note.save
+      tags = []
+
+      new_tags.each do |tag|
+        found_tag = Tag.where(owner_id: current_user.id).where(name: tag[:name])[0]
+        if found_tag
+          tags.push(found_tag)
+        else
+          new_tag = Tag.create(owner_id: current_user.id, name: tag[:name])
+          tags.push(new_tag)
+        end
+      end
+
+      tags.each do |tag|
+        Tagging.create(owner_id: current_user.id, note_id: @note.id, tag_id: tag[:id])
+      end
+
       render :show
     else
       render json: @note.errors.full_messages, status: 400
@@ -45,10 +60,25 @@ class Api::NotesController < ApplicationController
   end
 
   def update
-    debugger
     @note = current_user.notes.where(id: params[:id]).first
 
     if @note
+      tags = []
+
+      new_tags.each do |tag|
+        found_tag = Tag.where(owner_id: current_user.id).where(name: tag[:name])[0]
+        if found_tag
+          tags.push(found_tag)
+        else
+          new_tag = Tag.create(owner_id: current_user.id, name: tag[:name])
+          tags.push(new_tag)
+        end
+      end
+
+      tags.each do |tag|
+        Tagging.create(owner_id: current_user.id, note_id: @note.id, tag_id: tag[:id])
+      end
+
       if @note.update(note_params)
         @note = Note.find_by_id(@note.id)
         render :show
@@ -72,7 +102,15 @@ class Api::NotesController < ApplicationController
 
   private
 
+  def new_tags
+    if params[:note][:tags]
+      return params[:note][:tags].values.select{|tag| !tag[:id]}
+    else
+      return []
+    end
+  end
+
   def note_params
-    params.require(:note).permit(:notebook_id, :title, :body, tag:[])
+    params.require(:note).permit(:notebook_id, :title, :body)
   end
 end

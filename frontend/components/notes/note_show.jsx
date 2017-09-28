@@ -36,7 +36,7 @@ class NoteShow extends React.Component {
               title: "",
               body: "",
               notebook: {},
-              taggings: [],
+              tags: [],
               last_updated: ""
             }}
             prevUrl={this.props.match.url}
