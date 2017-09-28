@@ -154,7 +154,7 @@ class NoteForm extends React.Component {
       e.target.className !== "fa fa-angle-down"
     ) {
       if (noteList) {
-        if (noteList.classList.includes("hidden")) {
+        if (noteList.classList.value.includes("hidden")) {
           noteList.classList.remove("hidden");
         } else {
           noteList.classList.add("hidden");
