@@ -69,6 +69,7 @@ class NoteForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+    console.log(emptyNote);
     // if navigate to new note form always have it expanded
     if (
       this.props.match.url !== newProps.match.url &&
@@ -200,7 +201,7 @@ class NoteForm extends React.Component {
           ),
         err => {
           this.props.history.push("/notes");
-          this.setState({ note: emptyNote });
+          this.setState({ note: merge({}, emptyNote) });
         }
       );
     }

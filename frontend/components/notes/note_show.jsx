@@ -2,6 +2,7 @@ import React from "react";
 import NoteFormContainer from "./note_form_container";
 import { emptyNote } from "../../util/entities_util";
 import { Route, Switch } from "react-router-dom";
+import merge from "lodash/merge";
 
 class NoteShow extends React.Component {
   constructor(props) {
@@ -31,7 +32,10 @@ class NoteShow extends React.Component {
     return (
       <div className="note-show-container">
         {this.props.match.url === "/notes/new" ? (
-          <NoteFormContainer note={emptyNote} prevUrl={this.props.match.url} />
+          <NoteFormContainer
+            note={merge({}, emptyNote)}
+            prevUrl={this.props.match.url}
+          />
         ) : (
           <NoteFormContainer note={this.props.currNote} />
         )}
