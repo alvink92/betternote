@@ -34,7 +34,7 @@ class SessionForm extends React.Component {
   handleDemoButtonClick(e) {
     e.preventDefault();
     this.setState({ username: "", password: "" });
-    const demoUsername = Array.from("username");
+    const demoUsername = Array.from("demo");
     const demoPassword = Array.from("password");
 
     let loginDemoInterval = () => {
