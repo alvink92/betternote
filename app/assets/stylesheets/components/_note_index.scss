@@ -104,9 +104,10 @@
 .note-item-body-section {
   max-height: 40px;
   overflow: hidden;
-  font-size: 12px;
   margin-top: 3px;
   color: #8c8c8c;
+
+  font-size: 13px !important;
 }
 
 .active.show-link > .note-index-item-container {
