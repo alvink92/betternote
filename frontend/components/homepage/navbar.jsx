@@ -15,7 +15,7 @@ const Navbar = () => {
             <p className="brand-text">BETTERNOTE</p>
           </li>
           <li>
-            <a href="https://github.com/alvink92">
+            <a href="https://github.com/alvink92/betternote">
               <i className="fa fa-github" aria-hidden="true" />
             </a>
           </li>
