@@ -67,8 +67,8 @@ class TagSlider extends React.Component {
         <div className="header-container">
           <div className="header">
             <div className="title">TAGS</div>
-            <div className="create" onClick={this.openModal}>
-              <i className="fa fa-plus-square-o" aria-hidden="true" />
+            <div className="tag-create create" onClick={this.openModal}>
+              <i />
             </div>
           </div>
         </div>

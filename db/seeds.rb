@@ -10,30 +10,34 @@ User.create(username: "demo", password: "password")
 
 Notebook.create(owner_id: User.find_by_username("demo").id, title: "Recipes")
 Notebook.create(owner_id: User.find_by_username("demo").id, title: "Physics 5B")
-Notebook.create(owner_id: User.find_by_username("demo").id, title: "Underwater Basketweaving 12(Honors)")
-Notebook.create(owner_id: User.find_by_username("demo").id, title: "Chemistry 3B")
+Notebook.create(owner_id: User.find_by_username("demo").id, title: "Underwater Basketweaving 99")
 Notebook.create(owner_id: User.find_by_username("demo").id, title: "Astronomy 101")
-Notebook.create( owner_id: User.find_by_username("demo").id, title: "CS 101")
-Notebook.create(owner_id: User.find_by_username("demo").id, title: "Workout Routine")
-Notebook.create(owner_id: User.find_by_username("demo").id, title: "Harry Potter")
-Notebook.create(owner_id: User.find_by_username("demo").id, title: "Hitch Hikers Guide to the Galaxy")
-Notebook.create(owner_id: User.find_by_username("demo").id, title: "Hey Arnold")
+Notebook.create(owner_id: User.find_by_username("demo").id, title: "CS 101")
+Notebook.create(owner_id: User.find_by_username("demo").id, title: "Workout Routines")
+Notebook.create(owner_id: User.find_by_username("demo").id, title: "Todos")
+Notebook.create(owner_id: User.find_by_username("demo").id, title: "Misc")
+Notebook.create(owner_id: User.find_by_username("demo").id, title: "Movies")
+
 
 
 #
 # # notebook 1
-# Note.create( author_id: 1, notebook_id: 1,
-#    title: "Chuck Norris Fact 1",
-#     body: Faker::ChuckNorris.fact)
-# Note.create( author_id: 1, notebook_id: 1,
-#    title: "Chuck Norris Fact 2",
-#     body: Faker::ChuckNorris.fact)
-# Note.create(author_id: 1, notebook_id: 1,
-#    title: "Chuck Norris Fact 3",
-#     body: Faker::ChuckNorris.fact)
-# Note.create(author_id: 1, notebook_id: 1,
-#    title: "Chuck Norris Fact 4",
-#     body: Faker::ChuckNorris.fact)
+Note.create( author_id: User.find_by_username("demo").id,
+ notebook_id: Notebook.find_by_title("Recipes").id,
+   title: "",
+    body: ""
+Note.create( author_id: User.find_by_username("demo").id,
+ notebook_id: Notebook.find_by_title("Recipes").id,
+   title: "",
+    body: ""
+Note.create(author_id: User.find_by_username("demo").id,
+ notebook_id: Notebook.find_by_title("Recipes").id,
+   title: "",
+    body: ""
+Note.create(author_id: User.find_by_username("demo").id,
+ notebook_id: Notebook.find_by_title("Recipes").id,
+   title: "",
+    body: ""
 #
 # # notebook 2
 # Note.create(author_id: 1, notebook_id: 2,

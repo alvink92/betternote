@@ -66,8 +66,8 @@ class NotebookSlider extends React.Component {
         <div className="header-container">
           <div className="header">
             <div className="title">NOTEBOOKS</div>
-            <div className="create" onClick={this.openModal}>
-              <i className="fa fa-plus-square-o" aria-hidden="true" />
+            <div className="notebook-create create" onClick={this.openModal}>
+              <i className="notebook-plus-icon" />
             </div>
           </div>
         </div>
