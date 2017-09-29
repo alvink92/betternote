@@ -22,8 +22,7 @@ class NoteForm extends React.Component {
     super(props);
     this.state = {
       note: this.props.note,
-      expanded: this.props.isUpdateForm ? false : true,
-      autoSave: false
+      expanded: this.props.isUpdateForm ? false : true
     };
 
     // action handlers
@@ -47,47 +46,16 @@ class NoteForm extends React.Component {
     this.openNoteCreateModal = this.openNoteCreateModal.bind(this);
     this.closeNoteCreateModal = this.closeNoteCreateModal.bind(this);
 
-    // autosave methods
-    this.startAutoSave = () => {
-      if (this.props.isUpdateForm) {
-        console.log("start");
-        this.setState({
-          autoSave: setTimeout(
-            this.triggerNoteAction().then(this.setState({ autoSave: false })),
-            1000
-          )
-        });
-        console.log(this.state);
-      }
-    };
-    this.resetAutoSave = () => {
-      if (this.props.isUpdateForm) {
-        console.log("reseting autosave");
-        // this.setState({ autoSave: false });
-        console.log(this.state.autoSave);
-        clearTimeout(this.state.autoSave);
-      }
-    };
-  }
-
-  triggerNoteAction() {
-    console.log(
-      this.props.noteAction(this.formattedNoteForNoteAction(this.props.note))
-    );
+    // auto save
+    this.autoSaveTimerId = null;
+    this.autoSaveInterval = 1000;
+    this.startAutoSave = this.startAutoSave.bind(this);
   }
 
   componentWillMount() {
     this.setState({
       noteDetailModalIsOpen: false
     });
-
-    // if (Object.keys(this.props.notebooks).length === 0) {
-    //   this.props.fetchNotebooks().then(notebooks => {
-    //     if (!this.state.selectedNotebookId) {
-    //       this.state.selectedNotebookId = Object.keys(this.props.notebooks)[0];
-    //     }
-    //   });
-    // }
   }
 
   componentDidMount() {
@@ -107,14 +75,6 @@ class NoteForm extends React.Component {
       this.expandNote();
     }
 
-    // saves previous note to db if user clicks out
-    // if (
-    //   this.props.match.url !== newProps.match.url &&
-    //   this.props.isUpdateForm
-    // ) {
-    //   this.props.noteAction(this.formattedNoteForNoteAction(this.props.note));
-    // }
-    // sets note to new note when redirect to new url
     this.setState({
       note: newProps.note
     });
@@ -243,6 +203,20 @@ class NoteForm extends React.Component {
     if (this.props.prevUrl) {
       this.props.history.goBack();
     }
+  }
+
+  startAutoSave() {
+    if (this.props.isUpdateForm) {
+      clearTimeout(this.autoSaveTimerId);
+      this.autoSaveTimerId = setTimeout(
+        this.triggerNoteAction,
+        this.autoSaveInterval
+      );
+    }
+  }
+
+  triggerNoteAction() {
+    this.props.noteAction(this.formattedNoteForNoteAction(this.props.note));
   }
 
   formattedNoteForNoteAction(note) {
@@ -504,9 +478,7 @@ class NoteForm extends React.Component {
               modules={modules}
               value={this.state.note.body}
               onChange={this.handleBodyChange}
-              onKeyPress={
-                this.state.autoSave ? this.resetAutoSave : this.startAutoSave
-              }
+              onKeyPress={this.startAutoSave}
               onClick={this.showToolbar}
               placeholder="Drag files here or just start typing..."
             />
