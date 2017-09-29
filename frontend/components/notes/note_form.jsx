@@ -69,7 +69,6 @@ class NoteForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    console.log(emptyNote);
     // if navigate to new note form always have it expanded
     if (
       this.props.match.url !== newProps.match.url &&
