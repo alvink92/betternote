@@ -7,10 +7,10 @@
 ## Features
 
   * Secure user authentication
-  * Note, notebooks, and tags can be created, edited and deleted
+  * Notes, notebooks, and tags can be created, edited and deleted
   * Notes are autosaved while being edited
-  * Note can be formatted via Betternote's rich-text editor
-  * Notes can be filtered by notebook and taggings
+  * Notes can be formatted via Betternote's rich-text editor
+  * Notes can be filtered by notebooks and taggings
 
 ![notes_index](https://raw.githubusercontent.com/alvink92/betternote/master/docs/images/gallery/note_show.png)
 
@@ -42,14 +42,19 @@ Associations were formed with the help of a [Database Schema](https://github.com
  * Collaborative note editing
  * Live chat
 
+
  ## Image Gallery
 
 ![notes_by_notebook](https://raw.githubusercontent.com/alvink92/betternote/master/docs/images/gallery/notes_by_notebook.png)
 
+
 ![note_new](https://raw.githubusercontent.com/alvink92/betternote/master/docs/images/gallery/note_new.png)
+
 
 ![tags_index](https://raw.githubusercontent.com/alvink92/betternote/master/docs/images/gallery/tags_index.png)
 
+
 ![notebooks_index](https://raw.githubusercontent.com/alvink92/betternote/master/docs/images/gallery/notebooks_index.png)
+
 
 ![note_detail](https://raw.githubusercontent.com/alvink92/betternote/master/docs/images/gallery/notebook_detail.png)
