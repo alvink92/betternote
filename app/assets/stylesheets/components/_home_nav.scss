@@ -7,6 +7,19 @@
   border-bottom: 1px solid #eee;
   z-index: 9999;
   font-size: 15px;
+
+  .left-section {
+    a:hover {
+      border: 0px solid white !important;
+    }
+  }
+
+  .fa {
+    font-size: 27px;
+  }
+  .fa-envelope {
+    font-size: 23px;
+  }
 }
 
 .header-nav {

@@ -98,15 +98,20 @@ class SessionForm extends React.Component {
           {this.props.errors.map((error, i) => <li key={i}>{error}</li>)}
         </ul>
         <input
-          className="creds"
+          className="creds usr"
           type="text"
           onChange={this.updateInput("username")}
-          onKeyPress={this.clickEnterListener}
+          onKeyPress={e => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              $(".pwd").focus();
+            }
+          }}
           value={this.state.username}
           placeholder="Username"
         />
         <input
-          className="creds"
+          className="creds pwd"
           type="password"
           onChange={this.updateInput("password")}
           onKeyPress={this.clickEnterListener}
