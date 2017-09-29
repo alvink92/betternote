@@ -154,7 +154,13 @@ class Sidebar extends React.Component {
 
   logoutSection() {
     return (
-      <button className="app-logout" onClick={this.props.logout}>
+      <button
+        className="app-logout"
+        onClick={() =>
+          this.props
+            .logout()
+            .then(user => user, err => this.props.history.push("/"))}
+      >
         <div className="fa fa-sign-out" aria-hidden="true" />
       </button>
     );
