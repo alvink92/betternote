@@ -80,13 +80,6 @@ class NoteForm extends React.Component {
     });
   }
 
-  componentWillUnmount() {
-    // if component unmounts, then saves current note to db
-    if (this.props.isUpdateForm) {
-      this.props.noteAction(this.formattedNoteForNoteAction(this.props.note));
-    }
-  }
-
   openNoteDetailModal() {
     this.setState({ noteDetailModalIsOpen: true });
   }
