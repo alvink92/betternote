@@ -53,9 +53,6 @@ class NoteDetail extends React.Component {
               >
                 Cancel
               </button>
-              <button className="note-save-btn" onClick={this.handleUpdate}>
-                Save
-              </button>
             </div>
           </div>
         </div>

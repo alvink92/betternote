@@ -101,6 +101,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  .note-detail-wrapper {
+    min-height: 640px;
+    max-height: 640px;
+
+    .note-title {
+      height: 90px;
+    }
+
+    .note-content-container {
+      .overview {
+      }
+    }
+  }
 }
 
 .header-container-wrapper {
