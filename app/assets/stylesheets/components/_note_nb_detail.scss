@@ -24,9 +24,16 @@
     justify-content: center;
   }
 
+  .overview {
+    font-size: 15px;
+    color: #4a4a4a;
+  }
+
   .desc-title,
   .share-status-title {
     color: #878787;
+    font-size: 13px;
+    font-weight: 100;
   }
 
   .notebook-update-wrapper {
@@ -62,7 +69,7 @@
     }
     .delete-link-container {
       height: 50px;
-
+      font-size: 15px;
       .deleteLink {
         color: #2dbe60;
         cursor: pointer;
@@ -84,7 +91,9 @@
     .share-setting-status {
       display: flex;
       flex-direction: row;
+      font-size: 15px;
       color: #4a4a4a;
+      font-size: 13px;
       > * {
         margin-right: 10px;
       }
