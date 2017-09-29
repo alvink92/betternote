@@ -90,14 +90,9 @@ Note.create(author_id: User.find_by_username("demo").id,
 Note.create(author_id: User.find_by_username("demo").id,
  notebook_id: Notebook.find_by_title("CS 101").id,
    title: "Recursion",
-    body: "<p>if (baseCondition) {</p><p><br><a href='/notes/1'>get out!</a></p><p>} else {</p><p><br><a href='/notes/'>keep going!</a></p><p>}</p>"
+    body: ""
 )
 
-Note.create(author_id: User.find_by_username("demo").id,
- notebook_id: Notebook.find_by_title("CS 101").id,
-   title: "Algorithms",
-    body: "Named after"
-)
 
 
 Note.create(author_id: User.find_by_username("demo").id,

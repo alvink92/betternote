@@ -51,13 +51,13 @@ class NoteForm extends React.Component {
       noteDetailModalIsOpen: false
     });
 
-    if (Object.keys(this.props.notebooks).length === 0) {
-      this.props.fetchNotebooks().then(notebooks => {
-        if (!this.state.selectedNotebookId) {
-          this.state.selectedNotebookId = Object.keys(this.props.notebooks)[0];
-        }
-      });
-    }
+    // if (Object.keys(this.props.notebooks).length === 0) {
+    //   this.props.fetchNotebooks().then(notebooks => {
+    //     if (!this.state.selectedNotebookId) {
+    //       this.state.selectedNotebookId = Object.keys(this.props.notebooks)[0];
+    //     }
+    //   });
+    // }
   }
 
   componentDidMount() {
