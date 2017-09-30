@@ -106,7 +106,14 @@
   overflow: hidden;
   margin-top: 3px;
   color: #8c8c8c;
-
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 15px !important;
+  }
   font-size: 13px !important;
 }
 
