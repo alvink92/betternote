@@ -25,7 +25,7 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a href="mailto:alvinkong92@gmail.com?Subject=Takedown%20Notice">
+            <a href="mailto:alvinkong92@gmail.com">
               <i className="fa fa-envelope" aria-hidden="true" />
             </a>
           </li>
