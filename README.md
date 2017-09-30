@@ -48,13 +48,4 @@ Associations were formed with the help of a [Database Schema](https://github.com
 ![notes_by_notebook](https://raw.githubusercontent.com/alvink92/betternote/master/docs/images/gallery/notes_by_notebook.png)
 
 
-![note_new](https://raw.githubusercontent.com/alvink92/betternote/master/docs/images/gallery/note_new.png)
-
-
 ![tags_index](https://raw.githubusercontent.com/alvink92/betternote/master/docs/images/gallery/tags_index.png)
-
-
-![notebooks_index](https://raw.githubusercontent.com/alvink92/betternote/master/docs/images/gallery/notebooks_index.png)
-
-
-![note_detail](https://raw.githubusercontent.com/alvink92/betternote/master/docs/images/gallery/notebook_detail.png)
