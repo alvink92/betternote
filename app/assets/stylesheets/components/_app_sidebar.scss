@@ -89,6 +89,10 @@
   border-top: 1px solid #e1e1e1;
   margin-top: auto;
   justify-content: flex-end;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .fa-sign-out {
