@@ -126,7 +126,7 @@ class NoteForm extends React.Component {
     const noteList = document.getElementsByClassName("notebook-list-wrap")[0];
     if (
       e.target.className !== "curr-notebook-title" &&
-      e.target.className !== "fa fa-book" &&
+      e.target.className !== "bnicon bn-notebook-small" &&
       e.target.className !== "fa fa-angle-down"
     ) {
       if (noteList) {
@@ -134,7 +134,7 @@ class NoteForm extends React.Component {
       }
     } else if (
       e.target.className === "curr-notebook-title" ||
-      e.target.className !== "fa fa-book" ||
+      e.target.className !== "bnicon bn-notebook-small" ||
       e.target.className !== "fa fa-angle-down"
     ) {
       if (noteList) {
@@ -332,7 +332,7 @@ class NoteForm extends React.Component {
             </div>
             <div className="note-delete-wrap" onClick={this.handleDeleteNote}>
               <div className="note-delete-btn">
-                <div className="fa fa-trash-o" />
+                <div className="bnicon bn-trash" />
               </div>
             </div>
           </div>
@@ -357,7 +357,11 @@ class NoteForm extends React.Component {
     return (
       <div className="note-assocs-container">
         <div className="curr-notebook">
-          <div className="fa fa-book" aria-hidden="true" />
+          <img
+            className="bnicon bn-notebook-small"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAANCAYAAACdKY9CAAAAQ0lEQVR42mNgAIIjR478h9G48NGjRz8wwAAxGmBqqKOBAQ1QXwPt/UAbDUTgT8ga/hw6dEiUAQ8AqnmBzPlMkg2kAAAQSjr0OXc0oAAAAABJRU5ErkJggg=="
+            aria-hidden="true"
+          />
           <div className="curr-notebook-title">
             {this.state.note.notebook.id ? this.state.note.notebook.title : ""}
           </div>

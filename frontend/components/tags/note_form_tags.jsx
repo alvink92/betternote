@@ -29,7 +29,10 @@ class NoteFormTags extends React.Component {
     const noteTags = this.props.noteTags ? this.props.noteTags : [];
     return (
       <div className="note-form-tags-container">
-        <div className="fa fa-tag" />
+        <img
+          className="bnicon bn-tag-small"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAANCAYAAACdKY9CAAAAiElEQVR42mNgQAP79++XOXLkyGkgvgxkKzDgA0BF2kD8CIj/Q/Gzo0ePGmBVfPDgQTuggvdIisEYqOEDkHZFUXzo0KEQoOAPqKJ/QNwNxF1QNkjs5+HDhyORnfIVydTzMHGg6WeRxL8ha0B2xneQjVBbvyPL4dKAE1OuAU9wDwUbjhGh4RhILQAqjUwqv0PysAAAAABJRU5ErkJggg=="
+        />
         <div className="note-form-tags">
           {noteTags.map(tag => {
             return (

@@ -115,9 +115,7 @@ class Sidebar extends React.Component {
             onClick={this.hideAllPanes}
             className="sidebar-link"
           >
-            <div className="grp1-btn">
-              <div className="fa my-plus">+</div>
-            </div>
+            <div className="grp1-btn bnicon bn-plus" />
           </Link>
         </div>
       </div>
@@ -129,23 +127,17 @@ class Sidebar extends React.Component {
       <div className="btnGrp btnGrp2">
         <div className="sidebar-link-cont">
           <NavLink to="/notes" className="sidebar-link">
-            <div className="filter-btn-cont">
-              <div className="fa fa-file-text" aria-hidden="true" />
-            </div>
+            <div className="filter-btn-cont bnicon bn-note" />
           </NavLink>
         </div>
         <div className="sidebar-link-cont">
           <NavLink to="/notebooks" className="sidebar-link">
-            <div className="filter-btn-cont">
-              <div className="fa fa-book" aria-hidden="true" />
-            </div>
+            <div className="filter-btn-cont bnicon bn-notebook" />
           </NavLink>
         </div>
         <div className="sidebar-link-cont">
           <NavLink to="/tags" className="sidebar-link">
-            <div className="filter-btn-cont">
-              <div className="fa fa-tag" aria-hidden="true" />
-            </div>
+            <div className="filter-btn-cont bnicon bn-tag" />
           </NavLink>
         </div>
       </div>
@@ -161,7 +153,7 @@ class Sidebar extends React.Component {
             .logout()
             .then(user => user, err => this.props.history.push("/"))}
       >
-        <div className="fa fa-sign-out" aria-hidden="true" />
+        <div className="bnicon fa fa-sign-out" aria-hidden="true" />
       </button>
     );
   }
