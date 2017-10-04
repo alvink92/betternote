@@ -26,8 +26,9 @@ Associations were formed with the help of a [Database Schema](https://github.com
 
 ### Frontend
  * React
+   * React-Router
+   * Quill
  * Redux
- * Quill
  * AJAX
 
 ### Backend
