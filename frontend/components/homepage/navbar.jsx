@@ -20,7 +20,7 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="https://www.linkedin.com/in/alvink92/">
               <i className="fa fa-linkedin" aria-hidden="true" />
             </a>
           </li>
