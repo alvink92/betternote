@@ -62,7 +62,6 @@
     .note-expand-collapse-btn-container {
       button {
         height: 31px;
-        width: 31px;
         border-radius: 3px;
         display: flex;
 
@@ -77,8 +76,10 @@
       .note-expand-btn {
         font-size: 20px;
         font-weight: 100;
-        width: 31px;
-        height: 31px;
+        min-width: 31px;
+        min-height: 31px;
+        max-width: 31px;
+        max-height: 31px;
         border: 1px solid #2dbe60 !important;
         color: #2dbe60 !important;
         background: white;
