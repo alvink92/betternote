@@ -16,7 +16,7 @@
 
 ## How Betternote was Built
 
-Betternote was a solo project designed and developed over a span of 11 days.
+Betternote's core features were designed and developed over a span of 10 days.
 
 The overall design and layout was developed with the guidance of [wireframes](https://github.com/alvink92/betternote/wiki/wireframes)
 
