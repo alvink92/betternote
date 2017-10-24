@@ -1,10 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+
   helper_method :current_user, :logged_in?
-
-
-  before_filter :expire_hsts
-
 
   def current_user
     return nil unless session[:session_token]
@@ -33,11 +30,4 @@ class ApplicationController < ActionController::Base
       return false
     end
   end
-end
-
-
-private
-
-def expire_hsts
-  response.headers["Strict-Transport-Security"] = 'max-age=0'
 end
