@@ -20,7 +20,7 @@ class Homepage extends React.Component {
   render() {
     return (
       <div className="homepage-container">
-        <Navbar />asdf
+        <Navbar />
         <div className="content-container">
           {this.vGap("200px")}
           <ContentContainer />
