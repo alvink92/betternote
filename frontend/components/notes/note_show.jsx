@@ -3,6 +3,7 @@ import NoteFormContainer from "./note_form_container";
 import { emptyNote } from "../../util/entities_util";
 import { Route, Switch } from "react-router-dom";
 import merge from "lodash/merge";
+import NullNoteForm from "./null_note_form";
 
 class NoteShow extends React.Component {
   constructor(props) {
@@ -29,7 +30,6 @@ class NoteShow extends React.Component {
   }
 
   render() {
-    console.log(merge({}, emptyNote, { notebook: this.props.currNotebook }));
     return (
       <div className="note-show-container">
         {this.props.match.url === "/notes/new" ? (
@@ -37,8 +37,10 @@ class NoteShow extends React.Component {
             note={merge({}, emptyNote, { notebook: this.props.currNotebook })}
             prevUrl={this.props.match.url}
           />
-        ) : (
+        ) : this.props.currNote ? (
           <NoteFormContainer note={this.props.currNote} />
+        ) : (
+          <NullNoteForm />
         )}
       </div>
     );

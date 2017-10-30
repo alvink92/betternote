@@ -8,17 +8,21 @@ import { RECEIVE_TAGGING, REMOVE_TAGGING } from "../actions/tag_actions";
 import { emptyNote } from "../util/entities_util";
 import merge from "lodash/merge";
 
-const notesReducer = (state = { all: {}, curr: emptyNote }, action) => {
+const notesReducer = (state = { all: {}, curr: null }, action) => {
   Object.freeze(state);
   let newState;
   switch (action.type) {
     case RECEIVE_NOTES:
       newState = merge({}, state);
       newState.all = action.notes;
-      newState.curr = newState.curr.id
-        ? newState.curr
+      newState.curr = newState.curr
+        ? Object.values(action.notes)
+            .map(note => note.id)
+            .includes(newState.curr.id)
+          ? newState.curr
+          : null
         : Object.values(action.notes)[0];
-      newState.curr = newState.curr ? newState.curr : emptyNote;
+      // newState.curr = newState.curr ? newState.curr : emptyNote;
       return newState;
     case RECEIVE_NOTE:
       newState = merge({}, state);
@@ -34,7 +38,7 @@ const notesReducer = (state = { all: {}, curr: emptyNote }, action) => {
       delete newState.all[action.note.id];
       newState.curr = Object.values(newState.all)[0]
         ? Object.values(newState.all)[0]
-        : emptyNote;
+        : null;
       return newState;
     case RECEIVE_TAGGING:
       newState = merge({}, state);
