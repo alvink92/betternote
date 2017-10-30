@@ -40,6 +40,7 @@ class User < ApplicationRecord
   validates :password, length: {minimum: 6, allow_nil: true}
 
   before_validation :ensure_session_token, :ensure_downcase_username
+  after_create :create_default_notebook, :create_welcome_note
   attr_reader :password
 
   def self.find_by_credentials(username,password)
@@ -56,6 +57,7 @@ class User < ApplicationRecord
     self.password_digest = BCrypt::Password.create(password)
   end
 
+
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64
   end
@@ -68,5 +70,23 @@ class User < ApplicationRecord
 
   def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
+
+  def create_default_notebook
+    Notebook.create(owner_id: self.id, title: "First Notebook")
+  end
+
+  def create_welcome_note
+    title = "Getting Started"
+    body = '<p><span class="ql-size-large">Hi there!</span></p>
+    <p><br></p>
+    <p><span class="ql-size-large">
+    Welcome to Betternote. Get started by creating a new note by clicking the green
+    </span><span class="ql-size-large" style="color: rgb(102, 185, 102);">+</span>
+    <span class="ql-size-large">
+     on the upper left hand corner.</span></p>'
+
+    Note.create(author_id: self.id, notebook_id: self.notebooks.first.id,
+    title: title, body: body)
   end
 end
