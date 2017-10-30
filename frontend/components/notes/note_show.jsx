@@ -29,11 +29,12 @@ class NoteShow extends React.Component {
   }
 
   render() {
+    console.log(merge({}, emptyNote, { notebook: this.props.currNotebook }));
     return (
       <div className="note-show-container">
         {this.props.match.url === "/notes/new" ? (
           <NoteFormContainer
-            note={merge({}, emptyNote)}
+            note={merge({}, emptyNote, { notebook: this.props.currNotebook })}
             prevUrl={this.props.match.url}
           />
         ) : (

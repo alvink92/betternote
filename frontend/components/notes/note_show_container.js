@@ -5,7 +5,8 @@ import { fetchNote, updateNote, deleteNote } from "../../actions/note_actions";
 
 const mapStateToProps = state => {
   return {
-    currNote: state.entities.notes.curr
+    currNote: state.entities.notes.curr,
+    currNotebook: state.entities.notebooks.curr
   };
 };
 
