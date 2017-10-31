@@ -48,7 +48,7 @@ class NoteForm extends React.Component {
 
     // auto save
     this.autoSaveTimerId = null;
-    this.autoSaveInterval = 1000;
+    this.autoSaveInterval = 500;
     this.startAutoSave = this.startAutoSave.bind(this);
   }
 
@@ -394,6 +394,7 @@ class NoteForm extends React.Component {
     //   noteList.classList.add("hidden");
     // }
     this.setState({ note: currNote });
+    this.startAutoSave();
   }
 
   notebookList() {
