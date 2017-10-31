@@ -160,6 +160,7 @@ class NoteForm extends React.Component {
   handleBodyChange(value) {
     const updatedNote = Object.assign(this.state.note, { body: value });
     this.setState({ note: updatedNote });
+    this.startAutoSave();
   }
 
   handleTitleChange(e) {
@@ -167,6 +168,7 @@ class NoteForm extends React.Component {
       title: e.target.value
     });
     this.setState({ note: updatedNote });
+    this.startAutoSave();
   }
 
   handleDoneClick(e) {
@@ -475,7 +477,6 @@ class NoteForm extends React.Component {
               modules={modules}
               value={this.state.note.body}
               onChange={this.handleBodyChange}
-              onKeyUp={this.startAutoSave}
               onClick={this.showToolbar}
               placeholder="Drag files here or just start typing..."
             />
