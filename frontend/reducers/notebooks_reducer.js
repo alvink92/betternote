@@ -30,6 +30,7 @@ const notebooksReducer = (state = { all: {}, curr: nullNotebook }, action) => {
     case REMOVE_NOTEBOOK:
       newState = merge({}, state);
       delete newState.all[action.notebook.id];
+      newState.curr = Object.values(newState.all)[0];
       return newState;
     case RECEIVE_NOTE:
       newState = merge({}, state);
