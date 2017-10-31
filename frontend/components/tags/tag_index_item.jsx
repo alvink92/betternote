@@ -56,12 +56,11 @@ class TagIndexItem extends React.Component {
       <div className="mod-btn-container hidden" />
     ) : (
       <div className="mod-btn-container hidden">
-        <div className="tag-edit" onClick={this.handleUpdateClick}>
-          <i className="fa fa-pencil" aria-hidden="true" />
-        </div>
-        <div className="tag-delete" onClick={this.handleDeleteClick}>
-          <i className="fa fa-trash-o trash" aria-hidden="true" />
-        </div>
+        <div className="tag-edit tag-pencil" onClick={this.handleUpdateClick} />
+        <div
+          className="tag-delete tag-trash"
+          onClick={this.handleDeleteClick}
+        />
       </div>
     );
   }

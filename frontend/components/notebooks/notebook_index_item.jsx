@@ -8,7 +8,7 @@ class NotebookIndexItem extends React.Component {
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
   }
   handleClick(e) {
-    if (e.target.className !== "fa fa-trash-o") {
+    if (e.target.className !== "nb-delete trash") {
       this.props.history.push(`/notebooks/${this.props.notebook.id}`);
     }
   }

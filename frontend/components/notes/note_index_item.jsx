@@ -10,7 +10,7 @@ class NoteIndexItem extends React.Component {
 
   deleteNote(e) {
     e.preventDefault();
-    if (e.target.className === "fa fa-trash-o") {
+    if (e.target.className === "note-item-delete trash") {
       this.props.deleteNote(this.props.note.id);
     }
   }
