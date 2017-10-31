@@ -13,9 +13,6 @@
         color: white !important;
         border: none !important;
       }
-      .fa-trash-o {
-        display: block !important;
-      }
     }
     .nb-item-container {
       width: 430px;
@@ -38,13 +35,9 @@
           color: #909090;
         }
 
-        .fa-trash-o {
-          color: white;
-          display: none;
-          font-size: 20px;
-          &:hover {
-            cursor: pointer;
-          }
+        .nb-delete {
+          width: 24px;
+          height: 24px;
         }
       }
     }

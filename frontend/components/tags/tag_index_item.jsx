@@ -60,7 +60,7 @@ class TagIndexItem extends React.Component {
           <i className="fa fa-pencil" aria-hidden="true" />
         </div>
         <div className="tag-delete" onClick={this.handleDeleteClick}>
-          <i className="fa fa-trash-o" aria-hidden="true" />
+          <i className="fa fa-trash-o trash" aria-hidden="true" />
         </div>
       </div>
     );

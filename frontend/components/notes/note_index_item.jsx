@@ -21,9 +21,7 @@ class NoteIndexItem extends React.Component {
         <div className="note-index-item">
           <div className="note-item-title-section">
             <div className="note-item-title">{this.props.note.title}</div>
-            <div className="note-item-delete" onClick={this.deleteNote}>
-              <i className="fa fa-trash-o" aria-hidden="true" />
-            </div>
+            <div className="note-item-delete trash" onClick={this.deleteNote} />
           </div>
           <div className="note-item-lastupdated-section">
             {this.props.note.last_updated.toUpperCase()}

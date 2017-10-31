@@ -32,9 +32,7 @@ class NotebookIndexItem extends React.Component {
               </div>
             </div>
             <div className="nb-delete-wrap" onClick={this.handleDeleteClick}>
-              <div className="nb-delete">
-                <i className="fa fa-trash-o" aria-hidden="true" />
-              </div>
+              <div className="nb-delete trash" />
             </div>
           </div>
         </div>
