@@ -7,17 +7,15 @@ class NotebookIndex extends React.Component {
   }
 
   nbIndexItems() {
-    if (this.props.notebooks) {
-      return Object.values(this.props.notebooks).map(notebook => (
-        <NotebookIndexItem
-          key={notebook.id}
-          notebook={notebook}
-          fetchNotes={this.props.fetchNotes}
-          history={this.props.history}
-          deleteNotebook={this.props.deleteNotebook}
-        />
-      ));
-    }
+    return this.props.notebooks.map(notebook => (
+      <NotebookIndexItem
+        key={notebook.id}
+        notebook={notebook}
+        fetchNotes={this.props.fetchNotes}
+        history={this.props.history}
+        deleteNotebook={this.props.deleteNotebook}
+      />
+    ));
   }
 
   render() {

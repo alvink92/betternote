@@ -27,7 +27,8 @@ class TagSlider extends React.Component {
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
 
-    this.handleSliderOverlayClick = this.handleSliderOverlayClick.bind(this);
+    this.filteredTags = this.filteredTags.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
   componentWillMount() {
@@ -49,7 +50,9 @@ class TagSlider extends React.Component {
     this.setState({ modalIsOpen: false });
   }
 
-  handleSliderOverlayClick() {}
+  handleSearchChange(e) {
+    this.setState({ search: e.target.value });
+  }
 
   searchInput(type) {
     return (
@@ -57,7 +60,14 @@ class TagSlider extends React.Component {
         className="search"
         placeholder={`Find a ${type}`}
         value={this.state.search}
+        onChange={this.handleSearchChange}
       />
+    );
+  }
+
+  filteredTags() {
+    return Object.values(this.props.tags).filter(tag =>
+      tag.name.toUpperCase().includes(this.state.search.toUpperCase())
     );
   }
 
@@ -85,7 +95,7 @@ class TagSlider extends React.Component {
           <TagIndex
             fetchTags={this.props.fetchTags}
             clearTags={this.props.clearTags}
-            tags={this.props.tags}
+            tags={this.filteredTags()}
             history={this.props.history}
             updateTag={this.props.updateTag}
             deleteTag={this.props.deleteTag}

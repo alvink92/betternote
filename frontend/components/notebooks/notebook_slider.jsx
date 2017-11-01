@@ -26,7 +26,8 @@ class NotebookSlider extends React.Component {
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-    this.handleSliderOverlayClick = this.handleSliderOverlayClick.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.filteredNotebooks = this.filteredNotebooks.bind(this);
   }
 
   componentWillMount() {
@@ -48,7 +49,15 @@ class NotebookSlider extends React.Component {
     this.setState({ modalIsOpen: false });
   }
 
-  handleSliderOverlayClick() {}
+  handleSearchChange(e) {
+    this.setState({ search: e.target.value });
+  }
+
+  filteredNotebooks() {
+    return Object.values(this.props.notebooks).filter(notebook =>
+      notebook.title.toUpperCase().includes(this.state.search.toUpperCase())
+    );
+  }
 
   searchInput(type) {
     return (
@@ -56,6 +65,7 @@ class NotebookSlider extends React.Component {
         className="search"
         placeholder={`Find a ${type}`}
         value={this.state.search}
+        onChange={this.handleSearchChange}
       />
     );
   }
@@ -84,7 +94,7 @@ class NotebookSlider extends React.Component {
           <NotebookIndex
             fetchNotes={this.props.fetchNotes}
             history={this.props.history}
-            notebooks={this.props.notebooks}
+            notebooks={this.filteredNotebooks()}
             deleteNotebook={this.props.deleteNotebook}
           />
         </div>
