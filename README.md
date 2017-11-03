@@ -1,6 +1,6 @@
 # Betternote
 
-[Betternote](https://better-note.herokuapp.com), a faithful Evernote clone, is a feature-rich, single-page application developed using React, Redux, Rails, and PostgreSQL. Betternote allows users to create notes and keep them organized by placing them in notebooks. Betternote also allows users to optionally add tags to more easily find and browse similar notes by their taggings.
+[Betternote](https://better-note.herokuapp.com), a faithful Evernote clone, is a feature-rich, single page application developed using React, Redux, Rails, and PostgreSQL. Betternote allows users to create notes and keep them organized by placing them in notebooks. Betternote also allows users to optionally add tags to more easily find and browse similar notes by their taggings.
 
 ![gallery_image](https://raw.githubusercontent.com/alvink92/betternote/master/docs/images/gallery/splash_page.png)
 
