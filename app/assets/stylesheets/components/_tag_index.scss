@@ -93,12 +93,17 @@
 
     .edit-form {
       color: #6b6b6b;
-      width: 370px;
-      -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
-      transition: width 2s;
       border-radius: 4px;
       border: 1px solid #ababab;
       margin-right: 15px;
+
+      width: 200px;
+      transition: all 0.25s ease-out 0s;
+      -webkit-transition: all 0.25s ease-out 0s;
+    }
+
+    .edit-form-expand {
+      width: 370px !important;
     }
 
     .save-changes {

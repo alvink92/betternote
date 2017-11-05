@@ -4,6 +4,9 @@ class TagIndexItem extends React.Component {
   constructor(props) {
     super(props);
 
+    this.editableId = this.editableId.bind(this);
+    this.saveChangeId = this.saveChangeId.bind(this);
+    this.tagWidth = this.tagWidth.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.handleUpdateClick = this.handleUpdateClick.bind(this);
@@ -13,7 +16,20 @@ class TagIndexItem extends React.Component {
   }
 
   componentWillMount() {
-    this.setState({ editable: false, tagName: this.props.tag.name });
+    this.setState({
+      editable: false,
+      tagName: this.props.tag.name
+    });
+  }
+
+  tagWidth() {
+    return (
+      (this.state.tagName.length +
+        parseInt(this.props.tag.noteIds.length / 10) +
+        1) *
+        9 +
+      20
+    );
   }
 
   handleClick(e) {
@@ -28,6 +44,12 @@ class TagIndexItem extends React.Component {
 
   handleUpdateClick(e) {
     this.setState({ editable: true });
+
+    setTimeout(() => {
+      document
+        .getElementById(this.editableId())
+        .classList.add("edit-form-expand");
+    }, 0);
   }
 
   handleDeleteClick(e) {
@@ -40,14 +62,22 @@ class TagIndexItem extends React.Component {
   }
 
   handleSaveChange(e) {
-    this.props.updateTag({ id: this.props.tag.id, name: this.state.tagName });
-    this.setState({ editable: false });
+    if (this.props.tag.name !== this.state.tagName)
+      this.props.updateTag({ id: this.props.tag.id, name: this.state.tagName });
+
+    document
+      .getElementById(this.editableId())
+      .classList.remove("edit-form-expand");
+    document.getElementById(this.saveChangeId()).outerHTML = "";
+
+    setTimeout(() => {
+      this.setState({ editable: false });
+    }, 250);
   }
 
   clickEnterListener(e) {
     if (e.key === "Enter") {
-      this.props.updateTag({ id: this.props.tag.id, name: this.state.tagName });
-      this.setState({ editable: false });
+      this.handleSaveChange(e);
     }
   }
 
@@ -65,17 +95,31 @@ class TagIndexItem extends React.Component {
     );
   }
 
+  editableId() {
+    return "editable-" + this.state.tagName;
+  }
+
+  saveChangeId() {
+    return "save-" + this.state.tagName;
+  }
+
   tagSwitch() {
     if (this.state.editable) {
       return (
         <div className="editable">
           <input
+            id={this.editableId()}
             className="edit-form"
             value={this.state.tagName}
             onChange={this.handleUpdate}
             onKeyPress={this.clickEnterListener}
+            style={{ width: `${this.tagWidth()}px` }}
           />
-          <div className="save-changes" onClick={this.handleSaveChange}>
+          <div
+            id={this.saveChangeId()}
+            className="save-changes"
+            onClick={this.handleSaveChange}
+          >
             <i className="fa fa-check-circle" aria-hidden="true" />
           </div>
         </div>
