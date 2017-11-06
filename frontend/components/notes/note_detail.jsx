@@ -24,13 +24,13 @@ class NoteDetail extends React.Component {
               <div className="created-at">
                 <div className="created-at-key">CREATED: </div>
                 <div className="created-at-val">
-                  {this.props.note.created_at}
+                  {Date(this.props.note.created_at).toString()}
                 </div>
               </div>
               <div className="updated-at">
                 <div className="updated-at-key">UPDATED: </div>
                 <div className="updated-at-val">
-                  {this.props.note.updated_at}
+                  {Date(this.props.note.updated_at).toString()}
                 </div>
               </div>
               <div className="author-username">

@@ -47,6 +47,7 @@ class NoteForm extends React.Component {
     this.closeNoteCreateModal = this.closeNoteCreateModal.bind(this);
 
     // auto save
+    this.recentlyMountedNewNote = false;
     this.autoSaveTimerId = null;
     this.autoSaveInterval = 500;
     this.startAutoSave = this.startAutoSave.bind(this);
@@ -68,11 +69,9 @@ class NoteForm extends React.Component {
 
   componentWillReceiveProps(newProps) {
     // if navigate to new note form always have it expanded
-    if (
-      this.props.match.url !== newProps.match.url &&
-      newProps.match.url.includes("/notes/new")
-    ) {
-      this.expandNote();
+    if (this.props.match.url !== newProps.match.url) {
+      this.recentlyMountedNewNote = true;
+      if (newProps.match.url.includes("/notes/new")) this.expandNote();
     }
 
     this.setState({
@@ -159,15 +158,18 @@ class NoteForm extends React.Component {
 
   handleBodyChange(value) {
     const updatedNote = Object.assign(this.state.note, { body: value });
-    this.setState({ note: updatedNote });
+    if (!this.recentlyMountedNewNote) {
+      this.startAutoSave();
+      this.setState({ note: updatedNote });
+    } else this.recentlyMountedNewNote = false;
   }
 
   handleTitleChange(e) {
     const updatedNote = Object.assign(this.state.note, {
       title: e.target.value
     });
-    this.setState({ note: updatedNote });
     this.startAutoSave();
+    this.setState({ note: updatedNote });
   }
 
   handleDoneClick(e) {
@@ -389,9 +391,6 @@ class NoteForm extends React.Component {
     const newNotebook = this.props.notebooks[notebookId];
     const currNote = this.state.note;
     currNote.notebook = newNotebook ? newNotebook : {};
-    // if (noteList) {
-    //   noteList.classList.add("hidden");
-    // }
     this.setState({ note: currNote });
     this.startAutoSave();
   }
@@ -477,7 +476,6 @@ class NoteForm extends React.Component {
               modules={modules}
               value={this.state.note.body}
               onChange={this.handleBodyChange}
-              onKeyPress={this.startAutoSave}
               onClick={this.showToolbar}
               placeholder="Drag files here or just start typing..."
             />

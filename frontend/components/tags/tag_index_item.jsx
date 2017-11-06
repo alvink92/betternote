@@ -27,7 +27,7 @@ class TagIndexItem extends React.Component {
       (this.state.tagName.length +
         parseInt(this.props.tag.noteIds.length / 10) +
         1) *
-        9 +
+        10 +
       20
     );
   }
