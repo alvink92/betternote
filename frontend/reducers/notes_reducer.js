@@ -36,9 +36,10 @@ const notesReducer = (state = { all: {}, curr: null }, action) => {
     case REMOVE_NOTE:
       newState = merge({}, state);
       delete newState.all[action.note.id];
-      newState.curr = Object.values(newState.all)[0]
-        ? Object.values(newState.all)[0]
-        : null;
+      // newState.curr = Object.values(newState.all)[0]
+      //   ? Object.values(newState.all)[0]
+      //   : null;
+      newState.curr = null;
       return newState;
     case RECEIVE_TAGGING:
       newState = merge({}, state);
