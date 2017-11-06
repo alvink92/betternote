@@ -464,7 +464,7 @@ class NoteForm extends React.Component {
               id="note-title"
               className="note-title"
               value={this.state.note.title}
-              onKeyPress={e => {
+              onKeyDown={e => {
                 let code = e.keyCode || e.which;
                 if (code === 9 || code === 13) {
                   e.preventDefault();
