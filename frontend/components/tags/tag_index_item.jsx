@@ -45,6 +45,11 @@ class TagIndexItem extends React.Component {
   handleUpdateClick(e) {
     this.setState({ editable: true });
 
+    let editableInput = $(`#${this.editableId()}`);
+    editableInput.focus();
+    editableInput.val(this.state.tagName + " ");
+    editableInput.val(this.state.tagName);
+
     setTimeout(() => {
       document
         .getElementById(this.editableId())
