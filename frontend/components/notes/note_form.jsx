@@ -461,14 +461,17 @@ class NoteForm extends React.Component {
           <div className="note-content">
             {this.noteAssocs()}
             <input
+              id="note-title"
               className="note-title"
               value={this.state.note.title}
-              onChange={this.handleTitleChange}
               onKeyPress={e => {
-                if (e.key === "Enter") {
+                let code = e.keyCode || e.which;
+                if (code === 9 || code === 13) {
+                  e.preventDefault();
                   $(".ql-editor").focus();
                 }
               }}
+              onChange={this.handleTitleChange}
               placeholder="Title your note"
               onClick={this.hideToolbar}
             />
