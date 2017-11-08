@@ -43,9 +43,12 @@ const notesReducer = (state = { all: {}, curr: null }, action) => {
       return newState;
     case RECEIVE_TAGGING:
       newState = merge({}, state);
-      if (Object.keys(newState.all).includes(String(action.tagging.noteId))) {
-        newState.all[action.tagging.noteId].tags.push(action.tagging.tag);
-      }
+
+      // Below block of code only if update note in NoteShow from frontend, not from server
+
+      // if (Object.keys(newState.all).includes(String(action.tagging.noteId))) {
+      //   newState.all[action.tagging.noteId].tags.push(action.tagging.tag);
+      // }
       if (newState.curr.id === action.tagging.noteId) {
         newState.curr.tags.push(action.tagging.tag);
       }
@@ -54,18 +57,20 @@ const notesReducer = (state = { all: {}, curr: null }, action) => {
       newState = merge({}, state);
       let removeIndex;
 
-      if (Object.keys(newState.all).includes(String(action.tagging.noteId))) {
-        newState.all[action.tagging.noteId].tags.forEach((tag, i) => {
-          if (tag.id === action.tagging.tag.id) {
-            removeIndex = i;
-          }
-        });
-        if (typeof removeIndex !== "undefined") {
-          let tags = newState.all[action.tagging.noteId].tags;
-          tags = tags.slice(0, removeIndex).concat(tags.slice(removeIndex + 1));
-          newState.all[action.tagging.noteId].tags = tags;
-        }
-      }
+      // Below block of code only if update note in NoteShow from frontend, not from server
+
+      // if (Object.keys(newState.all).includes(String(action.tagging.noteId))) {
+      //   newState.all[action.tagging.noteId].tags.forEach((tag, i) => {
+      //     if (tag.id === action.tagging.tag.id) {
+      //       removeIndex = i;
+      //     }
+      //   });
+      //   if (typeof removeIndex !== "undefined") {
+      //     let tags = newState.all[action.tagging.noteId].tags;
+      //     tags = tags.slice(0, removeIndex).concat(tags.slice(removeIndex + 1));
+      //     newState.all[action.tagging.noteId].tags = tags;
+      //   }
+      // }
       if (newState.curr.id === action.tagging.noteId) {
         removeIndex = undefined;
         newState.curr.tags.forEach((tag, i) => {
