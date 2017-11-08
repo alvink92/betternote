@@ -20,7 +20,8 @@
 
 .note-index-items-container {
   overflow: -moz-scrollbars-vertical;
-  overflow-y: auto;
+  overflow-y: scroll;
+  height: calc(100vh);
 }
 
 .note-index-item-container {
