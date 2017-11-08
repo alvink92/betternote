@@ -92,7 +92,7 @@ class TagIndexItem extends React.Component {
     return this.state.editable ? (
       <div className="mod-btn-container hidden" />
     ) : (
-      <div className="mod-btn-container hidden">
+      <div className="mod-btn-container">
         <div className="tag-edit tag-pencil" onClick={this.handleUpdateClick} />
         <div
           className="tag-delete tag-trash"

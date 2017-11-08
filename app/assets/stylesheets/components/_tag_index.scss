@@ -41,10 +41,10 @@
             }
           }
 
-          &:hover .mod-btn-container {
-            display: flex !important;
-            flex-direction: row;
-          }
+          // &:hover .mod-btn-container {
+          //   display: flex !important;
+          //   flex-direction: row;
+          // }
         }
 
         .tag-item {
@@ -67,6 +67,8 @@
         }
 
         .mod-btn-container {
+          display: flex; // migrated from &:hover .mod-btn-container
+          flex-direction: row; // migrated from &:hover .mod-btn-container
           z-index: 1000;
           > * {
             color: #888888;
