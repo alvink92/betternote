@@ -101,10 +101,14 @@
 
 .nb-index-container,
 .tag-index-container {
-  overflow-y: scroll;
   height: calc(100vh - 120px);
   max-height: calc(100vh - 130px);
 }
 
+.tag-index-container {
+  overflow-y: scroll;
+}
+
 .nb-index-container {
+  overflow-y: auto;
 }
