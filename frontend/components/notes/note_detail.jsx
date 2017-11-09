@@ -34,7 +34,7 @@ class NoteDetail extends React.Component {
                 </div>
               </div>
               <div className="author-username">
-                <div className="author-key">AUTHOR: </div>
+                <div className="author-key">AUTHOR</div>
                 <div className="author-val">{this.props.note.username}</div>
               </div>
             </div>

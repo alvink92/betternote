@@ -116,12 +116,79 @@
     max-height: 640px;
 
     .note-title {
-      height: 90px;
+      height: 70px;
+      text-align: center;
+      font-family: "Roboto Slab", serif;
+      font-size: 25px;
+      position: relative;
+      top: -30px;
     }
 
     .note-content-container {
-      .overview {
+      .overview-container {
+        height: 265px;
+        .overview {
+          height: 32px;
+        }
+        .created-at,
+        .updated-at {
+          display: flex;
+          flex-direction: row;
+        }
+
+        .author-username {
+          border: 1px solid #e1e1e1;
+          height: 40px;
+          border-radius: 5px;
+          display: flex;
+
+          > * {
+            height: 24px;
+            margin: 8px 0px 8px 8px;
+            font-size: 12px;
+            vertical-align: middle;
+            line-height: 24px;
+          }
+
+          .author-key {
+            color: #a6a6a6;
+            letter-spacing: 1.5px;
+            font-weight: 100;
+            border: 1px solid #e1e1e1;
+            border-radius: 5px;
+            padding: 0px 5px 0px 5px;
+          }
+
+          .author-val {
+          }
+        }
       }
+
+      .share-settings-container {
+        height: 125px;
+
+        .share-settings-title {
+          height: 32px;
+        }
+        .share-setting-status {
+          display: flex;
+          flex-direction: row;
+        }
+      }
+    }
+    .note-detail-btn-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .created-at-key,
+    .updated-at-key,
+    .share-status-title {
+      color: #8e8e8e;
+      margin-right: 8px;
+      height: 32px;
+      font-size: 15px;
+      line-height: 24px;
     }
   }
 }

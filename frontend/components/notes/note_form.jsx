@@ -80,7 +80,7 @@ class NoteForm extends React.Component {
   }
 
   openNoteDetailModal() {
-    // this.setState({ noteDetailModalIsOpen: true }); // re-enable after styling notedetail
+    this.setState({ noteDetailModalIsOpen: true }); // re-enable after styling notedetail
   }
 
   closeNoteDetailModal() {
