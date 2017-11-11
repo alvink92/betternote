@@ -35,7 +35,7 @@ class TagCreate extends React.Component {
         <div className="tag-create-form-container">
           <div className="header">
             <div className="create-type-icon">
-              <i className="fa fa-tag" aria-hidden="true" />
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAkCAYAAAD7PHgWAAABxUlEQVR42u2Yv0vDQBTHK0VBF3HopC46CS7iZJ1EEN0c/AfcXFwddFJw1yJCQN1Cfk9BRQoObm4OTp0EFRGkKCqIFc/vkxcooc21SdsIXuDR9N378cm7ewd3mYx61CN/hBBdlmWtO45ThjxB1kj3J+Bs2+5xXdcClKgW6A4wlk0brh8g5wz1jCrO4HcO8sKQx77v96UFNwiAK4a7NU1zPBiDfgK6Bx67hG2uo3CAGUPiGwa4NgxjOGwDyBGMldimBJ/RjsBhGqe5ESjxha7rAxFVzlEF2fYR/yfbDbeIRO+8vlwk7JX50BqE/QlDvsJnvl1wK0jwxXB7zXSopmnd8DtiyE/Ickv3OABtcvBvgG3U2Wp2eR+8o3fSheN4nrcdFSdOp2aR7FD25QwnQlKoZQv9atVM7CfaKxFgh5O9QRbq2XHlBDdQnn3KER++hPEPskNVt2ID0qIOEkvs7hkqj+RTMkD2mQ02+CSAv9PVQKUbnuI48RMHoIYgIJ5qkkK4SVIFTC2+AlSACjBGgBr7XVOiANUaVE2imkStwX8GWKEA7bi6oKsTBqwkATxN2hQywXGhmPSCqBhUssVCx9gznOqGohh+AHVNwBrP2DQGAAAAAElFTkSuQmCC" width="40" height="36" class="gwt-Image"/>
             </div>
             <div>CREATE TAG</div>
           </div>

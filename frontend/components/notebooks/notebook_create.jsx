@@ -35,7 +35,7 @@ class NotebookCreate extends React.Component {
         <div className="notebook-create-form-container">
           <div className="header">
             <div className="create-type-icon">
-              <i className="fa fa-book" aria-hidden="true" />
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAjCAYAAADmOUiuAAAAkUlEQVR42u3YPQqAMAwG0B7A3RPodVw8Ywlp0WO5ufQAGsVZLG0w4hfI0iG8/qTQOof4c4QQNuVcJAfLwBNZDHw6Xqs+gADmAnOaAsA7YG4tAHEGcQ8CCCCAAAII4DeA5p+d5h/uzDx771uzXx9aOJl4IzmWAJMmsEaTTJpbXAwkol5wq9kuPiLG2F0rmd7o4h0rmCnwelm2NAAAAABJRU5ErkJggg==" width="40" height="35" class="gwt-Image"/>
             </div>
             <div className="create-title">CREATE NOTEBOOK</div>
           </div>
