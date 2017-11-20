@@ -23,12 +23,13 @@ class TagIndexItem extends React.Component {
   }
 
   tagWidth() {
-    return (
+    return Math.min(
+      300,
       (this.state.tagName.length +
         parseInt(this.props.tag.noteIds.length / 10) +
         1) *
         10 +
-      20
+        20
     );
   }
 
