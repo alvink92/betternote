@@ -496,7 +496,7 @@ const toolBarOpts = [
   [{ size: ["small", false, "large", "huge"] }], // custom dropdown
   ["bold", "italic", "underline", "strike"], // toggled buttons
   [{ color: [] }, { background: [] }], // dropdown with defaults from theme
-  ["blockquote"],
+  ["blockquote", "code-block"],
   [{ align: [] }],
   [{ list: "ordered" }, { list: "bullet" }],
   [{ script: "sub" }, { script: "super" }], // superscript/subscript
