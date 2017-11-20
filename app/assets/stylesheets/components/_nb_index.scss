@@ -29,6 +29,10 @@
           font-family: "Roboto Slab", serif;
           height: 28px;
           color: #545454;
+          max-width: 300px;
+          overflow-x: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
         .nb-count {
           font-size: 10px;

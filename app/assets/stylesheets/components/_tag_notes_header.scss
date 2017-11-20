@@ -11,5 +11,12 @@
     height: 80px;
     color: #989898;
     font-weight: 100;
+
+    .title {
+      max-width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 }

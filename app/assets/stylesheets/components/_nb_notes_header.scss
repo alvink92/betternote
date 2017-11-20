@@ -40,6 +40,10 @@
     .title {
       margin: 0 auto;
       font-weight: 100;
+      max-width: 300px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
   .notes-count-container {
