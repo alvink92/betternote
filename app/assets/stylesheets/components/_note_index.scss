@@ -8,7 +8,6 @@
 .note-index-header-container {
   cursor: default;
   padding: 24px 20px 0 24px;
-  border-right: 1px solid #ececec;
 }
 
 .note-index-header-container h1 {
@@ -63,7 +62,7 @@
 
 .note-index-header-container {
   background-color: white;
-  border-bottom: 3px solid #ececec;
+  border-bottom: 1px solid #ececec;
 }
 
 .note-index-item-container {
@@ -74,7 +73,7 @@
 .note-index-item {
   height: 120px;
   overflow-y: hidden;
-  border-bottom: 0.5px solid #ececec;
+  border-bottom: 1px solid #ececec;
 }
 
 .note-index-item-container:hover .note-index-item {
