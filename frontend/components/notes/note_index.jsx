@@ -79,8 +79,9 @@ class NoteIndex extends React.Component {
   notesIndexHeader() {
     return (
       <div className="note-index-header-container">
-        <h1>{"NOTES"}</h1>
-        <br />
+        <div className="note-index-header-title-container">
+          <h1>{"NOTES"}</h1>
+        </div>
         <div className="notes-count">
           {Object.keys(this.currNotes()).length + " notes"}
         </div>

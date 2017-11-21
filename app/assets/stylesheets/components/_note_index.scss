@@ -8,6 +8,11 @@
 .note-index-header-container {
   cursor: default;
   padding: 24px 20px 0 24px;
+  height: 100px;
+}
+
+.note-index-header-container > .note-index-header-title-container {
+  height: 48px;
 }
 
 .note-index-header-container h1 {
