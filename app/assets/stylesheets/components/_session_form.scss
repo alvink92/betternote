@@ -68,8 +68,7 @@
   border: 1px solid #dedede;
 }
 
-.session-form .submit,
-.session-form .demo {
+.session-form .submit {
   text-align: center;
   background-color: #2dbe60;
   border-radius: 7px;
@@ -80,12 +79,24 @@
   border-bottom-color: rgb(31, 174, 82);
   border-left-color: rgb(31, 174, 82);
   height: 45px;
+
+  &:hover {
+    background-color: #32a55a;
+    cursor: pointer;
+  }
 }
 
-.session-form .submit:hover,
-.session-form .demo:hover {
-  background-color: #32a55a;
-  cursor: pointer;
+.session-form .demo {
+  color: #6a6a6a;
+  letter-spacing: 1px;
+  border: solid 1px #d0d0d0;
+  background-color: #ffffff;
+  text-align: center;
+
+  &:hover {
+    background: #f1f1f1;
+    cursor: pointer;
+  }
 }
 
 .horizontal-text {
@@ -177,6 +188,14 @@
 ::-ms-input-placeholder {
   /* Microsoft Edge */
   color: #9b9b9b;
+}
+
+.creds:focus {
+  border-color: #7aa7cf;
+  outline: none;
+  -webkit-box-shadow: 0 0 0 1px #7aa7cf, 0 0 4px 0 #3d96e3;
+  -moz-box-shadow: 0 0 0 1px #7aa7cf, 0 0 4px 0 #3d96e3;
+  box-shadow: 0 0 0 1px #7aa7cf, 0 0 4px 0 #3d96e3;
 }
 
 .horizontal-text {
