@@ -93,10 +93,23 @@
   border: solid 1px #d0d0d0;
   background-color: #ffffff;
   text-align: center;
+  display: flex;
+  flex-direction: row;
 
   &:hover {
     background: #f1f1f1;
     cursor: pointer;
+  }
+
+  .demo-logo {
+    height: 22px;
+    width: auto;
+  }
+
+  .demo-message {
+    width: 100%;
+    line-height: 22px;
+    height: 22px;
   }
 }
 

@@ -87,7 +87,11 @@ class SessionForm extends React.Component {
     return (
       <form className="session-form" onSubmit={this.handleSubmit}>
         <button className="demo" onClick={this.handleDemoButtonClick}>
-          {"Sign in with Demo"}
+          <img
+            className="demo-logo"
+            src="https://www.evernote.com/redesign/global/img/elephant.png"
+          />
+          <div className="demo-message">{"Sign in with Demo"}</div>
         </button>
         {this.vGap("40px")}
         <div className="horizontal-text">
