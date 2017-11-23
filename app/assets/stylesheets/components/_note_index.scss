@@ -72,7 +72,6 @@
 
 .note-index-item-container {
   padding: 10px 20px 0 24px;
-  border: 2.5px solid white;
 }
 
 .note-index-item {
@@ -103,6 +102,7 @@
 
 .note-item-lastupdated-section {
   font-size: 12px;
+  letter-spacing: 1.5px;
 }
 
 .note-item-body-section {
@@ -118,7 +118,7 @@
   h4,
   h5,
   h6 {
-    font-size: 15px !important;
+    font-size: 13px !important;
   }
 }
 
@@ -127,8 +127,7 @@
 }
 .note-index-item-container:hover {
   cursor: pointer;
-  background: #2dbe60;
-  border: 2.5px solid #2dbe60 !important;
+  background: rgba(43, 181, 92, 0.9);
   color: white;
 }
 
