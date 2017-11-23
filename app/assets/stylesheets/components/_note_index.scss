@@ -110,6 +110,8 @@
   overflow: hidden;
   margin-top: 3px;
   color: #8c8c8c;
+  font-family: "Roboto Slab", serif;
+  font-size: 12px !important;
   h1,
   h2,
   h3,
@@ -118,7 +120,6 @@
   h6 {
     font-size: 15px !important;
   }
-  font-size: 13px !important;
 }
 
 .active.show-link > .note-index-item-container {
