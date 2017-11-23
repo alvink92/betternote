@@ -87,7 +87,7 @@ class SessionForm extends React.Component {
     return (
       <form className="session-form" onSubmit={this.handleSubmit}>
         <button className="demo" onClick={this.handleDemoButtonClick}>
-          Demo
+          {"Sign in with Demo"}
         </button>
         {this.vGap("40px")}
         <div className="horizontal-text">
