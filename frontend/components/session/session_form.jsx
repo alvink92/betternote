@@ -12,6 +12,8 @@ class SessionForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+    // console.log(this.props);
+    // console.log(newProps);
     if (this.props.match.url !== newProps.match.url) {
       this.props.clearSessionErrors();
     }

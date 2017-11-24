@@ -52,10 +52,12 @@ class SessionFormPage extends React.Component {
           <div className="form-header-container">
             <div className="form-header">
               <div className="logo">
-                <img
-                  src="https://www.evernote.com/redesign/global/img/elephant.png"
-                  alt="Betternote logo"
-                />
+                <a href="/">
+                  <img
+                    src="https://www.evernote.com/redesign/global/img/elephant.png"
+                    alt="Betternote logo"
+                  />
+                </a>
               </div>
               <div className="form-header-title">
                 <h1>{this.formHeaderName()}</h1>
