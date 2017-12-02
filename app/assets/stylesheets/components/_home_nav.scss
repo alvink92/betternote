@@ -58,6 +58,8 @@
 
 .header-nav ul li {
   display: inline-block;
+  line-height: 22px;
+  vertical-align: middle;
 }
 
 .right-section li {
@@ -75,5 +77,9 @@
 }
 
 .header-nav .brand-text {
-  font-size: 21px;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  line-height: 22px;
+  vertical-align: middle;
 }
