@@ -13,6 +13,8 @@
     display: flex;
     flex-direction: column;
     .first-letter {
+      font-size: 11px;
+      font-weight: 400;
       color: #878787;
       height: 27px;
     }
@@ -58,6 +60,8 @@
           z-index: 1000;
 
           .tag-name {
+            font-weight: 400;
+            font-size: 14.5px;
             margin-right: 9px;
             color: #6b6b6b;
             max-width: 250px;
