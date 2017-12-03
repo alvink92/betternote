@@ -79,6 +79,7 @@
   border-bottom-color: rgb(31, 174, 82);
   border-left-color: rgb(31, 174, 82);
   height: 45px;
+  font-weight: 500;
 
   &:hover {
     background-color: #32a55a;
@@ -110,7 +111,7 @@
   }
 
   .demo-message {
-    font-weight: 400;
+    font-weight: 500;
     width: 100%;
     line-height: 22px;
     height: 22px;
