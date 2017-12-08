@@ -22,7 +22,7 @@ The overall design and layout was developed with the guidance of [wireframes](ht
 
 Associations were formed with the help of a [Database Schema](https://github.com/alvink92/betternote/wiki/wireframes), and a [Sample State](https://github.com/alvink92/betternote/wiki/Sample-State)
 
-Autosave featured was implemented using a setTimeout
+Autosave featured was implemented by adding a few simple and elegant lines of code which utilizes setTimeout and clearTimeout:
 ```javascript
 startAutoSave() {
   clearTimeout(this.autoSaveTimerId);
