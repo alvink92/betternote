@@ -83,6 +83,10 @@
           display: flex; // migrated from &:hover .mod-btn-container
           flex-direction: row; // migrated from &:hover .mod-btn-container
           z-index: 1000;
+          line-height: 23px;
+          vertical-align: middle;
+          font-size: 14.5px;
+
           > * {
             color: #888888;
             margin-right: 12px;

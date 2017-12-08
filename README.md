@@ -22,6 +22,17 @@ The overall design and layout was developed with the guidance of [wireframes](ht
 
 Associations were formed with the help of a [Database Schema](https://github.com/alvink92/betternote/wiki/wireframes), and a [Sample State](https://github.com/alvink92/betternote/wiki/Sample-State)
 
+Autosave featured was implemented using a setTimeout
+```javascript
+startAutoSave() {
+  clearTimeout(this.autoSaveTimerId);
+  this.autoSaveTimerId = setTimeout(
+    this.triggerNoteAction,
+    this.autoSaveInterval
+  );
+}
+```
+
 ## Technologies
 
 ### Frontend
