@@ -88,7 +88,10 @@ class SessionForm extends React.Component {
   render() {
     return (
       <form className="session-form" onSubmit={this.handleSubmit}>
-        <button className="demo" onClick={this.handleDemoButtonClick}>
+        <button
+          className="demo animated pulse infinite"
+          onClick={this.handleDemoButtonClick}
+        >
           <img
             className="demo-logo"
             src="https://www.evernote.com/redesign/global/img/elephant.png"
