@@ -28,6 +28,7 @@ class Homepage extends React.Component {
           <ContentContainer />
           <Benefits/>
         </div>
+        Footer
         <Footer/>
       </div>
     );
