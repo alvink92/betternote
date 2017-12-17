@@ -6,11 +6,14 @@ class Footer extends React.Component {
   }
 
   render() {
-    let footerNav = <div className="footer-wrap nav">
-          <div className="home-inner-width" />
-        </div>;
+    let footerNav = (
+      <div className="footer-wrap nav">
+        <div className="home-inner-width" />
+      </div>
+    );
 
-    return <div className="footer-container">
+    return (
+      <div className="footer-container">
         <div className="footer-wrap social">
           <div className="home-inner-width">
             <ul className="social-links">
@@ -44,7 +47,8 @@ class Footer extends React.Component {
             </p>
           </div>
         </div>
-      </div>;
+      </div>
+    );
   }
 }
 

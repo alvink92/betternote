@@ -26,10 +26,9 @@ class Homepage extends React.Component {
         <div className="content-container">
           {this.vGap("200px")}
           <ContentContainer />
-          <Benefits/>
+          <Benefits />
         </div>
-        Footer
-        <Footer/>
+        <Footer />
       </div>
     );
   }
