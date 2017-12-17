@@ -1,0 +1,38 @@
+.footer-container {
+    > * {
+        border-top: 1px solid #eee;
+        padding: 30px 0;
+    }
+
+    .footer-wrap {
+
+        &.social, &.legal {
+            height: 84px;
+        }
+
+        &.social {
+            .social-links {
+                float:right;
+                display: flex;
+                flex-direction: row;
+
+                li {
+                    margin-left: 48px;
+
+                    a {
+                        color: black;
+                        font-size: 23px;
+                        
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.legal {
+            font-size: 14px;
+        }
+    }
+}

@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./navbar";
 import ContentContainer from "./content_container";
 import Benefits from "./benefits";
+import Footer from "./footer";
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class Homepage extends React.Component {
           <ContentContainer />
           <Benefits/>
         </div>
+        <Footer/>
       </div>
     );
   }
