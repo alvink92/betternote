@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./navbar";
 import ContentContainer from "./content_container";
+import Benefits from "./benefits";
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class Homepage extends React.Component {
         <div className="content-container">
           {this.vGap("200px")}
           <ContentContainer />
-          {this.vGap("300px")}
+          <Benefits/>
         </div>
       </div>
     );

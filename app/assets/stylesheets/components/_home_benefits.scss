@@ -1,0 +1,43 @@
+.benefits-item {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+
+    .benefits-img {
+        display: block;
+        margin: 0;
+        padding: 0;
+        
+        img {
+            width: 456px;
+            height: 456px;
+        }
+    }
+
+    .benefits-content {
+        max-width: 380px;
+        margin-left: 56px;
+
+        h2 {
+            margin-bottom: 35px;
+        }
+
+        .link-wrapper {
+            margin-top: 32px;
+
+            a {
+                text-decoration: none;
+                border-bottom: 0 solid transparent;
+                transition: 0.3s border ease-in-out,
+                0.3s color ease-in-out;
+                border-bottom: 2px solid #2dbe60;
+
+                &:hover {
+                    color: #2dbe60;
+                }
+            }
+        }
+    }
+}
