@@ -24,10 +24,10 @@ class Homepage extends React.Component {
         <Navbar />
         <div className="content-container">
           {this.vGap("200px")}
-          <Footer />
           <ContentContainer />
           <Benefits />
         </div>
+        <Footer />
       </div>;
   }
 }
