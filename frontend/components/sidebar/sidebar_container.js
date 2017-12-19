@@ -4,7 +4,9 @@ import { logout } from "../../actions/session_actions";
 import { withRouter } from "react-router";
 
 const mapStateToProps = (state, ownProps) => {
-  return {};
+  return {
+    currentUser: state.session.currentUser
+  };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
