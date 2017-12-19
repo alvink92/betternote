@@ -15,8 +15,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     notebooks: state.entities.notebooks.all,
     isUpdateForm: ownProps.match.url.includes("notes/new") ? false : true,
-    autoSave: ownProps.match.url.includes("notes/new") ? false : true,
-    currentUser: state.session.currentUser
+    autoSave: ownProps.match.url.includes("notes/new") ? false : true
   };
 };
 
