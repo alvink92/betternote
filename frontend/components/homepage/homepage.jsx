@@ -3,6 +3,7 @@ import Navbar from "./navbar";
 import ContentContainer from "./content_container";
 import Benefits from "./benefits";
 import Footer from "./footer";
+import {Link} from 'react-router-dom';
 
 class Homepage extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class Homepage extends React.Component {
             Millions of people rely on Evernote to stay organized and get more done. Find out why.
           </h2>
           <div className="social-proof-signup">
-            <a href="/signup">Sign up for free</a>
+            <Link href="/signup">Sign up for free</Link>
           </div>
         </div>
       </div>
