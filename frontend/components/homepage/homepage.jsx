@@ -21,11 +21,16 @@ class Homepage extends React.Component {
 
   socialProof() {
     return (
-      <div className="social-proof-container">
-        <div classname="home-inner-width">
-        asdf
+      <div className="social-proof">
+        <div className="home-inner-width">
+          <h2>
+            Millions of people rely on Evernote to stay organized and get more done. Find out why.
+          </h2>
+          <div className="social-proof-signup">
+            <a href="/signup">Sign up for free</a>
+          </div>
         </div>
-        </div>
+      </div>
     );
   }
 
@@ -36,6 +41,7 @@ class Homepage extends React.Component {
           {this.vGap("200px")}
           <ContentContainer />
           <Benefits />
+          {this.socialProof()}
         </div>
         <Footer />
       </div>;

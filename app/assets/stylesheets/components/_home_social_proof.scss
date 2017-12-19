@@ -1,0 +1,33 @@
+.social-proof {
+    background: #f9f9f9;
+    padding: 100px 0;
+
+    h2 {
+        max-width: 550px;
+        text-align: center;
+        margin: 0 auto 100px;
+        font-weight: 900;
+        font-size: 39px;
+        height: 180px;
+    }
+
+    .social-proof-signup {
+        display: flex;
+        a {
+          width: 150px;
+          height: 50px;
+          border-radius: 5px;
+          margin: 0 auto;
+          line-height: 50px;
+          vertical-align: middle;
+          text-align: center;
+          color:white;
+          background: #00c659;
+          
+          &:hover {
+              text-decoration: none;
+              background: #0d9f40;
+          }
+        }
+    }
+}
