@@ -19,6 +19,16 @@ class Homepage extends React.Component {
     return <div style={divStyle} />;
   }
 
+  socialProof() {
+    return (
+      <div className="social-proof-container">
+        <div classname="home-inner-width">
+        asdf
+        </div>
+        </div>
+    );
+  }
+
   render() {
     return <div className="homepage-container">
         <Navbar />
