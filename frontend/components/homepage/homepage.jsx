@@ -28,7 +28,7 @@ class Homepage extends React.Component {
             Millions of people rely on Evernote to stay organized and get more done. Find out why.
           </h2>
           <div className="social-proof-signup">
-            <Link href="/signup">Sign up for free</Link>
+            <Link to="/signup">Sign up for free</Link>
           </div>
         </div>
       </div>
