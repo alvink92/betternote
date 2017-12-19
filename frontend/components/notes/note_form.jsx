@@ -71,7 +71,7 @@ class NoteForm extends React.Component {
     if (this.props.currentUser.username === "demo") {
       (function() {
         return new Promise((resolve, reject) => {
-          setTimeout(() => resolve(), 1000);
+          setTimeout(() => resolve(), 7000);
         });
       })()
         .then(() => {
