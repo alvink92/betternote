@@ -21,7 +21,9 @@ class Sidebar extends React.Component {
       this.hideAllPanes();
     }
 
-    let props = this.props;
+
+    // FOR DEMO USER
+    let demoProps = this.props;
     if (this.props.currentUser.username === "demo") {
       (function() {
         return new Promise((resolve, reject) => {
@@ -30,18 +32,18 @@ class Sidebar extends React.Component {
       })()
         .then(() => {
           return new Promise((resolve, reject) => {
-            props.history.push("/notebooks");
+            demoProps.history.push("/notebooks");
             setTimeout(() => resolve(), 1000);
           });
         })
         .then(() => {
           return new Promise((resolve, reject) => {
-            props.history.push("/tags");
+            demoProps.history.push("/tags");
             setTimeout(() => resolve(), 1000);
           });
         })
         .then(() => {
-          props.history.push("/notes");
+          demoProps.history.push("/notes");
         });
     }
   }
