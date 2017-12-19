@@ -20,32 +20,6 @@ class Sidebar extends React.Component {
     } else {
       this.hideAllPanes();
     }
-
-
-    // FOR DEMO USER
-    let demoProps = this.props;
-    if (this.props.currentUser.username === "demo") {
-      (function() {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => resolve(), 1000);
-        });
-      })()
-        .then(() => {
-          return new Promise((resolve, reject) => {
-            demoProps.history.push("/notebooks");
-            setTimeout(() => resolve(), 1000);
-          });
-        })
-        .then(() => {
-          return new Promise((resolve, reject) => {
-            demoProps.history.push("/tags");
-            setTimeout(() => resolve(), 1000);
-          });
-        })
-        .then(() => {
-          demoProps.history.push("/notes");
-        });
-    }
   }
 
   componentWillReceiveProps(newProps) {

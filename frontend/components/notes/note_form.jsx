@@ -65,6 +65,31 @@ class NoteForm extends React.Component {
     } else {
       this.collapseNote();
     }
+
+    // FOR DEMO USERS - weird.. only works here
+    let props = this.props;
+    if (this.props.currentUser.username === "demo") {
+      (function() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => resolve(), 1000);
+        });
+      })()
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            props.history.push("/notebooks");
+            setTimeout(() => resolve(), 1000);
+          });
+        })
+        .then(() => {
+          return new Promise((resolve, reject) => {
+            props.history.push("/tags");
+            setTimeout(() => resolve(), 1000);
+          });
+        })
+        .then(() => {
+          props.history.push("/notes");
+        });
+    }
   }
 
   componentWillReceiveProps(newProps) {
