@@ -82,3 +82,15 @@
   line-height: 22px;
   vertical-align: middle;
 }
+
+@media only screen and (max-width: 960px) {
+  .home-header {
+    .header-nav {
+      .left-section {
+        li:not(:first-child) {
+          display: none;
+        }
+      }
+    }  
+  }
+}
