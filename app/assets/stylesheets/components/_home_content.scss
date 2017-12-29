@@ -10,6 +10,23 @@
   padding-top: 5px;
 }
 
+@media only screen and (max-width: 960px) {
+  .homepage-content {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    
+    > .desc-section {
+      min-width: 100%;
+      display: flex;
+    }
+
+    .content-divider, .registration-form-container {
+      display: none;
+    }
+  }
+}
+
 .content-divider {
   height: 500px;
   display: flex;
@@ -30,6 +47,7 @@
   padding-right: 25px;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
+
 
 .desc-section h1 {
   font-weight: 700;

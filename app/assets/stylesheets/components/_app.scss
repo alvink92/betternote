@@ -18,3 +18,25 @@
   font-family: "Nunito Sans", sans-serif;
   font-weight: 100;
 }
+
+.betternote-btn {
+    height: 50px;
+    border-radius: 5px;
+    margin: 0 auto;
+    line-height: 50px;
+    vertical-align: middle;
+    text-align: center;
+    color: white !important;
+    background: #00c659;
+    padding: 0 20px;
+    &:hover {
+      text-decoration: none;
+      background: #0d9f40;
+    }
+}
+
+@media only screen and (max-width: 960px) {
+  .disp-block-resp-max-960 {
+    display: block !important;
+  }
+}
